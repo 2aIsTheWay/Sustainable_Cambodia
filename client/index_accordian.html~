@@ -122,7 +122,8 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <a href="index.html">Upload Documents</a>
+                                                <a href="index.html">Uplod Documents</a>
+                                                <span class="badge">42</span>
                                             </td>
                                         </tr>
                                     </table>
