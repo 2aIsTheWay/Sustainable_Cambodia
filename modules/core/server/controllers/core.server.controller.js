@@ -9,6 +9,29 @@ exports.renderIndex = function (req, res) {
   });
 };
 
+exports.renderAbout = function (req, res) {
+  res.render('modules/core/server/views/about', {
+    user: req.user || null
+  });
+};
+
+exports.renderContact = function (req, res) {
+  res.render('modules/core/server/views/contact', {
+    user: req.user || null
+  });
+};
+
+exports.renderDonate = function (req, res) {
+  res.render('modules/core/server/views/donate', {
+    user: req.user || null
+  });
+};
+
+exports.renderSCtest = function (req, res) {
+  res.render('modules/core/server/views/sctemplate', {
+    user: req.user || null
+  });
+};
 /**
  * Render the server error page
  */

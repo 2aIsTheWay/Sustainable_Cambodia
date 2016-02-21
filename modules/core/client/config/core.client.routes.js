@@ -15,7 +15,38 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     $stateProvider
     .state('home', {
       url: '/',
+      templateUrl: 'modules/core/client/views/index.html'
+      //templateUrl: 'modules/core/client/views/home.client.view.html'
+    })
+    .state('about', {
+      url: '/about',
+      templateUrl: 'modules/core/client/views/about.client.view.html'
+      //templateUrl: 'modules/core/client/views/home.client.view.html'
+    })
+    .state('contact', {
+      url: '/contact',
+      templateUrl: 'modules/core/client/views/contact.client.view.html'
+      //templateUrl: 'modules/core/client/views/home.client.view.html'
+    })
+    .state('donate', {
+      url: '/donate',
+      templateUrl: 'modules/core/client/views/waystodonate.client.view.html'
+      //templateUrl: 'modules/core/client/views/home.client.view.html'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'modules/core/client/views/waystodonate.login.view.html'
+      //templateUrl: 'modules/core/client/views/home.client.view.html'
+    })
+    .state('differentHome', {
+      url: '/home',
+      //templateUrl: 'modules/core/client/views/index.html'
       templateUrl: 'modules/core/client/views/home.client.view.html'
+    })
+    .state('sctest', {
+      url: '/sctest',
+      //templateUrl: 'modules/core/client/views/index.html'
+      templateUrl: 'modules/core/client/views/index.client.view.html'
     })
     .state('not-found', {
       url: '/not-found',
