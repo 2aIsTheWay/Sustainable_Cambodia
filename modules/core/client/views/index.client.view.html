@@ -6,7 +6,7 @@
           </center>
 	</div>
 
-
+	<div>
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -14,7 +14,7 @@
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
+
         </ol>
 
         <!-- Wrapper for slides -->
@@ -22,27 +22,25 @@
             <div class="item active">
                 <div class="fill" style="background-image:url('http://www.sustainablecambodia.org/shared/resize.asp?img=%2Fshared%2Fimages%2Fuploaded%2F4380%2EJPG&w=195&h=250');"></div>
                 <div class="carousel-caption">
-                    <h2>Chanbut</h2>
+                    <a ui-sref="child"><h2>Chanbut</h2>
+		    </a>
                 </div>
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('http://www.sustainablecambodia.org/shared/resize.asp?img=%2Fshared%2Fimages%2Fuploaded%2F4116%2EJPG&w=195&h=250');"></div>
                 <div class="carousel-caption">
-                    <h2>Oudom</h2>
+                    <a ui-sref="child"><h2>Oudom</h2>
+		    </a>
                 </div>
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('http://www.sustainablecambodia.org/shared/resize.asp?img=%2Fshared%2Fimages%2Fuploaded%2F4237%2EJPG&w=195&h=250');"></div>
                 <div class="carousel-caption">
-                    <h2>Bora</h2>
+                    <a ui-sref="child"><h2>Bora</h2>
+		    </a>
                 </div>
             </div>
-	    <div class="item active">
-                <div class="fill" style="background-image:url('{{child.picture}}');"></div>
-                <div class="carousel-caption">
-                    <h2>{{child.name}}</h2>
-                </div>
-            </div>
+	    
         </div>
 
         <!-- Controls -->
@@ -53,6 +51,7 @@
             <span class="icon-next"></span>
         </a>
     </header>
+    </div>
 
     <!-- Page Content -->
     <div class="container">
