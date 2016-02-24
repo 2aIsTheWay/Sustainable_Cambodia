@@ -1,0 +1,15 @@
+<section ng-controller="ChildrenController" ng-init="find()">
+  <div class="col-md-offset-1 col-md-10">
+    <div ng-show="error" class="text-danger">
+      <strong ng-bind="error"></strong>
+    </div>
+    <div ng-show="success" class="text-success">
+      <strong ng-bind="success"></strong>
+    </div>
+    <div ng-repeat="child in children" ui-sref="children.view({ childrenId: child._id })">
+          {{child.firstName}}
+          {{child.lastName}}
+    </div>
+    </div>
+  </div>
+</section>

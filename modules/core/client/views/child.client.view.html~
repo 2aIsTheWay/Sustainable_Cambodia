@@ -1,0 +1,62 @@
+<section>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Chanbut</h1>
+                <ol class="breadcrumb">
+                    <li><a ui-sref="children">All Children</a>
+                    </li>
+                    <li class="active">Chanbut</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="http://www.sustainablecambodia.org/shared/resize.asp?img=%2Fshared%2Fimages%2Fuploaded%2F4380%2EJPG&w=195&h=250" alt="Chanbut at his desk">
+	
+		<div class="col-lg-8">
+			<button type="submit" class="btn btn-primary">Sponsor Me</button>
+		</div>
+                <hr>
+                <!-- Post Content -->
+		<h2>Biography</h2>
+                <p class="lead">Heng Chanbut is a boy who studies in grade 10 in high school. He lives with his family and his siblings in the home town. His parents are farmers and sometime they make something to sell in the village. He has one brother and two sisters. In his family he loves his parents because they try to support him at school that is a good film for him in the future. Sometimes they give him the advice to try studying at school and make friendship with teacher and his friends. About his siblings he loves them very much because they try working without him because he busy at school. One more he loves his pets in the family and he always looks after them when his parents go to farm. At school he loves reading very much because teacher always takes him to read the lesson all the time.</p>
+                <p>In free time he always searches the exercises and practice it a lone that can bring him more understand and if he does not understand which point, he tries to ask teacher and his friends. After he finishes his class he plays football at school. He wants to attend the classes at sustainable Cambodia because SC help the students who came from poor family. He loves library and English class. Something that he laughs when he reads a joke story, plays game in the classroom with his friends and use computer.</p>
+                <p>His favorite subject is Khmer. In the future he wants to be a Khmer Teacher. His life as a student he always read books in the class, he rides a bicycle to school. A life with his family he always helps his parents to plant vegetables and look after cows and buffalos. The kind of work he likes to learn is motor repairing. Because he can earns money from it. </p>
+
+                <hr>           
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</section>

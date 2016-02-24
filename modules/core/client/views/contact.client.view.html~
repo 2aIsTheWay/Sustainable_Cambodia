@@ -1,0 +1,117 @@
+<section>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Contact</h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Map Column -->
+
+            <!-- Contact Details Column -->
+            <div class="col-md-4">
+                <h3>USA Office</h3>
+                <p>
+                    Sustainable Cambodia, Inc.<br>101 SE 2nd Place, Suite 201-B<br>Gainesville, FL 32601 USA<br>
+                </p>
+                <p><i class="fa fa-phone"></i>
+                    <abbr title="Phone">P</abbr>: (352) 371-2075
+
+                    <br>(office phone # is provided courtesy of Synogen...
+
+                    <br>Dial ext. 6 for Susan Mastin/Sustainable Cambodia)</p>
+                <p><i class="fa fa-envelope-o"></i>
+                    <abbr title="Email">E</abbr>: <a href="mailto:USofficesustainablecambodia.org">USoffice@sustainablecambodia.org</a>
+                </p>
+                <p><i class="fa fa-clock-o"></i>
+                    <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM</p>
+                <ul class="list-unstyled list-inline list-social-icons">
+                    <li>
+                        <a href="https://www.facebook.com/SustainableCambodia/?fref=ts"><i class="fa fa-facebook-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/sustainable-cambodia"><i class="fa fa-linkedin-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/sustaincambodia"><i class="fa fa-twitter-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/104134878585143783183/about"><i class="fa fa-google-plus-square fa-2x"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <!----------------------------->
+            <div class="col-md-4">
+                <h3>Mail to the Cambodian Office</h3>
+                <p>
+                    Sustainable Cambodia<br>P.O. Box 9204<br>House 583, Group 6<br>National Road 5 - Ra Village<br>Pursat Town, Pursat Province<br>Cambodia<br>Gainesville, FL 32601 USA<br>
+                </p>
+                <p>
+                  <i class="fa fa-phone"></i>
+                    <abbr title="Phone">P</abbr>: (012) 505 - 512
+                </p>
+                <p><i class="fa fa-envelope-o"></i>
+                    <abbr title="Email">E</abbr>: <a href="mailto:HQofficesustainablecambodia.org">HQofficesustainablecambodia.org</a>
+                </p>
+                <p><i class="fa fa-clock-o"></i>
+                    <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM</p>
+                <ul class="list-unstyled list-inline list-social-icons">
+                    <li>
+                        <a href="https://www.facebook.com/SustainableCambodia/?fref=ts"><i class="fa fa-facebook-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/sustainable-cambodia"><i class="fa fa-linkedin-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/sustaincambodia"><i class="fa fa-twitter-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/104134878585143783183/about"><i class="fa fa-google-plus-square fa-2x"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <!----------->
+            <div class="col-md-4">
+                <h3>Cambodian Office Address</h3>
+                <p>
+                    #583, National Highway #5<br>Ra village, Phtah Prey commune<br>Pursat Town, Pursat Province<br>
+                </p>
+
+
+
+
+            </div>
+            <!----------->
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+</section>
