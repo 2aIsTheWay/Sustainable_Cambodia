@@ -1,10 +1,10 @@
 {
-  "name": "scambodia",
+  "name": "mean",
   "description": "Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js",
   "version": "0.4.2",
   "meanjs-version": "0.4.2",
   "private": false,
-  "author": "Team2A",
+  "author": "",
   "license": "MIT",
   "repository": {
     "type": "git",

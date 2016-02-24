@@ -122,7 +122,8 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <a href="index.html">Upload Documents</a>
+                                                <a href="index.html">Uplod Documents</a>
+                                                <span class="badge">42</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -175,7 +176,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-user">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
                                     </span>Volunteer</a>
                                 </h4>
                             </div>
