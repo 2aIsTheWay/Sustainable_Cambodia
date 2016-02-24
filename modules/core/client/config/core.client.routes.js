@@ -69,15 +69,15 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         ignoreState: true
       }
     })
-    .state('child', {
-      url: '/child',
+    .state('childPage', {
+      url: '/childPage',
       templateUrl: 'modules/core/client/views/child.client.view.html',
       data: {
         ignoreState: true
       }
     })
-    .state('children', {
-      url: '/children',
+    .state('childrenPage', {
+      url: '/childrenPage',
       templateUrl: 'modules/core/client/views/children.client.view.html',
       data: {
         ignoreState: true

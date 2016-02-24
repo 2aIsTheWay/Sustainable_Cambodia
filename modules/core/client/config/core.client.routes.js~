@@ -35,7 +35,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     })
     .state('login', {
       url: '/login',
-      templateUrl: 'modules/core/client/views/waystodonate.login.view.html'
+      templateUrl: 'modules/core/client/views/login.client.view.html'
       //templateUrl: 'modules/core/client/views/home.client.view.html'
     })
     .state('differentHome', {
@@ -69,14 +69,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         ignoreState: true
       }
     })
-    .state('child', {
+    .state('childPage', {
       url: '/child',
       templateUrl: 'modules/core/client/views/child.client.view.html',
       data: {
         ignoreState: true
       }
     })
-    .state('children', {
+    .state('childrenPage', {
       url: '/children',
       templateUrl: 'modules/core/client/views/children.client.view.html',
       data: {
