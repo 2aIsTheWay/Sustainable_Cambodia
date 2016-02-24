@@ -119,10 +119,10 @@ Since 2004, Sustainable Cambodia's unique empowerment model has helped tens of t
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="lib/jquery/dist/jquery.js" type="text/javascript"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!-- Script to Activate the Carousel -->
     <script>
