@@ -19,7 +19,7 @@
                        <a ui-sref="contact">Contact Us</a>
                    </li>
                    <li>
-                       <a ui-sref="children">Ways to Donate</a>
+                       <a ui-sref="childrenPage">Ways to Donate</a>
                    </li>
                    <li>
                        <a ui-sref="login">Log in</a>

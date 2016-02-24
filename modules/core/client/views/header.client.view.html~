@@ -20,17 +20,22 @@
         <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
       </li>
     </ul>
-       <ul class="nav navbar-nav navbar-right">
-           <li>
-               <a ui-sref="about">About</a>
-           </li>
-           <li>
-               <a ui-sref="contact">Contact Us</a>
-           </li>
-           <li>
-               <a ui-sref="childrenPage">Ways to Donate</a>
-           </li>
-       </ul>
+
+
+               <ul class="nav navbar-nav navbar-right">
+                   <li>
+                       <a ui-sref="about">About</a>
+                   </li>
+                   <li>
+                       <a ui-sref="contact">Contact Us</a>
+                   </li>
+                   <li>
+                       <a ui-sref="childrenPage">Ways to Donate</a>
+                   </li>
+               </ul>
+
+
+
     <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
       <li ui-sref-active="active">
         <a ui-sref="authentication.signup">Sign Up</a>

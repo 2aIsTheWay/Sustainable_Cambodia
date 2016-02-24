@@ -36,7 +36,7 @@
 </head>
 
 <body class="ng-cloak">
-  <header ng-include="'/modules/core/client/views/header.client.view.html'"class="navbar navbar-fixed-top navbar-inverse"></header>
+  <header ng-include="'/modules/core/client/views/sctemplateheader.client.view.html'"class="navbar navbar-fixed-top navbar-inverse"></header>
 <!-- From Ben's Analysis it looks like from here to when Ben's Scope end means
 that is where you get the content from the state page it corresponds to.  For now I will have
 all client.view files route to here.  This is called by index.server.view.html but idk how to change it so
