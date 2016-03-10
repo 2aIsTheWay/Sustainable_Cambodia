@@ -14,3 +14,17 @@ angular.module('core.admin.routes').config(['$stateProvider',
       });
   }
 ]);
+
+angular.module('core.sponsor.routes').config(['$stateProvider',
+  function ($stateProvider) {
+    $stateProvider
+      .state('sponsor', {
+        abstract: true,
+        url: '/sponsor',
+        template: '<ui-view/>',
+        data: {
+          roles: ['sponsor']
+        }
+      });
+  }
+]);
