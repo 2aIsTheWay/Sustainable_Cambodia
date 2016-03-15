@@ -8,14 +8,24 @@ var mongoose = require('mongoose'),
   _ = require('lodash');
 
 /**
- * Create a 
+ * Create a child function
  */
 exports.create = function (req, res) {
+  //Create a new child instance
+  var child = new Children(req.body);
 
+  child.save(function(err) {
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      res.json(child);
+    }
+  });
 };
 
 /**
- * Show the current 
+ * Show the current child
  */
 exports.read = function (req, res) {
   res.json(req.child);
@@ -23,21 +33,48 @@ exports.read = function (req, res) {
 };
 
 /**
- * Update a 
+ * Update a child
  */
 exports.update = function (req, res) {
+  var child = req.children;
 
+  /* Replace child properties */
+  child.firstName = req.body.firstName;
+  child.lastName = req.body.lastName;
+  child.biography = req.body.biography;
+  child.dob = req.body.dob;
+
+  /* Save */
+  child.save(function(err) {
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    }
+    else {
+      res.json(child);
+    }
+  });
 };
 
 /**
- * Delete an 
+ * Delete an child
  */
 exports.delete = function (req, res) {
+  var child = req.child;
 
+  /* Remove Child */
+  child.remove(function(err) {
+    if(err){
+      res.status(400).send(err);
+    }
+    else {
+      res.end();
+    }
+  });
 };
 
 /**
- * List of 
+ * List of children
  */
 exports.list = function (req, res) {
   Children.find().exec(function(err, Children) {
@@ -69,4 +106,3 @@ exports.childrenByID = function (req, res, next, id) {
     next();
   });
 };
-
