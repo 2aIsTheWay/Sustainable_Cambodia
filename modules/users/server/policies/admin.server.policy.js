@@ -13,26 +13,22 @@ acl = new acl(new acl.memoryBackend());
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
-    roles: ['admin'],
+    roles: ['superadmin'],
     allows: [{
       resources: '/api/users',
       permissions: '*'
     }, {
       resources: '/api/users/:userId',
       permissions: '*'
-    }, {
-      resources: '/api/children',
-      permissions: '*'
-    }, {
-      resources: '/api/children/:childrenId',
-      permissions: '*'
     }]
-  },
-  {
-    roles: ['sponsor'],
+  }, {
+    roles: ['admin'],
     allows: [{
-      resources: '',
-      permissions:''
+      resources: '/api/users',
+      permissions: ['*']
+    }, {
+      resources: '/api/users/:userId',
+      permissions: ['*']
     }]
   }]);
 };
@@ -43,6 +39,8 @@ exports.invokeRolesPolicies = function () {
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];
 
+  // If the user being checked is the current user then allow some manipulation
+  //if (req.user && req.user.id = )
   // Check for user roles
   acl.areAnyRolesAllowed(roles, req.route.path, req.method.toLowerCase(), function (err, isAllowed) {
     if (err) {
