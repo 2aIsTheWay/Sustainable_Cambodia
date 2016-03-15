@@ -53,7 +53,7 @@ exports.update = function (req, res) {
     else {
       res.json(child);
     }
-  });
+  })
 };
 
 /**
@@ -70,7 +70,7 @@ exports.delete = function (req, res) {
     else {
       res.end();
     }
-  });
+  })
 };
 
 /**
