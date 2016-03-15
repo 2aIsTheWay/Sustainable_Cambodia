@@ -11,9 +11,6 @@ angular.module('children').factory('Children', ['$http',
       },
       read: function(id) {
         return $http.get('/api/children/' + id);
-      },
-      deleteChild: function(id) {
-        return $http.delete('/api/children/' + id);
       }
     };
     return methods;
