@@ -1,11 +1,55 @@
 <div class="row" ng-controller="ChildrenController" ng-init="findOne()">
-  <div class="col-md-offset-1 col-md-10">
-    <div ng-show="error" class="text-danger">
-      <strong ng-bind="error"></strong>
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{children.firstName}}</h1>
+                <ol class="breadcrumb">
+                    <li><a ui-sref="children.list">All Children</a>
+                    </li>
+                    <li class="active">{{children.firstName}}</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Content Row -->
+        <div class="row">
+
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="http://www.sustainablecambodia.org/shared/resize.asp?img=%2Fshared%2Fimages%2Fuploaded%2F4380%2EJPG&w=195&h=250" alt="Chanbut at his desk">
+	
+		<div class="col-lg-8">
+			<button type="submit" class="btn btn-primary">Sponsor Me</button>
+		</div>
+                <hr>
+                <!-- Post Content -->
+		<h2>Biography</h2>
+                <p class="lead">{{children.biography}}
+                <hr>           
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
     </div>
-    <div class="jumbotron">
-        <h2>{{children.firstName}}</h2>
-      </div>
-    </div>
-  </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 </div>

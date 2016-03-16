@@ -1,15 +1,49 @@
 <section ng-controller="ChildrenController" ng-init="find()">
-  <div class="col-md-offset-1 col-md-10">
-    <div ng-show="error" class="text-danger">
-      <strong ng-bind="error"></strong>
+ <section>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Sponsor a Child</h1>
+                <ol class="breadcrumb">
+                    <li class="active">Sponsor a Child</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Child Listings -->
+	<div ng-repeat="child in children | limitTo: 50" ui-sref="children.view({ childrenId: child._id })">
+           	 <div class="col-md-4 text-center">
+                	<div class="thumbnail">
+			<img class="img-responsive" src="http://www.sustainablecambodia.org/shared/resize.asp?img=%2Fshared%2Fimages%2Fuploaded%2F4489%2EJPG&w=195&h=250" style="width:128px;height:128px;" alt="">
+                  	  <div class="caption">
+                      	  <h3> {{child.firstName}} {{child.lastName}} <br>
+                          	  <small>{{child.gender}} {{child.dob}} </small>
+                       	 </h3>
+                  	  </div>
+              	  </div>
+           	 </div>
+	</div>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
     </div>
-    <div ng-show="success" class="text-success">
-      <strong ng-bind="success"></strong>
-    </div>
-    <div ng-repeat="child in children" ui-sref="children.view({ childrenId: child._id })">
-          {{child.firstName}}
-          {{child.lastName}}
-    </div>
-    </div>
-  </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</section>
 </section>
