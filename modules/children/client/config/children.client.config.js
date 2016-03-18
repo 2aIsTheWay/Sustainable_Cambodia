@@ -5,7 +5,7 @@ angular.module('children').run(['Menus',
   function (Menus) {
     // Add the children dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Children',
+      title: 'Ways to Donate',
       state: 'children',
       type: 'dropdown',
       roles: ['*']
