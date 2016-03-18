@@ -15,6 +15,7 @@
         </div>
         <!-- /.row -->
         <!-- Child Listings -->
+<<<<<<< HEAD
   <div ng-controller="pagination">
   	<div ng-repeat="child in children | startFrom:currentPage*pageSize | limitTo:pageSize" ui-sref="children.view({ childrenId: child._id })">
        	 <div class="col-md-4 text-center">
@@ -36,6 +37,21 @@
         Next
     </button>
   </div>
+=======
+	<a ng-repeat="child in pagedItems" ui-sref="children.view({ childrenId: child._id })">
+           	 <div class="col-md-4 text-center">
+                	<div class="thumbnail">
+			<img class="img-responsive" src="http://www.sustainablecambodia.org/shared/resize.asp?img=%2Fshared%2Fimages%2Fuploaded%2F4489%2EJPG&w=195&h=250" style="width:128px;height:128px;" alt="">
+                  	  <div class="caption">
+                      	  <h3> {{child.firstName}} {{child.lastName}} <br>
+                          	  <small>{{child.gender}} {{child.dob | date:MM/dd/YYYY}} </small>
+                       	 </h3>
+                  	 </div>
+              	 	 </div>
+           	 </div>
+	</a>
+	<pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+>>>>>>> ddd16f7e7bc79b20018e2d0d0ee02c2b9552362f
         <!-- Footer -->
         <footer>
             <div class="row">
