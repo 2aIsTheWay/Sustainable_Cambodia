@@ -5,26 +5,17 @@ var childrenPolicy = require('../policies/children.server.policy'),
 module.exports = function(app) {
   // Routing logic
   // ...
-<<<<<<< HEAD
-  
-  app.route('/api/children').all(childrenPolicy.isAllowed)
-    .get(children.list);
-
-  app.route('/api/children/:childrenId').all(childrenPolicy.isAllowed)
-    .get(children.read);
-=======
   var children = require('../controllers/children.server.controller');
 
 
-  app.route('/api/children')
+  app.route('/api/children').all(childrenPolicy.isAllowed)
     .get(children.list)
     .post(children.create);
 
-  app.route('/api/children/:childrenId')
+  app.route('/api/children/:childrenId').all(childrenPolicy.isAllowed)
     .get(children.read)
     .delete(children.delete)
     .put(children.update);
->>>>>>> 46ea476fc506d90fcc48eeea11b2d7badbd7e1c3
 
   app.param('childrenId', children.childrenByID);
 
