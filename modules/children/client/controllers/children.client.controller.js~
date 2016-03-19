@@ -53,7 +53,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
 
     $scope.deleteChild = function() {
        $scope.error = null;
-       Children.deleteChild($stateParams.childId).then(function(response) {
+       Children.delete($stateParams.childId).then(function(response) {
         $state.go('children.list', { successMessage: 'Child successfully removed!' });
       }, function(error) {
         $scope.error = 'Unable to update the child!\n' + error;
