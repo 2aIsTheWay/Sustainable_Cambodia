@@ -3,10 +3,6 @@ var childrenPolicy = require('../policies/children.server.policy'),
   children = require('../controllers/children.server.controller');
 
 module.exports = function(app) {
-  // Routing logic
-  // ...
-  var children = require('../controllers/children.server.controller');
-
 
   app.route('/api/children').all(childrenPolicy.isAllowed)
     .get(children.list)
