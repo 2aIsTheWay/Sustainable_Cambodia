@@ -41,5 +41,21 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
                 $scope.error = 'Unable to retrieve child with id "' + id + '"\n' + error;
               });
     };
+
+    $scope.updateChild = function(isValid) {
+      $scope.error=null;
+      console.log($stateParams.childrenId);
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'articleForm');
+        return false;
+      }
+      Children.updateChild($stateParams.childrenId, $scope.children)
+        .then(function(response) {
+          $state.go('children.list', { successMessage: 'Child succesfully updated!' });
+        }, function(error) {
+          $scope.error = 'Unable to update child!\n' + error;
+        });
+    };
+
   }
 ]);
