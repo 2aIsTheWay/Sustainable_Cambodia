@@ -89,7 +89,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
       };
 
       /* Save the article using the Listings factory */
-      Children.createChild(listing)
+      Children.createChild(child)
               .then(function(response) {
                 //if the object is successfully saved redirect back to the list page
                 $state.go('children.list', { successMessage: 'Child succesfully created!' });
