@@ -60,7 +60,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
       });
     };
 
-    $scope.create = function(isValid) {
+    $scope.createChild = function(isValid) {
       $scope.error = null;
 
       if (!isValid) {
