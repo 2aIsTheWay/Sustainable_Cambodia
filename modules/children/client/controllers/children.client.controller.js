@@ -52,8 +52,8 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
     };
 
     $scope.deleteChild = function() {
-       $scope.error = null;
-       Children.deleteChild($stateParams.childId).then(function(response) {
+      $scope.error = null;
+      Children.deleteChild($stateParams.childId).then(function(response) {
         $state.go('children.list', { successMessage: 'Child successfully removed!' });
       }, function(error) {
         $scope.error = 'Unable to update the child!\n' + error;
@@ -71,21 +71,21 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
       /* Create the child object */
       var child = {
         firstName:			$scope.firstName,
-  	lastName:                       $scope.lastName,
- 	gender:                         $scope.gender,
-  	biography:                      $scope.biography,
-  	eligibleForSponsorship:         $scope.eligibleForSponsorship,
-  	//sponsorshipType :               $scope.,
-  	//fundingType:                    $scope.,
-  	//fundingLevel:                   $scope.,
-  	dob:                            $scope.dob,  
-  	//dateCreated:                    $scope.,
-  	//createdBy:                      $scope.,
-  	//dateUpdated:                    $scope.,
-  	//updatedBy:                      $scope.,
-  	//biographyUpdated:               $scope.,
-  	//deleted:                        $scope.,
-  	//legacySponsored:                $scope. 
+        lastName:                       $scope.lastName,
+        gender:                         $scope.gender,
+        biography:                      $scope.biography,
+        eligibleForSponsorship:         $scope.eligibleForSponsorship,
+        //sponsorshipType :               $scope.,
+        //fundingType:                    $scope.,
+        //fundingLevel:                   $scope.,
+        dob:                            $scope.dob  
+        //dateCreated:                    $scope.,
+        //createdBy:                      $scope.,
+        //dateUpdated:                    $scope.,
+        //updatedBy:                      $scope.,
+        //biographyUpdated:               $scope.,
+        //deleted:                        $scope.,
+        //legacySponsored:                $scope. 
       };
 
       /* Save the article using the Listings factory */

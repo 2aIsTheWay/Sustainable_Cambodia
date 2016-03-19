@@ -17,6 +17,10 @@ angular.module('children').config(['$stateProvider',
       .state('children.view', {
         url: '/:childrenId',
         templateUrl: 'modules/children/client/views/child.client.view.html'
+      })
+      .state('children.createChild', {
+        url: '/createChild',
+        templateUrl: 'modules/children/client/views/createChild.client.view.html'
       });
   }
 ]);
