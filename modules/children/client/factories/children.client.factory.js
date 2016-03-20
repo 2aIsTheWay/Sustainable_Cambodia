@@ -6,7 +6,7 @@ angular.module('children').factory('Children', ['$http',
       getAll: function() {
         return $http.get('/api/children');
       },
-      createChild: function() {
+      createChild: function(children) {
         return $http.post('/api/children');
       },
       read: function(id) {

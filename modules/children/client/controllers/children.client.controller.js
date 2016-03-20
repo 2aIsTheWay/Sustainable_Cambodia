@@ -76,10 +76,13 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
 
     $scope.createChild = function(isValid) {
       $scope.error = null;
-
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'articleForm');
+        return false;
+      }
       /* Create the child object */
       var child = {
-        firstName:			$scope.firstName,
+        firstName:			                $scope.firstName,
         lastName:                       $scope.lastName,
         gender:                         $scope.gender,
         biography:                      $scope.biography,

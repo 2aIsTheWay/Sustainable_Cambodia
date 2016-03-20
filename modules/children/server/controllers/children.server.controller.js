@@ -13,7 +13,7 @@ var mongoose = require('mongoose'),
 exports.create = function (req, res) {
   //Create a new child instance
   var child = new Children(req.body);
-
+  console.log(req.body.firstName);
   child.save(function(err) {
     if(err) {
       console.log(err);
