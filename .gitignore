@@ -72,3 +72,4 @@ mongod
 *.ntvs*
 *.njsproj
 *.sln
+modules/children/client/img/uploads/

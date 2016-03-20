@@ -19,16 +19,16 @@
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
 
-                <!-- Preview Image -->
-                <img class="img-responsive" src="http://www.sustainablecambodia.org/shared/resize.asp?img=%2Fshared%2Fimages%2Fuploaded%2F4380%2EJPG&w=195&h=250" alt="Chanbut at his desk">
+                <!-- Child Image -->
+                <img ng-src="modules/children/client/img/uploads/{{children.primaryPhoto}}" alt="{{children.primaryPhoto}}"> 
 
 		<div class="col-lg-8">
 			<button type="submit" class="btn btn-primary">Sponsor Me</button>
-      <button type="submit" class="btn btn-primary" ui-sref="children.edit({ childrenId: children._id })">Edit this child</button>
-      <a class="btn btn-danger" ng-if="isAuthorized()" ng-click="remove()">
-          <i class="glyphicon glyphicon-trash"></i>
-          Remove child
-      </a>
+     			<button type="submit" class="btn btn-primary" ui-sref="children.edit({ childrenId: children._id })">Edit this child</button>
+     			 <a class="btn btn-danger" ng-if="isAuthorized()" ng-click="remove()">
+         		 	<i class="glyphicon glyphicon-trash"></i>
+          			Remove child
+     			 </a>
 		</div>
                 <hr>
                 <!-- Post Content -->
