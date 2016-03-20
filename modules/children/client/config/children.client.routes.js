@@ -14,6 +14,10 @@ angular.module('children').config(['$stateProvider',
         url: '',
         templateUrl: 'modules/children/client/views/children.client.view.html'
       })
+      .state('children.create', {
+        url: '/create',
+        templateUrl: 'modules/children/client/views/child.client.create.view.html'
+      })
       .state('children.view', {
         url: '/:childrenId',
         templateUrl: 'modules/children/client/views/child.client.view.html'
