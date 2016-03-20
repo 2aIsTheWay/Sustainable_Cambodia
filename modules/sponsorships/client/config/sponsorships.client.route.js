@@ -12,7 +12,7 @@ angular.module('sponsorships').config(['$stateProvider',
       })
       .state('sponsorships', {
         url: '',
-        templateUrl: 'modules/sponsorships/client/views/sponsorhips.client.view.html'
+        templateUrl: 'modules/sponsorships/client/views/sponsorships.client.view.html'
       })
       ;
   }
