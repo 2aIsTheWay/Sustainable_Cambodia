@@ -1,8 +1,7 @@
 'use strict';
-var app=angular.module('myApp', []);
 
-angular.module('children').controller('ChildrenController', ['$scope', '$stateParams', '$state', '$filter', 'Children',
-  function($scope, $stateParams, $state, $filter, Children){
+angular.module('children').controller('ChildrenController', ['$scope', '$stateParams', '$state', '$filter', 'Children', 'Authentication',
+  function($scope, $stateParams, $state, $filter, Children, Authentication){
     $scope.find = function() {
       Children.getAll().then(function(response) {
         $scope.children = response.data;
@@ -46,7 +45,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
       $scope.currentPage = 0;
       $scope.pageSize = 20;
       $scope.numberOfPages=function(){
-        return Math.ceil($scope.children.length/$scope.pageSize);   
+        return Math.ceil($scope.children.length/$scope.pageSize);
       };
     };
 
@@ -87,14 +86,14 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
         //sponsorshipType :               $scope.,
         //fundingType:                    $scope.,
         //fundingLevel:                   $scope.,
-        dob:                            $scope.dob  
+        dob:                            $scope.dob
         //dateCreated:                    $scope.,
         //createdBy:                      $scope.,
         //dateUpdated:                    $scope.,
         //updatedBy:                      $scope.,
         //biographyUpdated:               $scope.,
         //deleted:                        $scope.,
-        //legacySponsored:                $scope. 
+        //legacySponsored:                $scope.
       };
 
       /* Save the article using the Listings factory */
@@ -107,4 +106,19 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
                 $scope.error = 'Unable to save child!\n' + error;
               });
     };
+
+    $scope.remove = function() {
+      $scope.error = null;
+      Children.deleteChild($stateParams.childrenId)
+      .then(function(response) {
+        $state.go('children.list', { successMessage: 'Child removed from database' });
+      }, function(error) {
+        $scope.error = 'Unable to remove child!\n' + error;
+      });
+    };
+
+    $scope.isAuthorized = function () {
+      return true;
+    };
+
   }]);
