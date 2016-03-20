@@ -14,6 +14,9 @@ angular.module('children').factory('Children', ['$http',
       },
       deleteChild: function(id) {
         return $http.delete('/api/children/' + id);
+      },
+      updateChild: function(id, children) {
+        return $http.put('/api/children/' + id, children);
       }
     };
     return methods;

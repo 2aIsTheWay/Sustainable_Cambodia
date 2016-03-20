@@ -42,6 +42,8 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
                 $scope.error = 'Unable to retrieve child with id "' + id + '"\n' + error;
               });
     };
+
+<<<<<<< HEAD
     $scope.pagination = function() {
       $scope.currentPage = 0;
       $scope.pageSize = 20;
@@ -59,23 +61,19 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
       });
     };
 
+    $scope.createChild = function(isValid) {
+      $scope.error = null;
+
+=======
     $scope.updateChild = function(isValid) {
       $scope.error=null;
       console.log($stateParams.childrenId);
+>>>>>>> 8bce18f80cb4698d454e7b41a0bdca184b9942da
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'articleForm');
         return false;
       }
-      Children.updateChild($stateParams.childrenId, $scope.children)
-        .then(function(response) {
-          $state.go('children.list', { successMessage: 'Child succesfully updated!' });
-        }, function(error) {
-          $scope.error = 'Unable to update child!\n' + error;
-        });
-    };
-
-    $scope.createChild = function(isValid) {
-      $scope.error = null;
+<<<<<<< HEAD
 
       /* Create the child object */
       var child = {
@@ -107,4 +105,24 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
                 $scope.error = 'Unable to save child!\n' + error;
               });
     };
+
+    //StartFrom filter
+    app.filter('startFrom', function() {
+      return function(input, start) {
+        start = +start; //parse to int
+        return input.slice(start);
+      };
+    });
   }]);
+=======
+      Children.updateChild($stateParams.childrenId, $scope.children)
+        .then(function(response) {
+          $state.go('children.list', { successMessage: 'Child succesfully updated!' });
+        }, function(error) {
+          $scope.error = 'Unable to update child!\n' + error;
+        });
+    };
+
+  }
+]);
+>>>>>>> 8bce18f80cb4698d454e7b41a0bdca184b9942da

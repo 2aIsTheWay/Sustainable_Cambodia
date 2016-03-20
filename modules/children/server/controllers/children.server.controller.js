@@ -36,8 +36,7 @@ exports.read = function (req, res) {
  * Update a child
  */
 exports.update = function (req, res) {
-  var child = req.children;
-
+  var child = req.child;
   /* Replace child properties */
   child.firstName = req.body.firstName;
   child.lastName = req.body.lastName;
