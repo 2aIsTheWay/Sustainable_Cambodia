@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('children').controller('ChildrenController', ['$scope', '$stateParams', '$state', '$filter', 'Children', 'Authentication',
-  function($scope, $stateParams, $state, $filter, Children, Authentication){
+angular.module('children').controller('ChildrenController', ['$scope', '$http', '$stateParams', '$state', '$filter', 'Children',
+  function($scope, $http, $stateParams, $state, $filter, Children){
     $scope.find = function() {
       Children.getAll().then(function(response) {
         $scope.children = response.data;
@@ -60,7 +60,6 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
 
     $scope.updateChild = function(isValid) {
       $scope.error=null;
-      console.log($stateParams.childrenId);
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'articleForm');
         return false;
@@ -75,29 +74,11 @@ angular.module('children').controller('ChildrenController', ['$scope', '$statePa
 
     $scope.createChild = function(isValid) {
       $scope.error = null;
-
-      /* Create the child object */
-      var child = {
-        firstName:			$scope.firstName,
-        lastName:                       $scope.lastName,
-        gender:                         $scope.gender,
-        biography:                      $scope.biography,
-        eligibleForSponsorship:         $scope.eligibleForSponsorship,
-        //sponsorshipType :               $scope.,
-        //fundingType:                    $scope.,
-        //fundingLevel:                   $scope.,
-        dob:                            $scope.dob
-        //dateCreated:                    $scope.,
-        //createdBy:                      $scope.,
-        //dateUpdated:                    $scope.,
-        //updatedBy:                      $scope.,
-        //biographyUpdated:               $scope.,
-        //deleted:                        $scope.,
-        //legacySponsored:                $scope.
-      };
-
-      /* Save the article using the Listings factory */
-      Children.createChild(child)
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'articleForm');
+        return false;
+      }
+      $http.post('/api/children', $scope.children)
               .then(function(response) {
                 //if the object is successfully saved redirect back to the list page
                 $state.go('children.list', { successMessage: 'Child succesfully created!' });
