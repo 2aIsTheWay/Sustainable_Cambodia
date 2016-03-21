@@ -17,7 +17,7 @@
 	<a ng-repeat="child in pagedItems" ui-sref="children.view({ childrenId: child._id })">
            	 <div class="col-md-4 text-center">
                 	<div class="thumbnail">
-			<img ng-src="modules/children/client/img/uploads/{{child.primaryPhoto}}" alt="{{child.primaryPhoto}}">
+			<img ng-src="modules/children/client/img/uploads/{{child.primaryPhoto}}" alt="{{child.primaryPhoto}}" style = "height:200px"></img>
                   	  <div class="caption">
                       	  <h3> {{child.firstName}} {{child.lastName}} <br>
                           	  <small>{{child.gender}} {{child.dob | date:MM/dd/YYYY}} </small>

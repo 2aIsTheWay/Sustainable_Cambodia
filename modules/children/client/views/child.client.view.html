@@ -15,31 +15,28 @@
         <!-- /.row -->
         <!-- Content Row -->
         <div class="row">
-
-            <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
-
                 <!-- Child Image -->
+		<div id="wrapper" style="width:100%; text-align:center">
                 <img ng-src="modules/children/client/img/uploads/{{children.primaryPhoto}}" alt="{{children.primaryPhoto}}"> 
-
-		<div class="col-lg-8">
-			<button type="submit" class="btn btn-primary">Sponsor Me</button>
+		<div>
+			<br>
+			<button type="submit" class="btn btn-primary"> Sponsor Me! </button>
      			<button type="submit" class="btn btn-primary" ui-sref="children.edit({ childrenId: children._id })">Edit this child</button>
      			 <a class="btn btn-danger" ng-if="isAuthorized()" ng-click="remove()">
          		 	<i class="glyphicon glyphicon-trash"></i>
           			Remove child
      			 </a>
 		</div>
+		</div>
                 <hr>
                 <!-- Post Content -->
+		<div id="wrapper" style="width:100%; text-align:center">
 		<h2>Biography</h2>
+		</div>
                 <p class="lead">{{children.biography}}
                 <hr>
-
             </div>
-
         </div>
-
         <!-- Footer -->
         <footer>
             <div class="row">
@@ -48,7 +45,6 @@
                 </div>
             </div>
         </footer>
-
     </div>
     <!-- /.container -->
 
