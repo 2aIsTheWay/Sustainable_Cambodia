@@ -9,6 +9,9 @@
                 <h1 class="page-header">Sponsor a Child</h1>
                 <ol class="breadcrumb">
                     <li class="active">Sponsor a Child</li>
+                    <div class="col-md-4" style="margin-top: 2em">
+                      <input class="form-control col-md-4" type="text" ng-model="search" placeholder="Search for a child!" ng-change="figureOutItemsToDisplay()" />
+                    </div>
                 </ol>
             </div>
         </div>
@@ -26,12 +29,14 @@
               	 	 </div>
            	 </div>
 	</a>
-	<pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+  <div class="row">
+	   <pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+   </div>
         <!-- Footer -->
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Sustainable Cambodia 2016</p>
                 </div>
             </div>
         </footer>

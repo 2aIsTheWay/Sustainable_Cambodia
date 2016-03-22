@@ -16,7 +16,10 @@ angular.module('children').config(['$stateProvider',
       })
       .state('children.create', {
         url: '/create',
-        templateUrl: 'modules/children/client/views/child.client.create.view.html'
+        templateUrl: 'modules/children/client/views/child.client.create.view.html',
+        data: {
+          roles: ['admin']
+        }
       })
       .state('children.view', {
         url: '/:childrenId',
@@ -24,7 +27,10 @@ angular.module('children').config(['$stateProvider',
       })
       .state('children.edit', {
         url: '/edit/:childrenId',
-        templateUrl: 'modules/children/client/views/child.client.edit.view.html'
+        templateUrl: 'modules/children/client/views/child.client.edit.view.html',
+        data: {
+          roles: ['admin']
+        }
       });
   }
 ]);

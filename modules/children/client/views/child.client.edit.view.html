@@ -27,6 +27,24 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="Gender">Gender</label>
+            <input name="Gender" type="text" ng-model="children.gender" id="gender" class="form-control" placeholder="M or F">
+            <div ng-messages="childrenFrom.gender.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Child's gender is required</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="eligibleForSponsorship">Sponsorship eligible</label>
+            <input name="eligibleForSponsorship" type="text" ng-model="children.eligibleForSponsorship" id="eligibleForSponsorship" class="form-control" placeholder="true or false">
+            <div ng-messages="childrenFrom.eligibleForSponsorship.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Child's sponsorship eligibility is required</p>
+            </div>
+          </div>
+	         <div class="form-group">
+            <label for="biography">Biography</label>
+            <textarea rows="15" cols="30" name="biography" type="text" ng-model="children.biography" id="biography" class="form-control" placeholder="Type here"></textarea>
+          </div>
+          <div class="form-group">
             <input type="submit" class="btn btn-default">
           </div>
           <div ng-show="error" class="text-danger">
