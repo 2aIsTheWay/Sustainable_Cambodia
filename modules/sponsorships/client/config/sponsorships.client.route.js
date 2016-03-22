@@ -11,9 +11,13 @@ angular.module('sponsorships').config(['$stateProvider',
         template: '<ui-view/>'
       })
       .state('sponsorships', {
-        url: '',
+        url: '/sponsorships',
         templateUrl: 'modules/sponsorships/client/views/sponsorships.client.view.html'
       })
+      /*.state('sponsorships.view', {
+        url: '/:sponsorshipviews',
+        templateUrl: 'modules/sponsorships/client/views/sponsorships.client.view.html'
+      })*/
       ;
   }
 ]);
