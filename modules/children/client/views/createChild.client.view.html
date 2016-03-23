@@ -1,0 +1,60 @@
+<div class="row" ng-controller="ListingsController">
+  <div class="col-md-offset-1 col-md-10 formWrapper">
+    <div class="page-header">
+      <h3>Create New Child</h3>
+      <form name="childCreationForm" class="form-horizontal" ng-submit="createChild(childCreationForm.$valid)">
+        <fieldset>
+          <div class="form-group" show-errors>
+            <label for="name">First Name</label>
+            <input name="first-name" type="text" ng-model="firstName" id="firstName" class="form-control" placeholder="First Name" required>
+            <div ng-messages="childCreationForm.firstName.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Child's first name is required</p>
+            </div>
+          </div>
+          <div class="form-group" show-errors>
+            <label for="name">Last Name</label>
+            <input name="last-name" type="text" ng-model="lastName" id="lastName" class="form-control" placeholder="Last Name" required>
+            <div ng-messages="childCreationForm.lastName.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Child's last name is required</p>
+            </div>
+          </div>
+	  <div class="form-group" show-errors>
+            <label for="name">Gender</label>
+            <input name="gender" type="text" ng-model="gender" id="gender" class="form-control" placeholder="Gender" required>
+            <div ng-messages="childCreationForm.gender.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Child's gender is required</p>
+            </div>
+          </div>
+	  <div class="form-group" show-errors>
+            <label for="name">Date of Birth</label>
+            <input name="dob" type="text" ng-model="dob" id="dob" class="form-control" placeholder="mm/dd/yyyy" required>
+            <div ng-messages="childCreationForm.dob.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Child's date of birth is required</p>
+            </div>
+          </div>
+	  <div class="form-group" show-errors>
+            <label for="name">Biography</label>
+            <input name="biography" type="text" ng-model="biography" id="biography" class="form-control" placeholder="Biography" required>
+            <div ng-messages="childCreationForm.biography.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Child's biography is required</p>
+            </div>
+          </div>
+	  <div class="form-group" show-errors>
+            <label for="name">Sponsorship Eligibility</label>
+            <input name="eligibleForSponsorship" type="text" ng-model="eligibleForSponsorship" id="eligibleForSponsorship" class="form-control" placeholder="Yes/No" required>
+            <div ng-messages="childCreationForm.eligibleForSponsorship.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Child's sponsorship eligibility is required</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="btn btn-default">
+          </div>
+          <div ng-show="error" class="text-danger">
+            <strong ng-bind="error"></strong>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

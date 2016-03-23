@@ -1,7 +1,8 @@
 'use strict';
+var app=angular.module('myApp', []);
 
-angular.module('children').controller('ChildrenController', ['$scope', '$http', '$stateParams', '$state', '$filter', 'Children',
-  function($scope, $http, $stateParams, $state, $filter, Children){
+angular.module('children').controller('ChildrenController', ['$scope', '$stateParams', '$state', '$filter', 'Children',
+  function($scope, $stateParams, $state, $filter, Children){
     $scope.find = function() {
       Children.getAll().then(function(response) {
         $scope.children = response.data;
@@ -41,11 +42,13 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
                 $scope.error = 'Unable to retrieve child with id "' + id + '"\n' + error;
               });
     };
+
+<<<<<<< HEAD
     $scope.pagination = function() {
       $scope.currentPage = 0;
       $scope.pageSize = 20;
       $scope.numberOfPages=function(){
-        return Math.ceil($scope.children.length/$scope.pageSize);
+        return Math.ceil($scope.children.length/$scope.pageSize);   
       };
     };
 
@@ -58,27 +61,42 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       });
     };
 
-    $scope.updateChild = function(isValid) {
-      $scope.error=null;
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'articleForm');
-        return false;
-      }
-      Children.updateChild($stateParams.childrenId, $scope.children)
-        .then(function(response) {
-          $state.go('children.list', { successMessage: 'Child succesfully updated!' });
-        }, function(error) {
-          $scope.error = 'Unable to update child!\n' + error;
-        });
-    };
-
     $scope.createChild = function(isValid) {
       $scope.error = null;
+
+=======
+    $scope.updateChild = function(isValid) {
+      $scope.error=null;
+      console.log($stateParams.childrenId);
+>>>>>>> 8bce18f80cb4698d454e7b41a0bdca184b9942da
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'articleForm');
         return false;
       }
-      $http.post('/api/children', $scope.children)
+<<<<<<< HEAD
+
+      /* Create the child object */
+      var child = {
+        firstName:			$scope.firstName,
+        lastName:                       $scope.lastName,
+        gender:                         $scope.gender,
+        biography:                      $scope.biography,
+        eligibleForSponsorship:         $scope.eligibleForSponsorship,
+        //sponsorshipType :               $scope.,
+        //fundingType:                    $scope.,
+        //fundingLevel:                   $scope.,
+        dob:                            $scope.dob  
+        //dateCreated:                    $scope.,
+        //createdBy:                      $scope.,
+        //dateUpdated:                    $scope.,
+        //updatedBy:                      $scope.,
+        //biographyUpdated:               $scope.,
+        //deleted:                        $scope.,
+        //legacySponsored:                $scope. 
+      };
+
+      /* Save the article using the Listings factory */
+      Children.createChild(child)
               .then(function(response) {
                 //if the object is successfully saved redirect back to the list page
                 $state.go('children.list', { successMessage: 'Child succesfully created!' });
@@ -88,18 +106,23 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
               });
     };
 
-    $scope.remove = function() {
-      $scope.error = null;
-      Children.deleteChild($stateParams.childrenId)
-      .then(function(response) {
-        $state.go('children.list', { successMessage: 'Child removed from database' });
-      }, function(error) {
-        $scope.error = 'Unable to remove child!\n' + error;
-      });
-    };
-
-    $scope.isAuthorized = function () {
-      return true;
-    };
-
+    //StartFrom filter
+    app.filter('startFrom', function() {
+      return function(input, start) {
+        start = +start; //parse to int
+        return input.slice(start);
+      };
+    });
   }]);
+=======
+      Children.updateChild($stateParams.childrenId, $scope.children)
+        .then(function(response) {
+          $state.go('children.list', { successMessage: 'Child succesfully updated!' });
+        }, function(error) {
+          $scope.error = 'Unable to update child!\n' + error;
+        });
+    };
+
+  }
+]);
+>>>>>>> 8bce18f80cb4698d454e7b41a0bdca184b9942da

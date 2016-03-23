@@ -14,23 +14,12 @@ angular.module('children').config(['$stateProvider',
         url: '',
         templateUrl: 'modules/children/client/views/children.client.view.html'
       })
-      .state('children.create', {
-        url: '/create',
-        templateUrl: 'modules/children/client/views/child.client.create.view.html',
-        data: {
-          roles: ['admin']
-        }
-      })
       .state('children.view', {
         url: '/:childrenId',
         templateUrl: 'modules/children/client/views/child.client.view.html'
-      })
-      .state('children.edit', {
-        url: '/edit/:childrenId',
-        templateUrl: 'modules/children/client/views/child.client.edit.view.html',
-        data: {
-          roles: ['admin']
-        }
+      }).state('children.createChild', {
+        url: '/createChild',
+        templateUrl: 'modules/children/client/views/createChild.client.view.html'
       });
   }
 ]);

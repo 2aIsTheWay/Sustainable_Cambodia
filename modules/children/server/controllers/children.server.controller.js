@@ -11,9 +11,7 @@ var mongoose = require('mongoose'),
  * Create a child function
  */
 exports.create = function (req, res) {
-  //Create a new child instance
   var child = new Children(req.body);
-
   child.save(function(err) {
     if(err) {
       console.log(err);
@@ -36,8 +34,8 @@ exports.read = function (req, res) {
  * Update a child
  */
 exports.update = function (req, res) {
-  var child = req.children;
-
+  console.log(req.body.firstName);
+  var child = req.child;
   /* Replace child properties */
   child.firstName = req.body.firstName;
   child.lastName = req.body.lastName;
