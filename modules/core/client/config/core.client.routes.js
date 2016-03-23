@@ -30,6 +30,16 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     })
     .state('donate', {
       url: '/donate',
+      templateUrl: 'modules/core/client/views/donate.client.view.html'
+      //templateUrl: 'modules/core/client/views/home.client.view.html'
+    })
+    .state('gifts', {
+      url: '/gifts',
+      templateUrl: 'modules/core/client/views/gifts.client.view.html'
+      //templateUrl: 'modules/core/client/views/home.client.view.html'
+    })
+    .state('waysToDonate', {
+      url: '/waysToDonate',
       templateUrl: 'modules/core/client/views/waystodonate.client.view.html'
       //templateUrl: 'modules/core/client/views/home.client.view.html'
     })
