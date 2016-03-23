@@ -1,6 +1,5 @@
 <section ng-controller="ChildrenController" ng-init="find()">
  <section>
-
     <!-- Page Content -->
     <div class="container">
 
@@ -10,6 +9,9 @@
                 <h1 class="page-header">Sponsor a Child</h1>
                 <ol class="breadcrumb">
                     <li class="active">Sponsor a Child</li>
+                    <div class="col-md-4" style="margin-top: 2em">
+                      <input class="form-control col-md-4" type="text" ng-model="search" placeholder="Search for a child!" ng-change="figureOutItemsToDisplay()" />
+                    </div>
                 </ol>
             </div>
         </div>
@@ -18,7 +20,7 @@
 	<a ng-repeat="child in pagedItems" ui-sref="children.view({ childrenId: child._id })">
            	 <div class="col-md-4 text-center">
                 	<div class="thumbnail">
-			<img class="img-responsive" src="http://www.sustainablecambodia.org/shared/resize.asp?img=%2Fshared%2Fimages%2Fuploaded%2F4489%2EJPG&w=195&h=250" style="width:128px;height:128px;" alt="">
+			<img ng-src="modules/children/client/img/uploads/{{child.primaryPhoto | split:',':0 }}" alt="{{child.primaryPhoto}}" style = "height:200px"></img>
                   	  <div class="caption">
                       	  <h3> {{child.firstName}} {{child.lastName}} <br>
                           	  <small>{{child.gender}} {{child.dob | date:MM/dd/YYYY}} </small>
@@ -27,12 +29,14 @@
               	 	 </div>
            	 </div>
 	</a>
-	<pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+  <div class="row">
+	   <pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+   </div>
         <!-- Footer -->
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Sustainable Cambodia 2016</p>
                 </div>
             </div>
         </footer>

@@ -4,7 +4,7 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">{{children.firstName}}</h1>
+                <h1 class="page-header">{{children.firstName}} {{children.lastName}}</h1>
                 <ol class="breadcrumb">
                     <li><a ui-sref="children.list">All Children</a>
                     </li>
@@ -15,35 +15,41 @@
         <!-- /.row -->
         <!-- Content Row -->
         <div class="row">
+                <!-- Child Image -->
+		<div id="wrapper" style="width:100%; text-align:center">
+                <img ng-src="modules/children/client/img/uploads/{{children.primaryPhoto | split:',':0 }}" alt="{{child.primaryPhoto}}" style = "height:200px"></img>
+		</div>
+    <div id="wrapper" style="width:100%; text-align:center">
+      {{children.primaryPhoto | split:',':1 }}
+    </div>
 
-            <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
-
-                <!-- Preview Image -->
-                <img class="img-responsive" src="http://www.sustainablecambodia.org/shared/resize.asp?img=%2Fshared%2Fimages%2Fuploaded%2F4380%2EJPG&w=195&h=250" alt="Chanbut at his desk">
-	
-		<div class="col-lg-8">
-			<button type="submit" class="btn btn-primary">Sponsor Me</button>
+      <div id="wrapper" style="width:100%; text-align:center">
+			<button type="submit" class="btn btn-primary"> Sponsor Me! </button>
+     			<button type="submit" class="btn btn-primary" ui-sref="children.edit({ childrenId: children._id })">Edit this child</button>
+     			 <a class="btn btn-danger" ng-click="remove()">
+         		 	<i class="glyphicon glyphicon-trash"></i>
+          			Remove child
+     			 </a>
+      </div>
+		</div>
 		</div>
                 <hr>
                 <!-- Post Content -->
+		<div id="wrapper" style="width:100%; text-align:center">
 		<h2>Biography</h2>
+		</div>
                 <p class="lead">{{children.biography}}
-                <hr>           
-
+                <hr>
             </div>
-
         </div>
-
         <!-- Footer -->
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Sustainable Cambodia 2016</p>
                 </div>
             </div>
         </footer>
-
     </div>
     <!-- /.container -->
 
