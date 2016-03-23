@@ -17,15 +17,20 @@
         <div class="row">
                 <!-- Child Image -->
 		<div id="wrapper" style="width:100%; text-align:center">
-                <img ng-src="modules/children/client/img/uploads/{{children.primaryPhoto}}" alt="{{children.primaryPhoto}}">
-		<div>
-			<br>
+                <img ng-src="modules/children/client/img/uploads/{{children.primaryPhoto | split:',':0 }}" alt="{{child.primaryPhoto}}" style = "height:200px"></img>
+		</div>
+    <div id="wrapper" style="width:100%; text-align:center">
+      {{children.primaryPhoto | split:',':1 }}
+    </div>
+
+      <div id="wrapper" style="width:100%; text-align:center">
 			<button type="submit" class="btn btn-primary"> Sponsor Me! </button>
      			<button type="submit" class="btn btn-primary" ui-sref="children.edit({ childrenId: children._id })">Edit this child</button>
-     			 <a class="btn btn-danger" ng-if="isAuthorized()" ng-click="remove()">
+     			 <a class="btn btn-danger" ng-click="remove()">
          		 	<i class="glyphicon glyphicon-trash"></i>
           			Remove child
      			 </a>
+      </div>
 		</div>
 		</div>
                 <hr>
