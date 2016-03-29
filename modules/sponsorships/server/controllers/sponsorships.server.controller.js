@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
   _ = require('lodash');
 
 /**
- * Create a 
+ * Create a
  */
 exports.create = function (req, res) {
   //create a new sponsorships
@@ -26,7 +26,7 @@ exports.create = function (req, res) {
 };
 /**
 
- * Show the current 
+ * Show the current
  */
 exports.read = function (req, res) {
   //read an individual sponsorship
