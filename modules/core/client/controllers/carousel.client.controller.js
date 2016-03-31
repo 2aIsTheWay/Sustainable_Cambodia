@@ -7,11 +7,17 @@ angular.module('core').controller('CarouselCtrl', ['$scope', 'Children', functio
   var slides = $scope.slides = [];
   var currIndex = 0;
 
-  //console.log(Children);
+  $scope.findCarousel = function() {
+      Children.getCarousel().then(function(response) {
+        $scope.children = response.data;
+      }, function(error) {
+        $scope.error = 'Unable to retrieve children\n' + error;
+      });
+    };
+
 
   $scope.addSlide = function(slideChildPhotoID) {
     var newWidth = 600 + slides.length + 1;
-    console.log('add slide');
     slides.push({
       image: '/modules/children/client/img/uploads/' + slideChildPhotoID + '.jpg',
       text: ['My name is Phy Peach. This year 2015, I plan to begin my university studies in Management at UME in Pursat Town. Earlier Profile from 2014: I am in grade 12 at Tea Chom Rat High School. I live in Svay Att Village. Both my mother and father are farmers. I have one brother and 2 sisters. In my free time I do my homework. I want to attend school at Sustainable Cambodia because I will be able to learn computer skills, Khmer and English. Physics is my favorite subject. When I am older I want to be an electrician because I can make a lot of money and install lights in town.',
@@ -20,7 +26,6 @@ angular.module('core').controller('CarouselCtrl', ['$scope', 'Children', functio
       'My name is Sreyroth. I am in the twelfth grade at Teachomrat High School. Both of my parents are farmers and I have three sisters and five brothers. I like to read books in my spare time. I want to attend school at Sustainable Cambodia because I do not have to spend money and I want to gain more knowledge and study English. What I like most about Sustainable Cambodia is the library and the gardens. My favorite subject is English because I want to be able to speak with foreigners. When I grow up I want to be a teacher because I want to teach children.'][slides.length % 4],
       id: currIndex++
     });
-    console.log($scope.slides);
   };
 
   //for (var i = 0; i < 4; i++) {
@@ -28,12 +33,12 @@ angular.module('core').controller('CarouselCtrl', ['$scope', 'Children', functio
   //  $scope.addSlide(childPhotoID);
   //  childPhotoID = childPhotoID + 10;
   //}
-//4489
 
   $scope.addSlide(4489);
   $scope.addSlide(4499);
   $scope.addSlide(4510);
   $scope.addSlide(4520);
   $scope.addSlide(4530);
-  
+
+
 }]);
