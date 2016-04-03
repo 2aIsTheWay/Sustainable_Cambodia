@@ -15,7 +15,8 @@ module.exports = function(app) {
     .get(sponsorship.read);
 
   app.route('/api/:userId/sponsor/sponsorships').all(sponsorshipPolicy.isAllowed)//use this to get it all the sponsorships from a user
-    .get(sponsorship.listSponsored);
+    .get(sponsorship.listSponsored)
+    .post(sponsorship.create);
 
   app.param('sponsorshipId', sponsorship.sponsorshipsByID);
   app.param('userId', sponsorship.sponsorshipUserID);//Need to edit this to get the id to stateparams

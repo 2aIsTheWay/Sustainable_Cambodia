@@ -26,13 +26,14 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
 
     $scope.createsponsorship = function(isValid) {
       $scope.error = null;
+      console.log('Appa is hype');
       if(!isValid){
         $scope.broadcast('show-errors-check-validity','articleForm');
         return false;
       }
       var id = Authentication.user._id;//Authentication object gets the user stuff
       //post to the sponsorship API
-      console.log("I do go here!");
+      console.log('I do go here!');
       $http.post('/api/'+id+'/sponsor/sponsorships', $scope.sponsorship)
               .then(function(response) {
                 //if the object is successfully saved redirect back to the list page
