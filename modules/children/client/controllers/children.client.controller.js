@@ -20,7 +20,8 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
 
     $scope.figureOutItemsToDisplay = function () {
       $scope.filteredItems = $filter('filter')($scope.children, {
-        $: $scope.search
+        firstName: $scope.search,
+        gender: $scope.genderSearch
       });
       $scope.filterLength = $scope.filteredItems.length;
       var begin = (($scope.currentPage - 1) * $scope.itemsPerPage);
