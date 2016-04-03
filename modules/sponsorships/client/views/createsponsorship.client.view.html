@@ -1,0 +1,75 @@
+<div class="row" ng-controller="SponsorshipController">
+  <div class="col-md-offset-1 col-md-10 formWrapper">
+    <div class="page-header">
+      <h3>Create a Sponsorship</h3>
+
+      <form name="sponsorshipForm" class="form-horizontal" ng-submit="createsponsorship(sponsorshipForm.$valid)">
+        <!-- We need a form for begin/end date and payment type begin date defaults to now-->
+        <fieldset>
+          <h1>Create a sponsorship type</h1>
+
+          <div class="form-group" show-errors>
+            <label for="PaymentType">Payment Type</label>
+            <input name="name" type="number" ng-model="sponsorship.paymentType" id="Payment Type" class="form-control" placeholder="Payment Type" required>
+            <div ng-messages="sponsorshipForm.paymentType.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Payment Type is Required</p>
+            </div>
+          </div>
+          <div class="form-group" show-errors>
+            <label for="BeginDate">Begin Date</label>
+            <input name="name" type="text" ng-model="sponsorship.beginDate" id="Begin Date" class="form-control" placeholder="Begin Date" required>
+            <div ng-messages="sponsorshipForm.beginDate.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Begin Date is Required</p>
+            </div>
+          </div>
+          <div class="form-group" show-errors>
+            <label for="End Date">End Date</label>
+            <input name="name" type="text" ng-model="sponsorship.endDate" id="End Date" class="form-control" placeholder="End Date" required>
+            <div ng-messages="sponsorshipForm.endDate.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">End Date is Required</p>
+            </div>
+          </div>
+          <!--
+          <div class="form-group" show-errors>
+            <label for="code">Last Name</label>
+            <input name="code" type="text" ng-model="children.lastName" id="Last name" class="form-control" placeholder="Last Name" required>
+            <div ng-messages="childrenFrom.lastName.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Child's last name is required</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input name="dob" type="text" ng-model="children.dob" id="dob" class="form-control" placeholder="Date of Birth">
+            <div ng-messages="childrenFrom.dob.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Child's date of birth is required</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Gender">Gender</label>
+            <input name="Gender" type="text" ng-model="children.gender" id="gender" class="form-control" placeholder="M or F">
+            <div ng-messages="childrenFrom.gender.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Child's gender is required</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="eligibleForSponsorship">Sponsorship eligible</label>
+            <input name="eligibleForSponsorship" type="text" ng-model="children.eligibleForSponsorship" id="eligibleForSponsorship" class="form-control" placeholder="true or false">
+            <div ng-messages="childrenFrom.eligibleForSponsorship.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Child's sponsorship eligibility is required</p>
+            </div>
+          </div>
+	         <div class="form-group">
+            <label for="biography">Biography</label>
+            <textarea rows="15" cols="30" name="biography" type="text" ng-model="children.biography" id="biography" class="form-control" placeholder="Type here"></textarea>
+          </div>-->
+          <div class="form-group">
+            <input type="submit" name="submit" class="btn btn-default">
+          </div>
+          <div ng-show="error" class="text-danger">
+            <strong ng-bind="error"></strong>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

@@ -11,11 +11,11 @@ var mongoose = require('mongoose'),
  */
 var SponsorshipsSchema = new Schema({
   child_id:   Schema.Types.ObjectId,
-  user_id:    Schema.Types.ObjectId,
+  user_id:    String,
   beginDate:  Date,
   endDate:    Date,
   paymentType:  Number,
-  monthlySubscription:  Boolean  
+  monthlySubscription:  Boolean
 });
 
 mongoose.model('Sponsorships', SponsorshipsSchema);
