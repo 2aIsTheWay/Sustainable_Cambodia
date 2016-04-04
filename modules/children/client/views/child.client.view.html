@@ -25,8 +25,8 @@
 
       <div id="wrapper" style="width:100%; text-align:center">
 			<button type="submit" class="btn btn-primary"> Sponsor Me!</button><!--TODO:Need to transfer child id to sponsorship module-->
-     			<button type="submit" class="btn btn-primary" ui-sref="children.edit({ childrenId: children._id })">Edit this child</button>
-     			 <a class="btn btn-danger" ng-click="remove()">
+     			<button type="submit" class="btn btn-primary" ng-show="isAdmin()" ui-sref="children.edit({ childrenId: children._id })">Edit this child</button>
+     			 <a class="btn btn-danger" ng-show="isAdmin()" ng-click="remove()">
          		 	<i class="glyphicon glyphicon-trash"></i>
           			Remove child
      			 </a>

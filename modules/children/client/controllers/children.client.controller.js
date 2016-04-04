@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('children').controller('ChildrenController', ['$scope', '$http', '$stateParams', '$state', '$filter', 'Children',
-  function($scope, $http, $stateParams, $state, $filter, Children){
+angular.module('children').controller('ChildrenController', ['$scope', '$http', '$stateParams', '$state', '$filter', 'Children', 'Authentication',
+  function($scope, $http, $stateParams, $state, $filter, Children, Authentication){
     $scope.find = function() {
       Children.getAll().then(function(response) {
         $scope.children = response.data;
@@ -99,8 +99,20 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       });
     };
 
-    $scope.isAuthorized = function () {
-      return true;
+    $scope.isAdmin = function() {
+      $scope.roles=Authentication.user.roles;
+      if(Authentication.user) {
+        var indexOfRole = $scope.roles.indexOf('admin');
+        if (indexOfRole !== -1) {
+          return true;
+        }
+        else{
+          return false;
+        }
+      }
+      else{
+        return false;
+      }
     };
 
   }]);
