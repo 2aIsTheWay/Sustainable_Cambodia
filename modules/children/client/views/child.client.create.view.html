@@ -6,37 +6,41 @@
       <form name="childrenForm" class="form-horizontal" ng-submit="createChild(childrenForm.$valid)">
         <fieldset>
           <div class="form-group" show-errors>
-            <label for="name">First Name</label>
-            <input name="name" type="text" ng-model="children.firstName" id="First name" class="form-control" placeholder="First Name" required>
-            <div ng-messages="childrenFrom.firstName.$error" role="alert">
+            <label for="firstName">First Name</label>
+            <input name="firstName" type="text" ng-model="children.firstName" id="First name" class="form-control" placeholder="First Name" required>
+            <div ng-messages="childrenForm.firstName.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Child's first name is required</p>
             </div>
           </div>
           <div class="form-group" show-errors>
-            <label for="code">Last Name</label>
-            <input name="code" type="text" ng-model="children.lastName" id="Last name" class="form-control" placeholder="Last Name" required>
-            <div ng-messages="childrenFrom.lastName.$error" role="alert">
+            <label for="lastName">Last Name</label>
+            <input name="lastName" type="text" ng-model="children.lastName" id="Last name" class="form-control" placeholder="Last Name" required>
+            <div ng-messages="childrenForm.lastName.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Child's last name is required</p>
             </div>
           </div>
           <div class="form-group">
             <label for="dob">Date of Birth</label>
             <input name="dob" type="text" ng-model="children.dob" id="dob" class="form-control" placeholder="Date of Birth">
-            <div ng-messages="childrenFrom.dob.$error" role="alert">
+            <div ng-messages="childrenForm.dob.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Child's date of birth is required</p>
             </div>
           </div>
           <div class="form-group">
-            <label for="Gender">Gender</label>
-            <input name="Gender" type="text" ng-model="children.gender" id="gender" class="form-control" placeholder="M or F">
-            <div ng-messages="childrenFrom.gender.$error" role="alert">
+            <label for="gender">Gender</label>
+            </br>
+            Male: <input type="radio" name="gender" ng-model="children.gender" value="M" id="gender" required />
+            Female: <input type="radio" name="gender" ng-model="children.gender" value="F" id="gender" required />
+            <div ng-messages="childCreationForm.gender.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Child's gender is required</p>
             </div>
           </div>
           <div class="form-group">
             <label for="eligibleForSponsorship">Sponsorship eligible</label>
-            <input name="eligibleForSponsorship" type="text" ng-model="children.eligibleForSponsorship" id="eligibleForSponsorship" class="form-control" placeholder="true or false">
-            <div ng-messages="childrenFrom.eligibleForSponsorship.$error" role="alert">
+            </br>
+            true <input type="radio" name="eligibleForSponsorship" ng-model="children.eligibleForSponsorship" data-ng-value="true" id="eligibleForSponsorship" required />
+            false <input type="radio" name="eligibleForSponsorship" ng-model="children.eligibleForSponsorship" data-ng-value="false" id="eligibleForSponsorship" required />
+            <div ng-messages="childCreationForm.eligibleForSponsorship.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Child's sponsorship eligibility is required</p>
             </div>
           </div>

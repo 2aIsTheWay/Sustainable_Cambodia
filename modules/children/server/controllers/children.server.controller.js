@@ -40,6 +40,8 @@ exports.update = function (req, res) {
   child.firstName = req.body.firstName;
   child.lastName = req.body.lastName;
   child.biography = req.body.biography;
+  child.gender = req.body.gender;
+  child.eligibleForSponsorship = req.body.eligibleForSponsorship;
   child.dob = req.body.dob;
 
   /* Save */
