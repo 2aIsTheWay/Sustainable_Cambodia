@@ -84,6 +84,19 @@ exports.list = function (req, res) {
   });
 };
 
+/**
+ * List of children for carousel (presently all for testing)
+ */
+exports.carouselList = function (req, res) {
+  Children.find().limit(5).exec(function(err, Children) {
+    if(err) {
+      return res.status(400).send(err);
+    } else {
+      res.json(Children);
+    }
+  });
+};
+
 exports.childrenByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {

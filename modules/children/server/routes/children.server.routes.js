@@ -4,6 +4,9 @@ var childrenPolicy = require('../policies/children.server.policy'),
 
 module.exports = function(app) {
 
+  app.route('/api/children/carousel').all(childrenPolicy.isAllowed)
+  	.get(children.carouselList);
+
   app.route('/api/children').all(childrenPolicy.isAllowed)
     .get(children.list)
     .post(children.create);
