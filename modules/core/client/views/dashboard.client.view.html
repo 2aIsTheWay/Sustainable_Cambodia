@@ -2,22 +2,42 @@
 
 <h1>Welcome UsernamePlaceHolder</h1>
 
-	<p>....accordian fold placeholder with ng-show for superAdmin and admin roles....<p>
-	<h2>Children</h2>
-		<div ng-controller="DashboardCtrl" ng-init="initChildren()">
-  			<div ui-grid="{ data: children }" class="ui-grid"></div>
-		</div>
+	<div ng-controller="DashboardCtrl">
+		<script type="text/ng-template" id="group-template.html">
+		    <div class="panel {{panelClass || 'panel-default'}}">
+		      <div class="panel-heading">
+		        <h4 class="panel-title" style="color:#fa39c3">
+		          <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" accordion-transclude="heading"><span
+		            ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
+		        </h4>
+		      </div>
+		      <div class="panel-collapse collapse" collapse="!isOpen">
+		        <div class="panel-body" style="text-align: right" ng-transclude></div>
+		      </div>
+		    </div>
+	  	</script>
 
-	<br><p>....accordian fold placeholder with ng-show for superAdmin and admin roles....<p>
-	<h2>Sponsorships</h2>
-		<div ng-controller="DashboardCtrl" ng-init="initChildren()">
-  			<div ui-grid="{ data: children }" class="ui-grid"></div>
-		</div>
+	  <accordion close-others="oneAtATime">
+	  	<accordion-group is-open="status.isFirstOpen">
+	  	  <accordion-heading>Children<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></accordion-heading>
+      	  <div ng-controller="DashboardChildrenCtrl" ng-init="initChildren()">
+  		  	<div ui-grid="{ data: children }" class="ui-grid"></div>
+		  </div>
+    	</accordion-group>
+    	<accordion-group is-open="status.isFirstOpen">
+    	  <accordion-heading>Sponsorships<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></accordion-heading>
+      	  <div ng-controller="DashboardSponsorshipsCtrl" ng-init="initChildren()">
+  		  	<div ui-grid="{ data: children }" class="ui-grid"></div>
+		  </div>
+    	</accordion-group>
+    	<accordion-group is-open="status.isFirstOpen">
+    	  <accordion-heading>Donations<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></accordion-heading>
+      	  <div ng-controller="DashboardDonationsCtrl" ng-init="initChildren()">
+  		  	<div ui-grid="{ data: children }" class="ui-grid"></div>
+		  </div>
+    	</accordion-group>
+	  </accordian>
 
-	<br><p>....accordian fold placeholder with ng-show for superAdmin and admin roles....<p>
-	<h2>Dontations</h2>
-		<div ng-controller="DashboardCtrl" ng-init="initChildren()">
-  			<div ui-grid="{ data: children }" class="ui-grid"></div>
-		</div>
 
+  </div>
 
