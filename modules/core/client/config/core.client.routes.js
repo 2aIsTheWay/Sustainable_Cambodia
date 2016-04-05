@@ -56,7 +56,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     .state('dashboard', {
       url: '/dashboard',
       //templateUrl: 'modules/core/client/views/index.html'
-      templateUrl: 'modules/core/client/views/dashboard.client.view.html'
+      templateUrl: 'modules/core/client/views/dashboard.client.view.html',
+      data: {
+        roles: ['admin', 'superadmin']
+      }
     })
     .state('sctest', {
       url: '/sctest',

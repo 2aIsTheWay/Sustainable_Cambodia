@@ -1,8 +1,7 @@
 <section>
 
-<h1>Welcome UsernamePlaceHolder</h1>
-
 	<div ng-controller="DashboardCtrl">
+		<h1 class="page-header">Welcome <a href="mailto:{{ userEmail }}" alt="{{ userEmail }}">{{ userFirstName }} {{ userLastName }}</a></h1>
 		<script type="text/ng-template" id="group-template.html">
 		    <div class="panel {{panelClass || 'panel-default'}}">
 		      <div class="panel-heading">
@@ -41,3 +40,4 @@
 
   </div>
 
+</section>
