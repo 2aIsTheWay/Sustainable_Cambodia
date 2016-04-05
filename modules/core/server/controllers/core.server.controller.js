@@ -27,6 +27,12 @@ exports.renderDonate = function (req, res) {
   });
 };
 
+exports.renderDashboard = function (req, res) {
+  res.render('modules/core/server/views/dashboard', {
+    user: req.user || null
+  });
+};
+
 exports.renderSCtest = function (req, res) {
   res.render('modules/core/server/views/sctemplate', {
     user: req.user || null

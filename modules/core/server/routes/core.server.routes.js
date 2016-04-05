@@ -15,5 +15,6 @@ module.exports = function (app) {
   app.route('/contact').get(core.renderContact);
   app.route('/donate').get(core.renderDonate);
   app.route('/sctest').get(core.renderSCtest);
+  app.route('/dashboard').get(core.renderDashboard);
   app.route('/*').get(core.renderIndex);
 };
