@@ -1,4 +1,11 @@
 <section>
+
+
+<div ng-controller="CarouselCtrl" ng-init="findCarousel()">
+  <div ui-grid="{ data: children }" class="ui-grid"></div>
+</div>
+
+
 	<!-- Logo -->
 	<div class="col-md-6">
         	<center>
@@ -7,10 +14,9 @@
 	</div>
     <!-- Header Carousel -->
     <div></div>
+
 <div class="container col-lg-12">    
 	<div ng-controller="CarouselCtrl" ng-init="findCarousel()">
-        {{ children }}
-
       <div style="height: 505px">
         <carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
           <slide ng-repeat="slide in slides track by slide.id" index="slide.id">
