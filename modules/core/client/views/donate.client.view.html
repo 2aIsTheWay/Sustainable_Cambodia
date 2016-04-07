@@ -87,17 +87,14 @@
                         </div>
                     </div>
                     <label for="expPicker">Expiration Date</label>
-                    <div class="input-append date" id="expPicker" data-date="02-2012" data-date-format="mm-yyyy">
-                    <input  type="text" readonly="readonly" name="date" >    
-                    <span class="add-on"><i class="icon-th"></i></span>
+                    <datepicker ng-model="date" min-mode="month" datepicker-mode="'month'" id="expPicker"></datepicker>
                     <!-- Remember to insert in controller:
                     $("#datepicker").datepicker( {
                         format: "mm-yyyy",
                         startView: "months", 
                         minViewMode: "months"
                     });
-                    -->      
-                    </div>    
+                    -->          
                 </div>
                 <div collapse="collapsedPP">
                     <h4>The transaction will be handled through PayPal.</h4>
