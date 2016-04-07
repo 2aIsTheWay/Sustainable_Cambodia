@@ -4,15 +4,18 @@
 // This means we are registering dependencies for the controller. Dragon warnings: $scope need to come first. Always. Also, the first time you see the word
 // Children it is a dependency injection and requires single quotes. It appears the second time as parameter being passed into he anonymous function and 
 // does not require single quotes.
-angular.module('core').controller('DashboardSponsorshipsCtrl', ['$scope', 'Children', function ($scope,Children) {
+angular.module('core').controller('DashboardSponsorshipsCtrl', ['$scope', 'Sponsorships', function ($scope,Sponsorships) {
 
-  // Now that we hqve access to the Children API, we need a function to call response.data to access it and populate a variable with the results.
-  // That's what this function does. It calls the getCarousel factory which calls an $http query to route /api/children/carousel and checks authoization
-  // policy. Then the route calls the children server controller for carouselList. To understand how it all wires together, I like this notation:
-  // findCarousel --> factory --> route --> authorization policy --> server controller --> response.data --> populated var for our use (we called it children)
-  $scope.initChildren = function() {
-    Children.getAll().then(function(response) {
-      $scope.children = response.data;
+  // Now that we have access to the Children API, we need a function to call response.data to access it and 
+  // populate a variable with the results. That's what this function does. It calls the getCarousel factory 
+  // which calls an $http query to route /api/children/carousel and checks authoization policy. 
+  // Then the route calls the children server controller for carouselList. To understand how it all wires 
+  // together, I like this notation:
+  // findCarousel --> factory --> route --> authorization policy --> server controller --> response.data --> 
+  // populated var for our use (we called it children)
+  $scope.initSponsorships = function() {
+    Sponsorships.getAll().then(function(response) {
+      $scope.sponsorship = response.data;
     }, function(error) {
       $scope.error = 'Unable to retrieve children\n' + error;
     });

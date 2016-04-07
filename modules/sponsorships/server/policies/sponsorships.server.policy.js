@@ -41,6 +41,9 @@ exports.invokeRolesPolicies = function () {
     }, {
       resources: '/api/sponsorships/active',
       permissions: ''
+    }, {
+      resources: '/api/sponsorships/ui-grid',
+      permissions: ''
     }]
   }]);
 };
