@@ -17,6 +17,7 @@
         <!-- /.row -->
 
         <!-- Donate blurb -->
+
         <div class="row">
             <div class="col-sm-12"> 
                 <p>Thanks for choosing Sustainable Cambodia blah blah lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -41,7 +42,7 @@
                         <button class="btn btn-primary btn-lg" type="button">Other</button>
                     </span>
                     <span class="input-group-addon">$</span>
-                    <input type="text" class="form-control input-lg" placeholder="Amount (to the nearest dollar)">
+                    <input type="text" class="form-control input-lg" placeholder="Custom Amount">
                     <span class="input-group-addon">.00</span>
                 </div>
                 <div class="checkbox">
@@ -69,11 +70,10 @@
                 <h3>Payment Information</h3>
                 <hr></hr>
                 <h4>Select a Payment Type</h4>
-                <div ng-controller="CollapseController">
-	                <button class="btn" ng-click="isCollapsed = !isCollapsed">Credit Card</button>
-	                <button class="btn" data-toggle="collapse" data-target="#paypal">PayPal</button>
-	                <button class="btn" data-toggle="collapse" data-target="#check">Check</button>
-                <div uib-collapse="isCollapsed">
+                <button class="btn" ng-click="collapsedCC = !collapsedCC; collapsedPP = true; collapsedCheck = true">Credit Card</button>
+                <button class="btn" ng-click="collapsedPP = !collapsedPP; collapsedCC = true; collapsedCheck = true">PayPal</button>
+                <button class="btn" ng-click="collapsedCheck = !collapsedCheck; collapsedCC = true; collapsedPP = true">Check</button>
+                <div collapse="collapsedCC">
                     <label for="country">Name as it appears on the card</label>
                     <input type="text" class="form-control" id="country">
                     <div class="row">
@@ -99,12 +99,12 @@
                     -->      
                     </div>    
                 </div>
-                <div id="paypal" class="collapse">
+                <div collapse="collapsedPP">
+                    <h4>The transaction will be handled through PayPal.</h4>
                     <h4>Please continue to the next section.</h4>
                 </div>
-                <div id="check" class="collapse">
+                <div collapse="collapsedCheck">
                     <h4>Please continue to the next section.</h4>
-                </div>
                 </div>
                 <h3>Billing Information</h3>
                 <hr></hr>
