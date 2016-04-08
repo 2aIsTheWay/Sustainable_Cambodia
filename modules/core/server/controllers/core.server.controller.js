@@ -1,5 +1,8 @@
 'use strict';
 
+var mongoose = require('mongoose'),
+  Donations = mongoose.model('Donations');
+
 /**
  * Render the main application page
  */
@@ -66,6 +69,31 @@ exports.renderNotFound = function (req, res) {
     },
     'default': function () {
       res.send('Path not found');
+    }
+  });
+};
+
+
+exports.create = function (req, res) {
+  //create a new sponsorships
+  var donation = new Donations(req.body);
+
+  donation.save(function(err) {
+    if (err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      res.json(donation);
+    }
+  });
+};
+
+exports.donationGridList = function (req, res) {
+  Donations.find().exec(function(err, Donations) {
+    if (err) {
+      return res.status(400).send(err);
+    } else {
+      res.json(Donations);
     }
   });
 };
