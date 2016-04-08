@@ -4,7 +4,7 @@
 // This means we are registering dependencies for the controller. Dragon warnings: $scope need to come first. Always. Also, the first time you see the word
 // Children it is a dependency injection and requires single quotes. It appears the second time as parameter being passed into he anonymous function and 
 // does not require single quotes.
-angular.module('core').controller('DashboardSponsorshipsCtrl', ['$scope', 'Sponsorships', function ($scope,Sponsorships) {
+angular.module('core').controller('DashboardSponsorshipsCtrl', ['$scope', 'Sponsorship', function ($scope,Sponsorship) {
 
   // Now that we have access to the Children API, we need a function to call response.data to access it and 
   // populate a variable with the results. That's what this function does. It calls the getCarousel factory 
@@ -14,10 +14,10 @@ angular.module('core').controller('DashboardSponsorshipsCtrl', ['$scope', 'Spons
   // findCarousel --> factory --> route --> authorization policy --> server controller --> response.data --> 
   // populated var for our use (we called it children)
   $scope.initSponsorships = function() {
-    Sponsorships.getAll().then(function(response) {
+    Sponsorship.getAll().then(function(response) {
       $scope.sponsorship = response.data;
     }, function(error) {
-      $scope.error = 'Unable to retrieve children\n' + error;
+      $scope.error = 'Unable to retrieve sponsorships\n' + error;
     });
   };
 
