@@ -5,6 +5,10 @@
  */
 var mongoose = require('mongoose'),
   Children = mongoose.model('Children'),
+  path = require('path'),
+  multer = require('multer'),
+  config = require(path.resolve('./config/config')),
+  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
 /**
@@ -84,6 +88,43 @@ exports.list = function (req, res) {
       res.json(Children);
     }
   });
+};
+
+exports.changePrimaryPhoto = function (req, res) {
+  var child = req.child;
+  var message = null;
+  config.uploads.profileUpload.dest = 'modules/children/client/img/uploads/';
+  var upload = multer(config.uploads.primaryUpload).single('newPrimaryPicture');
+  var profileUploadFileFilter = require(path.resolve('./config/lib/multer')).profileUploadFileFilter;
+
+  // Filtering to upload only images
+  upload.fileFilter = profileUploadFileFilter;
+  console.log(config.uploads);
+  if (child) {
+    upload(req, res, function (uploadError) {
+      if(uploadError) {
+        return res.status(400).send({
+          message: 'Error occurred while uploading primary photo'
+        });
+      } else {
+        console.log(req.file);
+        child.primaryPhoto =req.file.filename;
+        child.save(function (saveError) {
+          if (saveError) {
+            return res.status(400).send({
+              message: errorHandler.getErrorMessage(saveError)
+            });
+          } else {
+            res.json(child);
+          }
+        });
+      }
+    });
+  } else {
+    res.status(400).send({
+      message: 'child does not exist'
+    });
+  }
 };
 
 exports.childrenByID = function (req, res, next, id) {

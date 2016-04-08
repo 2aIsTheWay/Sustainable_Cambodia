@@ -18,6 +18,9 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/children',
       permissions: '*'
     }, {
+      resources: '/api/children/picture/:childrenId',
+      permissions: '*'
+    }, {
       resources: '/api/children/:childrenId',
       permissions: '*'
     }]
