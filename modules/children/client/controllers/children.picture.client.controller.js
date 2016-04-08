@@ -18,7 +18,6 @@ angular.module('children').controller('ChildrenPictureController', ['$scope', '$
     $scope.uploader = new FileUploader({
       url: 'api/children/picture/'+$stateParams.childrenId,
       method: 'POST',
-      data: $scope.children,
       alias: 'newPrimaryPicture'
     });
 
@@ -80,5 +79,10 @@ angular.module('children').controller('ChildrenPictureController', ['$scope', '$
       $scope.uploader.clearQueue();
       $scope.imageURL = $scope.children.primaryPhoto;
     };
+
+    $scope.uploader.onBeforeUploadItem = onBeforeUploadItem;
+    function onBeforeUploadItem(item) {
+      item.formData.push({ dateTaken: $scope.dateTaken });
+    }
 
   }]);

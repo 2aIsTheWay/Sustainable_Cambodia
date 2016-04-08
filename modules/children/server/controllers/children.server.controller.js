@@ -99,7 +99,6 @@ exports.changePrimaryPhoto = function (req, res) {
 
   // Filtering to upload only images
   upload.fileFilter = profileUploadFileFilter;
-  console.log(config.uploads);
   if (child) {
     upload(req, res, function (uploadError) {
       if(uploadError) {
@@ -107,8 +106,8 @@ exports.changePrimaryPhoto = function (req, res) {
           message: 'Error occurred while uploading primary photo'
         });
       } else {
-        console.log(req.file);
-        child.primaryPhoto =req.file.filename;
+        console.log(req.body);
+        child.primaryPhoto =req.file.filename+','+req.body.dateTaken;
         child.save(function (saveError) {
           if (saveError) {
             return res.status(400).send({
