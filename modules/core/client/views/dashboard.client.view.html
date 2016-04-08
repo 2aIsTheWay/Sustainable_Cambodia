@@ -25,8 +25,8 @@
     	</accordion-group>
     	<accordion-group is-open="true">
     	  <accordion-heading>Sponsorships<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></accordion-heading>
-      	  <div ng-controller="DashboardSponsorshipsCtrl" ng-init="initChildren()">
-  		  	<div ui-grid="{ data: children }" class="ui-grid"></div>
+      	  <div ng-controller="DashboardSponsorshipsCtrl" ng-init="initSponsorships()">
+  		  	<div ui-grid="{ data: sponsorship }" class="ui-grid"></div> 
 		  </div>
     	</accordion-group>
     	<accordion-group is-open="true">

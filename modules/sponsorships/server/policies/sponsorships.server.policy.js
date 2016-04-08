@@ -15,6 +15,9 @@ exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin','superadmin'],
     allows: [{
+      resources: '/api/sponsorships/ui-grid',
+      permissions: 'get'
+    }, {
       resources: '/api/sponsorships',
       permissions: '*'
     }, {
@@ -41,7 +44,7 @@ exports.invokeRolesPolicies = function () {
     }, {
       resources: '/api/sponsorships/active',
       permissions: ''
-    }]
+    } ]
   }]);
 };
 
