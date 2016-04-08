@@ -1,8 +1,8 @@
-<div class="row" ng-controller="SponsorshipController">
+<div class="row" ng-controller="SponsorshipController" ng-init="validUser()">
   <div class="col-md-offset-1 col-md-10 formWrapper">
     <div class="page-header">
       <h3>Create a Sponsorship</h3>
-
+<!--To pass in the children ID use state params in the controller.  ng-submit should have ({ childrenId: children._id }) ? I think? -->
       <form name="sponsorshipForm" class="form-horizontal" ng-submit="createsponsorship(sponsorshipForm.$valid)">
         <!-- We need a form for begin/end date and payment type begin date defaults to now-->
         <fieldset>
@@ -15,18 +15,27 @@
               <p class="help-block error-text" ng-message="required">Payment Type is Required</p>
             </div>
           </div>
-          <div class="form-group" show-errors>
+          <!--<div class="form-group" show-errors>
             <label for="BeginDate">Begin Date</label>
             <input name="name" type="text" ng-model="sponsorship.beginDate" id="Begin Date" class="form-control" placeholder="Begin Date" required>
             <div ng-messages="sponsorshipForm.beginDate.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Begin Date is Required</p>
             </div>
-          </div>
+          </div>-->
           <div class="form-group" show-errors>
-            <label for="End Date">End Date</label>
-            <input name="name" type="text" ng-model="sponsorship.endDate" id="End Date" class="form-control" placeholder="End Date" required>
-            <div ng-messages="sponsorshipForm.endDate.$error" role="alert">
-              <p class="help-block error-text" ng-message="required">End Date is Required</p>
+            <label for="monthlySubscription">Monthly Subscription</label>
+            <input name="name" type="text" ng-model="sponsorship.monthlySubscription" id="Monthly Subscription" class="form-control" placeholder="true or false" required>
+            <div ng-messages="sponsorshipForm.monthlySubscription.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">This field is Required</p>
+            </div>
+          </div>
+
+          <div class="form-group" show-errors>
+            <label for="monthlySubscription">Sponsorship Type</label><br>
+            <input name="name" type="radio" ng-model="sponsorshipTemp.sponsorshipType" id="Sponsorship Type" value="full" required>Full Sponsorship<br>
+            <input name="name" type="radio" ng-model="sponsorshipTemp.sponsorshipType" id="Sponsorship Type" value="half">Half Sponsorship<br>
+            <div ng-messages="sponsorshipForm.monthlySubscription.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">This field is Required</p>
             </div>
           </div>
           <!--

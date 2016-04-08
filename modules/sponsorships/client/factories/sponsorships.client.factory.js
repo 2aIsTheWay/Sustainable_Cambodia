@@ -12,6 +12,11 @@ angular.module('sponsorships').factory('Sponsorship', ['$http',
         console.log('The id is ' + id);
         return $http.get('/api/' + id + '/sponsor/sponsorships');//what is the purpose of this?
           //I think it gets the data but idk how currently
+      },
+      getByChildId: function(id) {
+        console.log('The child id is ' + id);
+        return $http.get('/api/children/' + id);//what is the purpose of this?
+          //I think it gets the data but idk how currently
       }
     };
     return methods;

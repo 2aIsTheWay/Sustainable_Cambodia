@@ -15,7 +15,7 @@ angular.module('sponsorships').config(['$stateProvider',
         templateUrl: 'modules/sponsorships/client/views/sponsorships.client.view.html'
       })
       .state('sponsorship.create', {
-        url: '/create',
+        url: '/create/:childrenId/:childrenFirstName/:childrenLastName',
         templateUrl: 'modules/sponsorships/client/views/createsponsorship.client.view.html'
       })
       ;
