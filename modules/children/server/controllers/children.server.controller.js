@@ -106,7 +106,8 @@ exports.changePrimaryPhoto = function (req, res) {
           message: 'Error occurred while uploading primary photo'
         });
       } else {
-        console.log(req.body);
+        child.additionalPhotos.push(child.primaryPhoto);
+        console.log(child.additionalPhotos);
         child.primaryPhoto =req.file.filename+','+req.body.dateTaken;
         child.save(function (saveError) {
           if (saveError) {
@@ -117,6 +118,30 @@ exports.changePrimaryPhoto = function (req, res) {
             res.json(child);
           }
         });
+      }
+    });
+  } else {
+    res.status(400).send({
+      message: 'child does not exist'
+    });
+  }
+};
+
+exports.removeAdditionalPhoto = function (req, res) {
+  var child = req.child;
+  var message = null;
+  var index = req.body.index;
+  var image= req.body.image;
+
+  if (child) {
+    child.additionalPhotos.splice(index, 1);
+    child.save(function (saveError) {
+      if (saveError) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(saveError)
+        });
+      } else {
+        res.end();
       }
     });
   } else {

@@ -22,11 +22,10 @@
     <div id="wrapper" style="width:100%; text-align:center">
       {{children.primaryPhoto | split:',':1 }}
     </div>
-
       <div id="wrapper" style="width:100%; text-align:center">
 			<button type="submit" class="btn btn-primary"> Sponsor Me!</button><!--TODO:Need to transfer child id to sponsorship module-->
      			<button type="submit" class="btn btn-primary" ng-show="isAdmin()" ui-sref="children.edit({ childrenId: children._id })">Edit this child</button>
-			<button type="submit" class="btn btn-primary" ng-show="isAdmin()" ui-sref="children.picture({ childrenId: children._id })">Edit this picture</button>
+			<button type="submit" class="btn btn-primary" ng-show="isAdmin()" ui-sref="children.picture({ childrenId: children._id })">Edit primary photo</button>
      			 <a class="btn btn-danger" ng-show="isAdmin()" ng-click="remove()">
          		 	<i class="glyphicon glyphicon-trash"></i>
           			Remove child
@@ -34,15 +33,28 @@
       </div>
 		</div>
 		</div>
-                <hr>
+    <hr>
                 <!-- Post Content -->
 		<div id="wrapper" style="width:100%; text-align:center">
-		<h2>Biography</h2>
+		    <h2>Biography</h2>
 		</div>
-                <p class="lead">{{children.biography}}
-                <hr>
-            </div>
-        </div>
+      <p class="lead">{{children.biography}}
+    <hr>
+  <div id="wrapper" style="width:100%; text-align:center">
+		  <h2>Additional Photos</h2>
+	</div>
+  <div ng-repeat="photo in children.additionalPhotos" >
+    <div class="col-md-4 text-center">
+      <div id="wrapper" style="width:100%; text-align:center">
+                  <img ng-src="modules/children/client/img/uploads/{{photo | split:',':0 }}" alt="{{photo}}" style = "height:200px"></img>
+      </div>
+      <div id="wrapper" style="width:100%; text-align:center">
+        {{photo | split:',':1 }}
+      </div>
+    </div>
+  </div>
+</div>
+</br>
         <!-- Footer -->
         <footer>
             <div class="row">
