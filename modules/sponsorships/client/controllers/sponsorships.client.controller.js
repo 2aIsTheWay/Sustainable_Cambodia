@@ -3,14 +3,7 @@
 angular.module('sponsorships').controller('SponsorshipController', ['$scope','$http','$stateParams','$state','Authentication' ,'Sponsorship','Children',
   function($scope,$http, $stateParams,$state,Authentication ,Sponsorship, Children){
 
-    $scope.validUser = function(){
-      var id = Authentication.user._id;
 
-      if(id == undefined){
-        $state.go('login');
-      }
-      
-    }
 
     $scope.find = function() {
       Sponsorship.getAll().then(function(response) {
@@ -22,21 +15,45 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       });
     };
 
+    $scope.childFind = function(sponsorships) {
+      var i = 0;
+      $scope.filteredOutSponsorships = [];
+      while(i<sponsorships.length){
+        var filteredOutSponsorship = sponsorships[i];
+        var id = sponsorships[i].child_id;
+        console.log('I really hopep this works'+filteredOutSponsorship._id);
+        //console.log('ID ISSSSSSSS'+sponsorships[i]);
+        $scope.getChild(id,filteredOutSponsorship);
+        i++;
+      }
+
+    };
+
+    $scope.getChild = function(id,filteredOutSponsorship){
+      Sponsorship.getByChildId(id).then(function(response) {
+        var child = response.data;
+        filteredOutSponsorship.firstName = child.firstName;
+        filteredOutSponsorship.lastName = child.lastName;
+        //append stuff if needed to add on to the sponsorship object to get stuff back
+        $scope.filteredOutSponsorships.push(filteredOutSponsorship);
+        console.log('I hope this works '+filteredOutSponsorship._id);
+        //console.log('THIS IS '+ filteredOutSponsorship);
+        //console.log(response.data);
+      }, function(error) {
+        $scope.error = 'Unable to retrieve sponsorships\n' + error;
+      });
+    };
+
+
     $scope.findbyUserId = function() {
       var id = Authentication.user._id;//Authentication object gets the user stuff
       var childId;
-      console.log(id);
       Sponsorship.getByUserId(id).then(function(response) {
-        $scope.filteredOut = response.data;
-        childId = response.data.child_id;//this doesnt work?  Whats that for
-        console.log('THE STUFFY IS '+childId);
-      }, function(error) {
+        $scope.childFind(response.data);
+        //$scope.filteredOut = response.data;
+        //console.log(response.data[1]);
+        //childId = response.data.child_id;//this doesnt work?  Whats that for
 
-        $scope.error = 'Unable to retrieve sponsorships\n' + error;
-      });
-      console.log('CHILD ID IS CONSIDERED TO BE '+ childId);
-      Sponsorship.getByChildId(childId).then(function(response) {
-        $scope.filteredOutChild = response.data;
       }, function(error) {
 
         $scope.error = 'Unable to retrieve sponsorships\n' + error;
@@ -50,26 +67,24 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
         return false;
       }
       var beginDate = new Date();
-      var childId = $stateParams.childrenId;//This is undefined but why?
-      var childFirstName = $stateParams.childrenFirstName;
-      var childLastName = $stateParams.childrenLastName;
-      console.log('Children ID is '+ childId);
-      console.log('The childs first name is '+childFirstName);
-      console.log('The childs last name is '+childLastName);
+      //var childId = $stateParams.childrenId;//This is undefined but why?
+      //var childFirstName = $stateParams.childrenFirstName;
+      //var childLastName = $stateParams.childrenLastName;
+
       var id = Authentication.user._id;
       var sponsorshipLength = $scope.sponsorshipTemp.sponsorshipType;
 
-      if(sponsorshipLength == 'full'){
+      if(sponsorshipLength === 'full'){
         $scope.sponsorship.endDate = new Date(beginDate.getFullYear() + 1, beginDate.getMonth(),beginDate.getDay());
-      }else if(sponsorshipLength == 'half'){
+      }else if(sponsorshipLength === 'half'){
         $scope.sponsorship.endDate = new Date(beginDate.getFullYear(), beginDate.getMonth() + 6,beginDate.getDay());
       }
       else{
-        console.log('something happened?')
+        console.log('something happened?');
         return false;
       }
       $scope.sponsorship.user_id = id;//sets the id of sponsorship to that
-      $scope.sponsorship.child_id = childId;
+      //$scope.sponsorship.child_id = childId;
       $scope.sponsorship.beginDate = beginDate;
       //TODO:Before I post I need to get the chilrdenID somehow.
 

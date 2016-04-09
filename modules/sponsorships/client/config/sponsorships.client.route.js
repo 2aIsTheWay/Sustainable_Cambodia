@@ -12,11 +12,20 @@ angular.module('sponsorships').config(['$stateProvider',
       })
       .state('sponsorship.list', {
         url: '',
-        templateUrl: 'modules/sponsorships/client/views/sponsorships.client.view.html'
+        templateUrl: 'modules/sponsorships/client/views/sponsorships.client.view.html',
+
+        data: {
+          roles: ['user']
+        }
       })
       .state('sponsorship.create', {
         url: '/create/:childrenId/:childrenFirstName/:childrenLastName',
-        templateUrl: 'modules/sponsorships/client/views/createsponsorship.client.view.html'
+        templateUrl: 'modules/sponsorships/client/views/createsponsorship.client.view.html',
+
+        data: {
+          roles: ['user']
+        }
+
       })
       ;
   }
