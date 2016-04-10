@@ -21,6 +21,9 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/children/picture/:childrenId',
       permissions: '*'
     }, {
+      resources: '/api/children/additionalpictures/:childrenId',
+      permissions: '*'
+    }, {
       resources: '/api/children/:childrenId',
       permissions: '*'
     }]
@@ -29,6 +32,12 @@ exports.invokeRolesPolicies = function () {
     allows: [{
       resources: '/api/children',
       permissions: ['get']
+    }, {
+      resources: '/api/children/picture/:childrenId',
+      permissions: ''
+    }, {
+      resources: '/api/children/additionalpictures/:childrenId',
+      permissions: ''
     }, {
       resources: '/api/children/:childrenId',
       permissions: ['get']

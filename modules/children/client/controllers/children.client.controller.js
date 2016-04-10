@@ -99,6 +99,24 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       });
     };
 
+    $scope.removephoto = function(photo) {
+      $scope.error = null;
+      var id = $stateParams.childrenId;
+      var index = $scope.children.additionalPhotos.indexOf(photo);
+      var image = photo.split(',')[0];
+      $scope.photoinfo = {
+        photoimage: image,
+        photoindex: index
+      };
+      $http.put('/api/children/additionalpictures/' + id, $scope.photoinfo)
+      .then(function(response) {
+        $scope.findOne();
+      }, function(error) {
+        $scope.error = 'Unable to remove additional photo!\n' + error;
+      });
+
+    };
+
     $scope.isAdmin = function() {
       $scope.roles=Authentication.user.roles;
       if(Authentication.user) {

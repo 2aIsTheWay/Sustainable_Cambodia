@@ -17,7 +17,7 @@ module.exports = function(app) {
     .post(children.changePrimaryPhoto);
 
   app.route('/api/children/additionalpictures/:childrenId').all(childrenPolicy.isAllowed)
-    .delete(children.removeAdditionalPhoto);
+    .put(children.removeAdditionalPhoto);
 
   app.param('childrenId', children.childrenByID);
 

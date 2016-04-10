@@ -51,6 +51,12 @@
       <div id="wrapper" style="width:100%; text-align:center">
         {{photo | split:',':1 }}
       </div>
+      <div id="wrapper" style="width:100%; text-align:center">
+        <a class="btn btn-danger" ng-show="isAdmin()" ng-click="removephoto(photo)">
+           <i class="glyphicon glyphicon-trash"></i>
+             Remove photo
+        </a>
+     </div>
     </div>
   </div>
 </div>

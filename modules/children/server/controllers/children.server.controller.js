@@ -38,7 +38,6 @@ exports.read = function (req, res) {
  * Update a child
  */
 exports.update = function (req, res) {
-  console.log(req.body.firstName);
   var child = req.child;
   /* Replace child properties */
   child.firstName = req.body.firstName;
@@ -106,8 +105,9 @@ exports.changePrimaryPhoto = function (req, res) {
           message: 'Error occurred while uploading primary photo'
         });
       } else {
-        child.additionalPhotos.push(child.primaryPhoto);
-        console.log(child.additionalPhotos);
+        if (child.primaryPhoto){
+          child.additionalPhotos.push(child.primaryPhoto);
+        }
         child.primaryPhoto =req.file.filename+','+req.body.dateTaken;
         child.save(function (saveError) {
           if (saveError) {
@@ -130,9 +130,8 @@ exports.changePrimaryPhoto = function (req, res) {
 exports.removeAdditionalPhoto = function (req, res) {
   var child = req.child;
   var message = null;
-  var index = req.body.index;
-  var image= req.body.image;
-
+  var index = req.body.photoindex;
+  var image = req.body.photoimage;
   if (child) {
     child.additionalPhotos.splice(index, 1);
     child.save(function (saveError) {
@@ -141,7 +140,7 @@ exports.removeAdditionalPhoto = function (req, res) {
           message: errorHandler.getErrorMessage(saveError)
         });
       } else {
-        res.end();
+        res.json(child);
       }
     });
   } else {
