@@ -8,6 +8,7 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
     $scope.find = function() {
       Sponsorship.getAll().then(function(response) {
         $scope.sponsorship = response.data;
+        console.log(response.data);
         $scope.findbyUserId();
       }, function(error) {
 
@@ -21,7 +22,7 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       while(i<sponsorships.length){
         var filteredOutSponsorship = sponsorships[i];
         var id = sponsorships[i].child_id;
-        console.log('I really hopep this works'+filteredOutSponsorship._id);
+        console.log(filteredOutSponsorship.child_id);
         //console.log('ID ISSSSSSSS'+sponsorships[i]);
         $scope.getChild(id,filteredOutSponsorship);
         i++;
@@ -50,6 +51,7 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       var childId;
       Sponsorship.getByUserId(id).then(function(response) {
         $scope.childFind(response.data);
+        console.log(response.data);
         //$scope.filteredOut = response.data;
         //console.log(response.data[1]);
         //childId = response.data.child_id;//this doesnt work?  Whats that for
@@ -84,7 +86,7 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
         return false;
       }
       $scope.sponsorship.user_id = id;//sets the id of sponsorship to that
-      //$scope.sponsorship.child_id = childId;
+      $scope.sponsorship.child_id = $stateParams.childrenId;
       $scope.sponsorship.beginDate = beginDate;
       //TODO:Before I post I need to get the chilrdenID somehow.
 

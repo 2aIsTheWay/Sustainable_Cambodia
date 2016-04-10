@@ -108,7 +108,6 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       $scope.additionalPhotos = [];
       var i = 0;
       while (i<additional.length){
-        console.log(Date.parse(additional[i].split(',')[1]));
         var additionalPhoto = {
           image : additional[i].split(',')[0],
           date : additional[i].split(',')[1]
@@ -121,18 +120,20 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
     $scope.removephoto = function(photo) {
       $scope.error = null;
       var id = $stateParams.childrenId;
-      var index = $scope.children.additionalPhotos.indexOf(photo);
+      var index = $scope.additionalPhotos.indexOf(photo);
       $scope.photoinfo = {
         photoimage: photo.image,
         photoindex: index
       };
+      console.log($scope.photoinfo);
+      /*
       $http.put('/api/children/additionalpictures/' + id, $scope.photoinfo)
       .then(function(response) {
         $scope.findOne();
       }, function(error) {
         $scope.error = 'Unable to remove additional photo!\n' + error;
       });
-
+      */
     };
 
     $scope.isAdmin = function() {
