@@ -38,6 +38,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       Children.read(id)
               .then(function(response) {
                 $scope.children = response.data;
+                $scope.managePhotos($scope.children.primaryPhoto, $scope.children.additionalPhotos);
               }, function(error) {
                 $scope.error = 'Unable to retrieve child with id "' + id + '"\n' + error;
               });
@@ -99,13 +100,30 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       });
     };
 
+    $scope.managePhotos = function(primary, additional) {
+      $scope.primaryPhoto = {
+        image : primary.split(',')[0],
+        date : primary.split(',')[1]
+      };
+      $scope.additionalPhotos = [];
+      var i = 0;
+      while (i<additional.length){
+        console.log(Date.parse(additional[i].split(',')[1]));
+        var additionalPhoto = {
+          image : additional[i].split(',')[0],
+          date : additional[i].split(',')[1]
+        };
+        $scope.additionalPhotos.push(additionalPhoto);
+        i++;
+      }
+    };
+
     $scope.removephoto = function(photo) {
       $scope.error = null;
       var id = $stateParams.childrenId;
       var index = $scope.children.additionalPhotos.indexOf(photo);
-      var image = photo.split(',')[0];
       $scope.photoinfo = {
-        photoimage: image,
+        photoimage: photo.image,
         photoindex: index
       };
       $http.put('/api/children/additionalpictures/' + id, $scope.photoinfo)

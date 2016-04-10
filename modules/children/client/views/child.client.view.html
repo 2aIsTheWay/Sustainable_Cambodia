@@ -17,10 +17,10 @@
         <div class="row">
                 <!-- Child Image -->
 		<div id="wrapper" style="width:100%; text-align:center">
-                <img ng-src="modules/children/client/img/uploads/{{children.primaryPhoto | split:',':0 }}" alt="{{child.primaryPhoto}}" style = "height:200px"></img>
+                <img ng-src="modules/children/client/img/uploads/{{primaryPhoto.image}}" alt="{{child.primaryPhoto}}" style = "height:200px"></img>
 		</div>
-    <div id="wrapper" style="width:100%; text-align:center">
-      {{children.primaryPhoto | split:',':1 }}
+    <div id="wrapper" style="width:100%; text-align:center" ng-hide="uploader.queue.length">
+      {{primaryPhoto.date | date:MM/dd/YYYY}}
     </div>
       <div id="wrapper" style="width:100%; text-align:center">
 			<button type="submit" class="btn btn-primary"> Sponsor Me!</button><!--TODO:Need to transfer child id to sponsorship module-->
@@ -34,7 +34,7 @@
 		</div>
 		</div>
     <hr>
-                <!-- Post Content -->
+                <!-- Biography and additional photos -->
 		<div id="wrapper" style="width:100%; text-align:center">
 		    <h2>Biography</h2>
 		</div>
@@ -43,13 +43,13 @@
   <div id="wrapper" style="width:100%; text-align:center">
 		  <h2>Additional Photos</h2>
 	</div>
-  <div ng-repeat="photo in children.additionalPhotos" >
+  <div ng-repeat="photo in additionalPhotos" >
     <div class="col-md-4 text-center">
       <div id="wrapper" style="width:100%; text-align:center">
-                  <img ng-src="modules/children/client/img/uploads/{{photo | split:',':0 }}" alt="{{photo}}" style = "height:200px"></img>
+                  <img ng-src="modules/children/client/img/uploads/{{photo.image}}" alt="{{photo}}" style = "height:200px"></img>
       </div>
       <div id="wrapper" style="width:100%; text-align:center">
-        {{photo | split:',':1 }}
+        {{photo.date | date:MM/dd/YYYY}}
       </div>
       <div id="wrapper" style="width:100%; text-align:center">
         <a class="btn btn-danger" ng-show="isAdmin()" ng-click="removephoto(photo)">
