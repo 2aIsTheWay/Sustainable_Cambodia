@@ -15,6 +15,9 @@ exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin','superadmin'],
     allows: [{
+      resources: '/api/eligiblechildren',
+      permissions: '*'
+    }, {
       resources: '/api/children',
       permissions: '*'
     }, {
@@ -30,8 +33,11 @@ exports.invokeRolesPolicies = function () {
   }, {
     roles: ['user','guest'],
     allows: [{
-      resources: '/api/children',
+      resources: '/api/eligiblechildren',
       permissions: ['get']
+    }, {
+      resources: '/api/children',
+      permissions: ''
     }, {
       resources: '/api/children/picture/:childrenId',
       permissions: ''

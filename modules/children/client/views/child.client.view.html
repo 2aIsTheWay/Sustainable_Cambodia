@@ -23,13 +23,18 @@
       {{primaryPhoto.date | date:MM/dd/YYYY}}
     </div>
       <div id="wrapper" style="width:100%; text-align:center">
-			<button type="submit" class="btn btn-primary" ui-sref="sponsorship.create({ childrenId: children._id,childrenFirstName: children.firstName, childrenLastName: children.lastName })"> Sponsor Me!</button><!--TODO:Need to transfer child id to sponsorship module-->
-     			<button type="submit" class="btn btn-primary" ng-show="isAdmin()" ui-sref="children.edit({ childrenId: children._id })">Edit this child</button>
-			<button type="submit" class="btn btn-primary" ng-show="isAdmin()" ui-sref="children.picture({ childrenId: children._id })">Edit primary photo</button>
-     			 <a class="btn btn-danger" ng-show="isAdmin()" ng-click="remove()">
-         		 	<i class="glyphicon glyphicon-trash"></i>
-          			Remove child
-     			 </a>
+  			<button type="submit" class="btn btn-primary" ng-if="children.eligibleForSponsorship" ui-sref="sponsorship.create({ childrenId: children._id,childrenFirstName: children.firstName, childrenLastName: children.lastName })"> Sponsor Me!</button><!--TODO:Need to transfer child id to sponsorship module-->
+       	<button type="submit" class="btn btn-primary" ng-show="isAdmin()" ui-sref="children.edit({ childrenId: children._id })">Edit this child</button>
+  			<button type="submit" class="btn btn-primary" ng-show="isAdmin()" ui-sref="children.picture({ childrenId: children._id })">Edit primary photo</button>
+        <div ng-show="isAdmin()" >
+       			 <a class="btn btn-danger" ng-show="children.eligibleForSponsorship" ng-click="changeEligibility('false')">
+           		 	<i class="glyphicon glyphicon-trash"></i>
+            			Make Uneligibile
+       			 </a>
+             <a class="btn btn-primary" ng-hide="children.eligibleForSponsorship" ng-click="changeEligibility('true')">
+                  Make Eligibile
+       			 </a>
+        </div>
       </div>
 		</div>
 		</div>

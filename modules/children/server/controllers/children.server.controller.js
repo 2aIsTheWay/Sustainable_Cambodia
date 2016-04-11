@@ -59,6 +59,36 @@ exports.update = function (req, res) {
   });
 };
 
+exports.updateFunding = function (req, res) {
+  var child = req.child;
+  var funded = req.body.funds;
+  if (child.eligibleForSponsorship) {
+    child.fundingLevel= child.fundingLevel + funded;
+    if (child.fundingLevel < 500) {
+      if (child.fundingLevel >= 500) {
+        child.eligibleForSponsorship = false;
+      }
+      child.save(function(err) {
+        if(err) {
+          console.log(err);
+          res.status(400).send(err);
+        }
+        else {
+          res.json(child);
+        }
+      });
+    } else {
+      res.status(400).send({
+        message: 'Cannot fund this much as child would be overfunded'
+      });
+    }
+  } else {
+    res.status(400).send({
+      message: 'child not eligible for sponsorships'
+    });
+  }
+};
+
 /**
  * Delete an child
  */
@@ -81,6 +111,16 @@ exports.delete = function (req, res) {
  */
 exports.list = function (req, res) {
   Children.find().exec(function(err, Children) {
+    if(err) {
+      return res.status(400).send(err);
+    } else {
+      res.json(Children);
+    }
+  });
+};
+
+exports.listEligible = function (req, res) {
+  Children.find({ eligibleForSponsorship: true }).exec(function(err, Children) {
     if(err) {
       return res.status(400).send(err);
     } else {
