@@ -35,6 +35,8 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
         var child = response.data;
         filteredOutSponsorship.firstName = child.firstName;
         filteredOutSponsorship.lastName = child.lastName;
+        filteredOutSponsorship.childId = id;
+        filteredOutSponsorship.primaryPhoto = child.primaryPhoto;
         //append stuff if needed to add on to the sponsorship object to get stuff back
         $scope.filteredOutSponsorships.push(filteredOutSponsorship);
         console.log('I hope this works '+filteredOutSponsorship._id);
@@ -79,7 +81,10 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       if(sponsorshipLength === 'full'){
         $scope.sponsorship.endDate = new Date(beginDate.getFullYear() + 1, beginDate.getMonth(),beginDate.getDay());
       }else if(sponsorshipLength === 'half'){
-        $scope.sponsorship.endDate = new Date(beginDate.getFullYear(), beginDate.getMonth() + 6,beginDate.getDay());
+        var halfYear = 366/2;//Assuming leap year?  Benefit of the doubt
+        //Adding 6 months is not neccesarily accurate by the date as half a year
+        $scope.sponsorship.endDate = new Date(beginDate.getFullYear(), beginDate.getMonth(),beginDate.getDay() +halfYear);
+        //Although half sponsorship is +6 months MEAN stack as of April 2016 has an offset of 3 days
       }
       else{
         console.log('something happened?');
