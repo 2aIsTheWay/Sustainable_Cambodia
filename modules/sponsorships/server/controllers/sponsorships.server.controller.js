@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
   _ = require('lodash');
 
 /**
- * Create a 
+ * Create a
  */
 exports.create = function (req, res) {
   //create a new sponsorships
@@ -26,7 +26,7 @@ exports.create = function (req, res) {
 };
 /**
 
- * Show the current 
+ * Show the current
  */
 exports.read = function (req, res) {
   //read an individual sponsorship
@@ -67,7 +67,7 @@ exports.listActive = function (req, res) {
 
 exports.listSponsored = function (req, res) {
   //will list sponsorships that an individual sponsor has sponsored (has to be a better way to say that)
-  Sponsorships.find({ user_id: req.userid }, function (err, sponsorships) {
+  Sponsorships.find({ user_id: req.user_id }, function (err, sponsorships) {
     if (err) {
       return res.status(400).send(err);
     } else {
@@ -110,7 +110,7 @@ exports.sponsorshipUserID = function (req, res, next, id) {
         message: 'No user with that identifier has been found'
       });
     }
-    req.user_id = user._id;
+    req.user_id = user._id;//Problem here?
     next();
   });
 };

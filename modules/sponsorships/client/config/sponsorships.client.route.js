@@ -10,14 +10,14 @@ angular.module('sponsorships').config(['$stateProvider',
         url: '/sponsorship',
         template: '<ui-view/>'
       })
-      .state('sponsorships', {
-        url: '/sponsorships',
+      .state('sponsorship.list', {
+        url: '',
         templateUrl: 'modules/sponsorships/client/views/sponsorships.client.view.html'
       })
-      /*.state('sponsorships.view', {
-        url: '/:sponsorshipviews',
-        templateUrl: 'modules/sponsorships/client/views/sponsorships.client.view.html'
-      })*/
+      .state('sponsorship.create', {
+        url: '/create',
+        templateUrl: 'modules/sponsorships/client/views/createsponsorship.client.view.html'
+      })
       ;
   }
 ]);
