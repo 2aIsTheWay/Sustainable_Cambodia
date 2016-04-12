@@ -61,11 +61,23 @@ exports.update = function (req, res) {
 
 exports.updateFunding = function (req, res) {
   var child = req.child;
-  var funded = req.body.funds;
+  var sponsorshipType = req.body.sponsorshipType;
+
+  child.sponsorshipType = 0;
+
+  var currentSponsorship = child.sponsorshipType;
+  console.log('req.body.funds is ' + req.body.sponsorshipType);
+  res.json(child);
   if (child.eligibleForSponsorship) {
-    child.fundingLevel= child.fundingLevel + funded;
-    if (child.fundingLevel < 500) {
-      if (child.fundingLevel >= 500) {
+    if(sponsorshipType === 'full'){
+      currentSponsorship = currentSponsorship + 2;
+    }
+    if(sponsorshipType === 'half'){
+      currentSponsorship = currentSponsorship + 1;
+    }
+    child.sponsorshipType = currentSponsorship;
+    if (child.sponsorshipType <= 2) {
+      if (child.sponsorshipType === 2) {
         child.eligibleForSponsorship = false;
       }
       child.save(function(err) {
@@ -79,7 +91,7 @@ exports.updateFunding = function (req, res) {
       });
     } else {
       res.status(400).send({
-        message: 'Cannot fund this much as child would be overfunded'
+        message: 'Cannot fund this as child would be oversponsored'
       });
     }
   } else {

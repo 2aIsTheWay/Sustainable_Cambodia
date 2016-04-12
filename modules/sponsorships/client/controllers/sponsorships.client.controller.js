@@ -97,14 +97,24 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
 
       //post to the sponsorship API
       console.log('I do go here!');
-      $http.post('/api/'+id+'/sponsor/sponsorships', $scope.sponsorship)
-              .then(function(response) {
-                //if the object is successfully saved redirect back to the list page
-                $state.go('sponsorship.list', { successMessage: 'Sponsorship succesfully created!' });
-              }, function(error) {
-                //otherwise display the error
-                $scope.error = 'Unable to save sponsorship!\n' + error;
-              });
+      $scope.sponsorshipType = {
+        sponsorshipType:$scope.sponsorshipTemp.sponsorshipType
+      };
+      Children.updateFunding($stateParams.childrenId,$scope.sponsorshipType)
+        .then(function(response) {
+          $http.post('/api/'+id+'/sponsor/sponsorships', $scope.sponsorship)
+                  .then(function(response) {
+                    //if the object is successfully saved redirect back to the list page
+                    $state.go('sponsorship.list', { successMessage: 'Sponsorship succesfully created!' });
+                  }, function(error) {
+                    //otherwise display the error
+                    $scope.error = 'Unable to save sponsorship!\n' + error;
+                  });
+        }, function(error) {
+          //otherwise display the error
+          $scope.error = 'Unable to save sponsorship!\n' + error;
+        });
+
     };
 
 

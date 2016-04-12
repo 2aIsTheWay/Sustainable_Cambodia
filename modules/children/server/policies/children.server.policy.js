@@ -29,6 +29,9 @@ exports.invokeRolesPolicies = function () {
     }, {
       resources: '/api/children/:childrenId',
       permissions: '*'
+    }, {
+      resources: '/api/children/fundinglevel/:childrenId',
+      permissions: '*'
     }]
   }, {
     roles: ['user','guest'],
@@ -47,6 +50,9 @@ exports.invokeRolesPolicies = function () {
     }, {
       resources: '/api/children/:childrenId',
       permissions: ['get']
+    }, {
+      resources: '/api/children/fundinglevel/:childrenId',
+      permissions: '*'
     }]
   }]);
 };
