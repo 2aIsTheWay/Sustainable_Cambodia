@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 angular.module('donations').factory('Donations', ['$http',
   function($http) {
@@ -9,3 +9,4 @@ angular.module('donations').factory('Donations', ['$http',
     };
     return methods;
   }]);
+*/
