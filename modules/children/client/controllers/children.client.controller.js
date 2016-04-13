@@ -94,12 +94,23 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
     };
 
     $scope.createChild = function(isValid) {
+      console.log($scope.children);
+      $scope.childtocreate = {
+        firstName:                      $scope.children.firstName,
+        lastName:                       $scope.children.lastName,
+        gender:                         $scope.children.gender,
+        biography:                      $scope.children.biography,
+        eligibleForSponsorship:         $scope.children.eligibleForSponsorship,
+        sponsorshipType:                '0',
+        fundingLevel:                   '0',
+        dob:                            $scope.children.dob  
+      };
       $scope.error = null;
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'childrenForm');
         return false;
       }
-      $http.post('/api/children', $scope.children)
+      $http.post('/api/children', $scope.childtocreate)
               .then(function(response) {
                 //if the object is successfully saved redirect back to the list page
                 $state.go('children.list', { successMessage: 'Child succesfully created!' });

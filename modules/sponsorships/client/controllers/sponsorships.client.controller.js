@@ -3,7 +3,16 @@
 angular.module('sponsorships').controller('SponsorshipController', ['$scope','$http','$stateParams','$state','Authentication' ,'Sponsorship','Children',
   function($scope,$http, $stateParams,$state,Authentication ,Sponsorship, Children){
 
-
+     //used to find the child
+    $scope.loadChild = function() {
+      var id = $stateParams.childrenId;
+      Children.read(id)
+              .then(function(response) {
+                $scope.children = response.data;
+              }, function(error) {
+                $scope.error = 'Unable to retrieve child with id "' + id + '"\n' + error;
+              });
+    };
 
     $scope.find = function() {
       Sponsorship.getAll().then(function(response) {
@@ -99,7 +108,7 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       console.log('I do go here!');
       $scope.sponsorshipType = {
         sponsorshipType:$scope.sponsorshipTemp.sponsorshipType
-      };
+      }; 
       Children.updateFunding($stateParams.childrenId,$scope.sponsorshipType)
         .then(function(response) {
           $http.post('/api/'+id+'/sponsor/sponsorships', $scope.sponsorship)
@@ -112,11 +121,9 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
                   });
         }, function(error) {
           //otherwise display the error
-          $scope.error = 'Unable to save sponsorship!\n' + error;
+          $scope.error = 'Unable to sponsor child!\n' + error;
         });
-
     };
-
 
   }
 ]);

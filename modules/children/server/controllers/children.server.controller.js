@@ -62,12 +62,8 @@ exports.update = function (req, res) {
 exports.updateFunding = function (req, res) {
   var child = req.child;
   var sponsorshipType = req.body.sponsorshipType;
-
-  child.sponsorshipType = 0;
-
   var currentSponsorship = child.sponsorshipType;
   console.log('req.body.funds is ' + req.body.sponsorshipType);
-  res.json(child);
   if (child.eligibleForSponsorship) {
     if(sponsorshipType === 'full'){
       currentSponsorship = currentSponsorship + 2;

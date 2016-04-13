@@ -1,13 +1,11 @@
-<div class="row" ng-controller="SponsorshipController">
+<div class="row" ng-controller="SponsorshipController" ng-init="loadChild()">
   <div class="col-md-offset-1 col-md-10 formWrapper">
     <div class="page-header">
-      <h3>Create a Sponsorship</h3>
+      <h3>Create a Sponsorship For {{children.firstName}} {{children.lastName}}</h3>
 <!--To pass in the children ID use state params in the controller.  ng-submit should have ({ childrenId: children._id }) ? I think? -->
       <form name="sponsorshipForm" class="form-horizontal" ng-submit="createsponsorship(sponsorshipForm.$valid)">
         <!-- We need a form for begin/end date and payment type begin date defaults to now-->
         <fieldset>
-          <h1>Create a sponsorship type</h1>
-
           <div class="form-group" show-errors>
             <label for="PaymentType">Payment Type</label>
             <input name="name" type="number" ng-model="sponsorship.paymentType" id="Payment Type" class="form-control" placeholder="Payment Type" required>
@@ -32,7 +30,7 @@
 
           <div class="form-group" show-errors>
             <label for="monthlySubscription">Sponsorship Type</label><br><!--Hide button if it half sponsored already -->
-            <input name="name" type="radio" ng-model="sponsorshipTemp.sponsorshipType" id="Sponsorship Type" value="full" ng-if="child.sponsorshipType === 0" required>Full Sponsorship<br>
+            <input name="name" type="radio" ng-model="sponsorshipTemp.sponsorshipType" id="Sponsorship Type" value="full" required> Full Sponsorship<br>
             <input name="name" type="radio" ng-model="sponsorshipTemp.sponsorshipType" id="Sponsorship Type" value="half">Half Sponsorship<br>
             <div ng-messages="sponsorshipForm.monthlySubscription.$error" role="alert">
               <p class="help-block error-text" ng-message="required">This field is Required</p>
