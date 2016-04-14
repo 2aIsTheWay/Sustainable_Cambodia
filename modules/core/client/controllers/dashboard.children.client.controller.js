@@ -20,15 +20,21 @@ angular.module('core').controller('DashboardChildrenCtrl', ['$scope', 'Children'
 
   $scope.childrenGridOptions = {
     enableSorting: true,
-    
+    enableFiltering: true,
     columnDefs: [
       { name:'FirstName', field: 'firstName', cellTemplate: '<a href="/children/edit/{{row.entity._id}}">{{COL_FIELD}}</a>' },
       { name:'LastName', field: 'lastName', cellTemplate: '<a href="/children/edit/{{row.entity._id}}">{{COL_FIELD}}</a>' },
-      { name:'Gender', field: 'gender' },
+      { name:'Gender', field: 'gender', filter: {
+          type: uiGridConstants.filter.SELECT,
+          selectOptions: [ { value: 'F', label: 'F' }, { value: 'M', label: 'M' } ]
+      } },
       { name:'DOB', field: 'dob' },
       { name:'Bio', field: 'biography' },
       { name:'BioUpdated', field: 'biographyUpdated' },
-      { name:'SpEligible', field: 'eligibleForSponsorship' },
+      { name:'SpEligible', field: 'eligibleForSponsorship', filter: {
+          type: uiGridConstants.filter.SELECT,
+          selectOptions: [ { value: 'true', label: 'true' }, { value: 'false', label: 'false' } ]
+      } },
       { name:'FundingType', field: 'fundingType' },
       { name:'FundingLevel', field: 'fundingLevel' },
       { name:'Updated', field: 'dateUpdated' },
