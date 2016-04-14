@@ -1,3 +1,4 @@
+/*font styling*/
 @font-face {
   font-family: 'Franklin Gothic Book';
   font-style:  normal;
@@ -41,11 +42,14 @@ hr {
     padding: 0; 
 }
 
+/*To accomodate for the header space*/
 body {
     background-color: #FFFFFF;
     margin-top: 120px;
 }
 
+
+/*Documentation for button style*/
 .btn {
   border-radius: 0;
 }
@@ -62,9 +66,55 @@ body {
   border-color: #388635;
 }
 
+/*???*/
 .content {
   margin-top: 50px;
 }
+
+/*Documentation for a green div*/
+.green-block {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: #388635;
+  text-align:center;
+}
+
+.green-block > h1{
+  color: #ffffff;
+}
+
+.green-block > p{
+  color: #ffffff;
+}
+
+.placeholder-block-1 {
+  height: 429px;
+  background-image: url('placeholderimage1.png');
+}
+
+/*Documentation for a navbar style*/
+.navbar {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
+  color: #38aaa7;  /*Sets the text hover color on navbar*/
+}
+
+.navbar .navbar-brand > h1 > h2 > h3 > h4 > h5 >li > a {
+  color: #000000; /*Change active text color here*/
+}
+
+.navbar .navbar-nav > li > a {
+  padding: 70px 15px 20px 15px;
+  color: #000000; /*Change active text color here*/
+}
+
+.navbar .navbar-inner {
+    height: 100px;  
+}
+
 .undecorated-link:hover {
   text-decoration: none;
 }
@@ -104,26 +154,3 @@ a:hover .header-profile-image {
   height: 300px;
   width: 350px;
 }
-
-.navbar {
-  background: #ffffff;
-  border-color: #ffffff;
-}
-
-.navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
-  color: #38aaa7;  /*Sets the text hover color on navbar*/
-}
-
-.navbar .navbar-brand > h1 > h2 > h3 > h4 > h5 >li > a {
-  color: #000000; /*Change active text color here*/
-}
-
-.navbar .navbar-nav > li > a {
-  padding: 70px 15px 20px 15px;
-  color: #000000; /*Change active text color here*/
-}
-
-.navbar .navbar-inner {
-    height: 100px;  
-}
-
