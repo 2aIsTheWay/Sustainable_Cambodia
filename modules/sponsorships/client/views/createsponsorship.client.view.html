@@ -14,6 +14,14 @@
             </div>
           </div>
           <!--<div class="form-group" show-errors>
+            <label for="PaymentType">Payment Type</label>
+            <input name="paymentType" type="radio" ng-model="sponsorshipTemp.paymentType" id="Payment Type"  placeholder="Payment Type" value="1" required>1
+            <input name="paymentType" type="radio" ng-model="sponsorshipTemp.paymentType" id="Payment Type"  placeholder="Payment Type" value="2" >2
+            <div ng-messages="sponsorshipForm.paymentType.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Payment Type is Required</p>
+            </div>
+          </div>-->
+          <!--<div class="form-group" show-errors>
             <label for="BeginDate">Begin Date</label>
             <input name="name" type="text" ng-model="sponsorship.beginDate" id="Begin Date" class="form-control" placeholder="Begin Date" required>
             <div ng-messages="sponsorshipForm.beginDate.$error" role="alert">
@@ -21,8 +29,11 @@
             </div>
           </div>-->
           <div class="form-group" show-errors>
-            <label for="monthlySubscription">Monthly Subscription</label>
-            <input name="name" type="text" ng-model="sponsorship.monthlySubscription" id="Monthly Subscription" class="form-control" placeholder="true or false" required>
+            <label for="name">Monthly Subscription</label>
+
+              <input name="name" type="radio" ng-model="sponsorshipTemp.monthlySubscription" id="Monthly Subscription" value="true">Yes!!!
+              <input name="name" type="radio" ng-model="sponsorshipTemp.monthlySubscription" id="Monthly Subscription" value="false">No
+
             <div ng-messages="sponsorshipForm.monthlySubscription.$error" role="alert">
               <p class="help-block error-text" ng-message="required">This field is Required</p>
             </div>
@@ -30,8 +41,8 @@
 
           <div class="form-group" show-errors>
             <label for="monthlySubscription">Sponsorship Type</label><br><!--Hide button if it half sponsored already -->
-            <input name="name" type="radio" ng-model="sponsorshipTemp.sponsorshipType" id="Sponsorship Type" value="full" required> Full Sponsorship<br>
-            <input name="name" type="radio" ng-model="sponsorshipTemp.sponsorshipType" id="Sponsorship Type" value="half">Half Sponsorship<br>
+            <input name="monthlySubscription" type="radio" ng-model="sponsorshipTemp.sponsorshipType" id="Sponsorship Type" value="full" required> Full Sponsorship<br>
+            <input name="monthlySubscription" type="radio" ng-model="sponsorshipTemp.sponsorshipType" id="Sponsorship Type" value="half">Half Sponsorship<br>
             <div ng-messages="sponsorshipForm.monthlySubscription.$error" role="alert">
               <p class="help-block error-text" ng-message="required">This field is Required</p>
             </div>

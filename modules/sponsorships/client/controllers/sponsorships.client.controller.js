@@ -86,6 +86,19 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
 
       var id = Authentication.user._id;
       var sponsorshipLength = $scope.sponsorshipTemp.sponsorshipType;
+      var sponsorshipContinue = $scope.sponsorshipTemp.monthlySubscription;
+      var sponsorshipPaymentType = $scope.sponsorshipTemp.paymentType;
+      console.log($scope.sponsorshipTemp.monthlySubscription);
+      if(sponsorshipContinue === 'true'){
+        $scope.sponsorship.monthlySubscription=true;
+
+      }
+      else if(sponsorshipContinue === 'false'){
+        $scope.sponsorship.monthlySubscription = false;
+      }
+      else{
+        console.log('monthlySubscription has a different option');
+      }
 
       if(sponsorshipLength === 'full'){
         $scope.sponsorship.endDate = new Date(beginDate.getFullYear() + 1, beginDate.getMonth(),beginDate.getDay());
@@ -99,6 +112,16 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
         console.log('something happened?');
         return false;
       }
+      console.log($scope.sponsorshipTemp.paymentType);
+      /*if(sponsorshipPaymentType === 1){
+        $scope.sponsorship.paymentType = 1;
+      }
+      else if(sponsorshipPaymentType === 2){
+        $scope.sponsorshipPaymentType = 2;
+      }
+      else{
+      console.log('Error occured with the sponsorship paymentType')
+    }*/
       $scope.sponsorship.user_id = id;//sets the id of sponsorship to that
       $scope.sponsorship.child_id = $stateParams.childrenId;
       $scope.sponsorship.beginDate = beginDate;
