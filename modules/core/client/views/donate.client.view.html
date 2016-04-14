@@ -27,22 +27,22 @@
 
         <!-- Donate -->
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-4" ng-controller="DonateController">
                 <h3>Donation Information</h3>
                 <hr></hr>
                 <p>Donation Amount (US$)
                 </p>
-                <button type="button" class="btn btn-primary btn-lg btn-block">$100.00</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block">$50.00</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block">$25.00</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block">$10.00</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="setMoney(100)">$100.00</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="setMoney(50)">$50.00</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="setMoney(25)">$25.00</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="setMoney(10)">$10.00</button>
                 <div class="col-xs-12" style="height:5px;"></div>
                 <div class="input-group">
                     <span class="input-group-btn">
                         <button class="btn btn-primary btn-lg" type="button">Other</button>
                     </span>
                     <span class="input-group-addon">$</span>
-                    <input type="text" class="form-control input-lg" placeholder="Custom Amount">
+                    <input type="text" class="form-control input-lg" ng-model="donation" placeholder="Custom Amount">
                     <span class="input-group-addon">.00</span>
                 </div>
                 <div class="checkbox">
@@ -66,7 +66,7 @@
 
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-4" ng-controller="DonateController">
                 <h3>Payment Information</h3>
                 <hr></hr>
                 <h4>Select a Payment Type</h4>
