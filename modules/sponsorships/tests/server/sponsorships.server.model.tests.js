@@ -30,12 +30,12 @@ describe('Sponsorship Model and CRUD Unit Tests:', function() {
    */
   beforeEach(function() {
     sponsorship = {
-      "sponsorship_id": "56ef04541895f2f81d10964e",
-      "user_id": "56c76619cb94902803a88de5",
-      "beginDate": "Sat Jul 12 1975 07:58:32 GMT-0400",
-      "endDate": "Fri Jun 11 1999 13:59:59 GMT-0400",
-      "paymentType": 1,
-      "monthlySubscription": true
+      'sponsorship_id': '56ef04541895f2f81d10964e',
+      'user_id': '56c76619cb94902803a88de5',
+      'beginDate': 'Sat Jul 12 1975 07:58:32 GMT-0400',
+      'endDate': 'Fri Jun 11 1999 13:59:59 GMT-0400',
+      'paymentType': 1,
+      'monthlySubscription': true
     };
 
   });

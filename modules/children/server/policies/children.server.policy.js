@@ -51,8 +51,12 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/children/:childrenId',
       permissions: ['get']
     }, {
+      resources: '/api/children/carousel',
+      permissions: ['get']
+    }, {
       resources: '/api/children/fundinglevel/:childrenId',
       permissions: '*'
+
     }]
   }]);
 };
