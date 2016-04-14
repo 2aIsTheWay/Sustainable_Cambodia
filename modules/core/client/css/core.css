@@ -1,3 +1,37 @@
+@font-face {
+  font-family: 'Franklin Gothic Book';
+  font-style:  normal;
+  font-weight: 400;
+  src: url(FRABK.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  font-style:  normal;
+  font-weight: 400;
+  src: url(MYRIADPROREGULAR.woff) format('woff');
+}
+
+h1, h2, h3, h4, h5, h6, li {
+    font-family: 'Franklin Gothic Book';
+}
+p, div {
+    font-family: 'Myriad Pro';
+}
+
+body {
+    background-color: #FFFFFF;
+    margin-top: 120px;
+}
+
+.btn {
+  border-radius: 0;
+  border-color: #388635;
+}
+.btn-success {
+  background: #388635;
+}
+
 .content {
   margin-top: 50px;
 }
@@ -34,4 +68,31 @@ a:hover .header-profile-image {
 }
 .has-error .help-inline.error-text {
   display: inline;
+}
+
+.dropdown-menu table {
+  height: 300px;
+  width: 350px;
+}
+
+.navbar {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
+  color: #38aaa7;  /*Sets the text hover color on navbar*/
+}
+
+.navbar .navbar-brand > h1 > h2 > h3 > h4 > h5 >li > a {
+  color: #000000; /*Change active text color here*/
+}
+
+.navbar .navbar-nav > li > a {
+  padding: 70px 25px 20px 25px;
+  color: #000000; /*Change active text color here*/
+}
+
+.navbar .navbar-inner {
+    height: 100px;  
 }

@@ -1,3 +1,7 @@
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript" 
+        src="bower_components/angular-payments/lib/angular-payments.js">
+</script>
 <section>
 
     <!-- Page Content -->
@@ -15,7 +19,12 @@
             </div>
         </div>
         <!-- /.row -->
-
+        <form stripe-form="stripeCallback">
+        <input ng-model="number" placeholder="Card Number" />
+        <input ng-model="expiry" placeholder="Expiration" />
+        <input ng-model="cvc" placeholder="CVC" />
+        <button type="submit">Submit</button>
+        </form>
         <!-- Donate blurb -->
 
         <div class="row">
@@ -24,7 +33,6 @@
             </div>
         </div>   
         <!-- /.row -->
-
         <!-- Donate -->
         <div class="row">
             <div class="col-sm-4" ng-controller="DonateController">
