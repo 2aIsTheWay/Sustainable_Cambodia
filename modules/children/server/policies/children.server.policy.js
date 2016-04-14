@@ -15,20 +15,44 @@ exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin','superadmin'],
     allows: [{
+      resources: '/api/eligiblechildren',
+      permissions: '*'
+    }, {
       resources: '/api/children',
       permissions: '*'
     }, {
+      resources: '/api/children/picture/:childrenId',
+      permissions: '*'
+    }, {
+      resources: '/api/children/additionalpictures/:childrenId',
+      permissions: '*'
+    }, {
       resources: '/api/children/:childrenId',
+      permissions: '*'
+    }, {
+      resources: '/api/children/fundinglevel/:childrenId',
       permissions: '*'
     }]
   }, {
     roles: ['user','guest'],
     allows: [{
-      resources: '/api/children',
+      resources: '/api/eligiblechildren',
       permissions: ['get']
+    }, {
+      resources: '/api/children',
+      permissions: ''
+    }, {
+      resources: '/api/children/picture/:childrenId',
+      permissions: ''
+    }, {
+      resources: '/api/children/additionalpictures/:childrenId',
+      permissions: ''
     }, {
       resources: '/api/children/:childrenId',
       permissions: ['get']
+    }, {
+      resources: '/api/children/fundinglevel/:childrenId',
+      permissions: '*'
     }]
   }]);
 };

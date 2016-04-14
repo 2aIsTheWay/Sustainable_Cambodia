@@ -1,9 +1,28 @@
 'use strict';
 
-angular.module('children').controller('ChildrenController', ['$scope', '$http', '$stateParams', '$state', '$filter', 'Children',
-  function($scope, $http, $stateParams, $state, $filter, Children){
-    $scope.find = function() {
+angular.module('children').controller('ChildrenController', ['$scope', '$http', '$stateParams', '$state', '$filter', 'Children', 'Authentication',
+  function($scope, $http, $stateParams, $state, $filter, Children, Authentication){
+
+    $scope.chooseDisplay = function () {
+      if ($scope.isAdmin()){
+        $scope.findAll();
+      }
+      else {
+        $scope.findEligible();
+      }
+    };
+
+    $scope.findAll = function() {
       Children.getAll().then(function(response) {
+        $scope.children = response.data;
+        $scope.buildPager();
+      }, function(error) {
+        $scope.error = 'Unable to retrieve children\n' + error;
+      });
+    };
+
+    $scope.findEligible = function() {
+      Children.getAllEligible().then(function(response) {
         $scope.children = response.data;
         $scope.buildPager();
       }, function(error) {
@@ -20,7 +39,8 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
 
     $scope.figureOutItemsToDisplay = function () {
       $scope.filteredItems = $filter('filter')($scope.children, {
-        $: $scope.search
+        firstName: $scope.search,
+        gender: $scope.genderSearch
       });
       $scope.filterLength = $scope.filteredItems.length;
       var begin = (($scope.currentPage - 1) * $scope.itemsPerPage);
@@ -37,6 +57,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       Children.read(id)
               .then(function(response) {
                 $scope.children = response.data;
+                $scope.managePhotos($scope.children.primaryPhoto, $scope.children.additionalPhotos);
               }, function(error) {
                 $scope.error = 'Unable to retrieve child with id "' + id + '"\n' + error;
               });
@@ -61,7 +82,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
     $scope.updateChild = function(isValid) {
       $scope.error=null;
       if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'articleForm');
+        $scope.$broadcast('show-errors-check-validity', 'childrenForm');
         return false;
       }
       Children.updateChild($stateParams.childrenId, $scope.children)
@@ -73,12 +94,23 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
     };
 
     $scope.createChild = function(isValid) {
+      console.log($scope.children);
+      $scope.childtocreate = {
+        firstName:                      $scope.children.firstName,
+        lastName:                       $scope.children.lastName,
+        gender:                         $scope.children.gender,
+        biography:                      $scope.children.biography,
+        eligibleForSponsorship:         $scope.children.eligibleForSponsorship,
+        sponsorshipType:                '0',
+        fundingLevel:                   '0',
+        dob:                            $scope.children.dob  
+      };
       $scope.error = null;
       if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'articleForm');
+        $scope.$broadcast('show-errors-check-validity', 'childrenForm');
         return false;
       }
-      $http.post('/api/children', $scope.children)
+      $http.post('/api/children', $scope.childtocreate)
               .then(function(response) {
                 //if the object is successfully saved redirect back to the list page
                 $state.go('children.list', { successMessage: 'Child succesfully created!' });
@@ -88,18 +120,64 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
               });
     };
 
-    $scope.remove = function() {
+    $scope.changeEligibility = function(eligibility) {
+      $scope.children.eligibleForSponsorship=eligibility;
+      Children.updateChild($stateParams.childrenId, $scope.children)
+        .then(function(response) {
+          $state.go('children.list', { successMessage: 'Child eligibility updated!' });
+        }, function(error) {
+          $scope.error = 'Unable to update child!\n' + error;
+        });
+    };
+
+    $scope.managePhotos = function(primary, additional) {
+      $scope.primaryPhoto = {
+        image : primary.split(',')[0],
+        date : primary.split(',')[1]
+      };
+      $scope.additionalPhotos = [];
+      var i = 0;
+      while (i<additional.length){
+        var additionalPhoto = {
+          image : additional[i].split(',')[0],
+          date : additional[i].split(',')[1]
+        };
+        $scope.additionalPhotos.push(additionalPhoto);
+        i++;
+      }
+    };
+
+    $scope.removephoto = function(photo) {
       $scope.error = null;
-      Children.deleteChild($stateParams.childrenId)
+      var id = $stateParams.childrenId;
+      var index = $scope.additionalPhotos.indexOf(photo);
+      $scope.photoinfo = {
+        photoimage: photo.image,
+        photoindex: index
+      };
+      console.log($scope.photoinfo);
+      $http.put('/api/children/additionalpictures/' + id, $scope.photoinfo)
       .then(function(response) {
-        $state.go('children.list', { successMessage: 'Child removed from database' });
+        $scope.findOne();
       }, function(error) {
-        $scope.error = 'Unable to remove child!\n' + error;
+        $scope.error = 'Unable to remove additional photo!\n' + error;
       });
     };
 
-    $scope.isAuthorized = function () {
-      return true;
+    $scope.isAdmin = function() {
+      $scope.roles=Authentication.user.roles;
+      if(Authentication.user) {
+        var indexOfRole = $scope.roles.indexOf('admin');
+        if (indexOfRole !== -1) {
+          return true;
+        }
+        else{
+          return false;
+        }
+      }
+      else{
+        return false;
+      }
     };
 
   }]);
