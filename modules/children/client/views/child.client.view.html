@@ -17,31 +17,55 @@
         <div class="row">
                 <!-- Child Image -->
 		<div id="wrapper" style="width:100%; text-align:center">
-                <img ng-src="modules/children/client/img/uploads/{{children.primaryPhoto | split:',':0 }}" alt="{{child.primaryPhoto}}" style = "height:200px"></img>
+                <img ng-src="modules/children/client/img/uploads/{{primaryPhoto.image}}" alt="{{child.primaryPhoto}}" style = "height:200px"></img>
 		</div>
-    <div id="wrapper" style="width:100%; text-align:center">
-      {{children.primaryPhoto | split:',':1 }}
+    <div id="wrapper" style="width:100%; text-align:center" ng-hide="uploader.queue.length">
+      {{primaryPhoto.date | date:MM/dd/YYYY}}
     </div>
-
       <div id="wrapper" style="width:100%; text-align:center">
-			<button type="submit" class="btn btn-primary"> Sponsor Me!</button><!--TODO:Need to transfer child id to sponsorship module-->
-     			<button type="submit" class="btn btn-primary" ui-sref="children.edit({ childrenId: children._id })">Edit this child</button>
-     			 <a class="btn btn-danger" ng-click="remove()">
-         		 	<i class="glyphicon glyphicon-trash"></i>
-          			Remove child
-     			 </a>
+  			<button type="submit" class="btn btn-primary" ng-if="children.eligibleForSponsorship" ui-sref="sponsorship.create({ childrenId: children._id,childrenFirstName: children.firstName, childrenLastName: children.lastName })"> Sponsor Me!</button><!--TODO:Need to transfer child id to sponsorship module-->
+       	<button type="submit" class="btn btn-primary" ng-show="isAdmin()" ui-sref="children.edit({ childrenId: children._id })">Edit this child</button>
+  			<button type="submit" class="btn btn-primary" ng-show="isAdmin()" ui-sref="children.picture({ childrenId: children._id })">Edit primary photo</button>
+        <div ng-show="isAdmin()" >
+       			 <a class="btn btn-danger" ng-show="children.eligibleForSponsorship" ng-click="changeEligibility('false')">
+           		 	<i class="glyphicon glyphicon-trash"></i>
+            			Make Uneligibile
+       			 </a>
+             <a class="btn btn-primary" ng-hide="children.eligibleForSponsorship" ng-click="changeEligibility('true')">
+                  Make Eligibile
+       			 </a>
+        </div>
       </div>
 		</div>
 		</div>
-                <hr>
-                <!-- Post Content -->
+    <hr>
+                <!-- Biography and additional photos -->
 		<div id="wrapper" style="width:100%; text-align:center">
-		<h2>Biography</h2>
+		    <h2>Biography</h2>
 		</div>
-                <p class="lead">{{children.biography}}
-                <hr>
-            </div>
-        </div>
+      <p class="lead">{{children.biography}}
+    <hr>
+  <div id="wrapper" style="width:100%; text-align:center">
+		  <h2>Additional Photos</h2>
+	</div>
+  <div ng-repeat="photo in additionalPhotos" >
+    <div class="col-md-4 text-center">
+      <div id="wrapper" style="width:100%; text-align:center">
+                  <img ng-src="modules/children/client/img/uploads/{{photo.image}}" alt="{{photo}}" style = "height:200px"></img>
+      </div>
+      <div id="wrapper" style="width:100%; text-align:center">
+        {{photo.date | date:MM/dd/YYYY}}
+      </div>
+      <div id="wrapper" style="width:100%; text-align:center">
+        <a class="btn btn-danger" ng-show="isAdmin()" ng-click="removephoto(photo)">
+           <i class="glyphicon glyphicon-trash"></i>
+             Remove photo
+        </a>
+     </div>
+    </div>
+  </div>
+</div>
+</br>
         <!-- Footer -->
         <footer>
             <div class="row">

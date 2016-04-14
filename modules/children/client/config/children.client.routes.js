@@ -25,6 +25,13 @@ angular.module('children').config(['$stateProvider',
         url: '/:childrenId',
         templateUrl: 'modules/children/client/views/child.client.view.html'
       })
+      .state('children.picture', {
+        url: '/picture/:childrenId',
+        templateUrl: 'modules/children/client/views/child.client.edit.picture.view.html',
+        data: {
+          roles: ['admin']
+        }
+      })
       .state('children.edit', {
         url: '/edit/:childrenId',
         templateUrl: 'modules/children/client/views/child.client.edit.view.html',
