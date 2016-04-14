@@ -21,25 +21,33 @@ angular.module('core').controller('DashboardChildrenCtrl', ['$scope', 'Children'
   $scope.childrenGridOptions = {
     enableSorting: true,
     enableFiltering: true,
+    enableHorizontalScrollbar: 1,
+    enableVerticalScrollbar: 1, 
+    showGridFooter: true,
     columnDefs: [
-      { name:'FirstName', field: 'firstName', cellTemplate: '<a href="/children/edit/{{row.entity._id}}">{{COL_FIELD}}</a>' },
-      { name:'LastName', field: 'lastName', cellTemplate: '<a href="/children/edit/{{row.entity._id}}">{{COL_FIELD}}</a>' },
-      { name:'Gender', field: 'gender', filter: {
+      { displayName:'First Name', field: 'firstName', cellTemplate: '<a href="/children/edit/{{row.entity._id}}">{{COL_FIELD}}</a>' },
+      { displayName:'Last Name', field: 'lastName', cellTemplate: '<a href="/children/edit/{{row.entity._id}}">{{COL_FIELD}}</a>' },
+      { displayName:'Gender', field: 'gender', filter: {
         type: uiGridConstants.filter.SELECT,
         selectOptions: [ { value: 'F', label: 'F' }, { value: 'M', label: 'M' } ]
       } },
-      { name:'DOB', field: 'dob' },
-      { name:'Bio', field: 'biography' },
-      { name:'BioUpdated', field: 'biographyUpdated' },
-      { name:'SpEligible', field: 'eligibleForSponsorship', filter: {
+      { displayName:'DOB', field: 'dob' },
+      { displayName:'Bio', field: 'biography' },
+      { displayName:'Bio Updated', field: 'biographyUpdated' },
+      { displayName:'Sp Eligible', field: 'eligibleForSponsorship', filter: {
         type: uiGridConstants.filter.SELECT,
         selectOptions: [ { value: 'true', label: 'true' }, { value: 'false', label: 'false' } ]
       } },
-      { name:'FundingType', field: 'fundingType' },
-      { name:'FundingLevel', field: 'fundingLevel' },
-      { name:'Updated', field: 'dateUpdated' },
+      { displayName:'Funding Type', field: 'fundingType' },
+      { displayName:'Funding Level', field: 'fundingLevel' },
+      { displayName:'Updated', field: 'dateUpdated' },
       //{ name:'Edit', cellTemplate: '<span align="center"><a class="btn btn-primary" href="/children/edit/{{row.entity._id}}">Edit</a></span>' }
-    ],    
+    ],
+    enableGridMenu: true,
+    enableSelectAll: true,
+    exporterMenuPdf: false,
+    exporterCsvFilename: 'SC_Children.csv',
+    exporterCsvLinkElement: angular.element(document.querySelectorAll('.custom-csv-link-location')),
     onRegisterApi: function(gridApi) {
       $scope.gridApi = gridApi;
     }
