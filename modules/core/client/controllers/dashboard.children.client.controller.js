@@ -4,7 +4,7 @@
 // This means we are registering dependencies for the controller. Dragon warnings: $scope need to come first. Always. Also, the first time you see the word
 // Children it is a dependency injection and requires single quotes. It appears the second time as parameter being passed into he anonymous function and 
 // does not require single quotes.
-angular.module('core').controller('DashboardChildrenCtrl', ['$scope', 'Children', function ($scope,Children) {
+angular.module('core').controller('DashboardChildrenCtrl', ['$scope', 'Children', 'uiGridConstants', function ($scope,Children,uiGridConstants) {
 
   // Now that we hqve access to the Children API, we need a function to call response.data to access it and populate a variable with the results.
   // That's what this function does. It calls the getCarousel factory which calls an $http query to route /api/children/carousel and checks authoization
@@ -12,21 +12,31 @@ angular.module('core').controller('DashboardChildrenCtrl', ['$scope', 'Children'
   // findCarousel --> factory --> route --> authorization policy --> server controller --> response.data --> populated var for our use (we called it children)
   $scope.initChildren = function() {
     Children.getAll().then(function(response) {
-      $scope.children = response.data;
+      $scope.childrenGridOptions.data = response.data;
     }, function(error) {
       $scope.error = 'Unable to retrieve children\n' + error;
     });
   };
 
-  $scope.gridOptions = {
+  $scope.childrenGridOptions = {
     enableSorting: true,
+    
     columnDefs: [
-      { name:'firstName', field: 'first-name' },
-      { name:'1stFriend', field: 'friends[0]' },
-      { name:'city', field: 'address.city' },
-      { name:'getZip', field: 'getZip()', enableCellEdit:false }
-    ],
-    data : $scope.children
+      { name:'FirstName', field: 'firstName', cellTemplate: '<a href="/children/edit/{{row.entity._id}}">{{COL_FIELD}}</a>' },
+      { name:'LastName', field: 'lastName', cellTemplate: '<a href="/children/edit/{{row.entity._id}}">{{COL_FIELD}}</a>' },
+      { name:'Gender', field: 'gender' },
+      { name:'DOB', field: 'dob' },
+      { name:'Bio', field: 'biography' },
+      { name:'BioUpdated', field: 'biographyUpdated' },
+      { name:'SpEligible', field: 'eligibleForSponsorship' },
+      { name:'FundingType', field: 'fundingType' },
+      { name:'FundingLevel', field: 'fundingLevel' },
+      { name:'Updated', field: 'dateUpdated' },
+      //{ name:'Edit', cellTemplate: '<span align="center"><a class="btn btn-primary" href="/children/edit/{{row.entity._id}}">Edit</a></span>' }
+    ],    
+    onRegisterApi: function(gridApi) {
+      $scope.gridApi = gridApi;
+    }
   };
 
 }]);
