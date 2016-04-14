@@ -15,7 +15,11 @@ var SponsorshipsSchema = new Schema({
   beginDate:  Date,
   endDate:    Date,
   paymentType:  Number,
+  userEmail:  String,
+  childFirstName: String,
+  childLastName: String,
   monthlySubscription:  Boolean
+
 });
 
 mongoose.model('Sponsorships', SponsorshipsSchema);
