@@ -31,8 +31,8 @@
     	</accordion-group>
     	<accordion-group is-open="true">
     	  <accordion-heading>Donations<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></accordion-heading>
-      	  <div ng-controller="DashboardDonationsCtrl" ng-init="initChildren()">
-  		  	<div ui-grid="{ data: children }" class="ui-grid"></div>
+      	  <div ng-controller="DashboardDonationsCtrl" ng-init="initDonations()">
+  		  	<div ui-grid="{ data: donations }" class="ui-grid"></div>
 		  </div>
     	</accordion-group>
 	  </accordian>
