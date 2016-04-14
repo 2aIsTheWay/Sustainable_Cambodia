@@ -70,9 +70,9 @@
                 <h3>Payment Information</h3>
                 <hr></hr>
                 <h4>Select a Payment Type</h4>
-                <button class="btn" ng-click="collapsedCC = !collapsedCC; collapsedPP = true; collapsedCheck = true">Credit Card</button>
-                <button class="btn" ng-click="collapsedPP = !collapsedPP; collapsedCC = true; collapsedCheck = true">PayPal</button>
-                <button class="btn" ng-click="collapsedCheck = !collapsedCheck; collapsedCC = true; collapsedPP = true">Check</button>
+                <button class="btn" ng-click="collapsedCC = false; collapsedPP = true; collapsedCheck = true">Credit Card</button>
+                <button class="btn" ng-click="collapsedPP = false; collapsedCC = true; collapsedCheck = true">PayPal</button>
+                <button class="btn" ng-click="collapsedCheck = false; collapsedCC = true; collapsedPP = true">Check</button>
                 <div collapse="collapsedCC">
                     <label for="country">Name as it appears on the card</label>
                     <input type="text" class="form-control" id="country">
