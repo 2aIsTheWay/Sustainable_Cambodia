@@ -9,6 +9,9 @@ angular.module('children').factory('Children', ['$http',
       getAll: function() {
         return $http.get('/api/children');
       },
+      getCarousel: function() {
+        return $http.get('api/children/carousel');
+      },
       read: function(id) {
         return $http.get('/api/children/' + id);
       },

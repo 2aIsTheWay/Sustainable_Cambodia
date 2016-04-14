@@ -114,3 +114,13 @@ exports.sponsorshipUserID = function (req, res, next, id) {
     next();
   });
 };
+
+exports.gridList = function (req, res) {
+  Sponsorships.find().exec(function(err, Sponsorships) {
+    if (err) {
+      return res.status(400).send(err);
+    } else {
+      res.json(Sponsorships);
+    }
+  });
+};
