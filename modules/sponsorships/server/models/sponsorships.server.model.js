@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
  * Sponsorships Schema
  */
 var SponsorshipsSchema = new Schema({
-  child_id:   Schema.Types.ObjectId,
+  child_id:   String,
   user_id:    String,
   beginDate:  Date,
   endDate:    Date,

@@ -4,6 +4,10 @@ var childrenPolicy = require('../policies/children.server.policy'),
 
 module.exports = function(app) {
 
+
+  app.route('/api/eligiblechildren').all(childrenPolicy.isAllowed)
+    .get(children.listEligible);
+
   app.route('/api/children/carousel').all(childrenPolicy.isAllowed)
   	.get(children.carouselList);
 
@@ -15,6 +19,15 @@ module.exports = function(app) {
     .get(children.read)
     .delete(children.delete)
     .put(children.update);
+
+  app.route('/api/children/picture/:childrenId').all(childrenPolicy.isAllowed)
+    .post(children.changePrimaryPhoto);
+
+  app.route('/api/children/additionalpictures/:childrenId').all(childrenPolicy.isAllowed)
+    .put(children.removeAdditionalPhoto);
+
+  app.route('/api/children/fundinglevel/:childrenId').all(childrenPolicy.isAllowed)
+    .put(children.updateFunding);
 
   app.param('childrenId', children.childrenByID);
 
