@@ -1,16 +1,7 @@
 <section>
-	<!-- Logo -->
-	<div class="col-md-6">
-        	<center>
-            <img class="img-responsive" src="http://www.sustainablecambodia.org/Images/PageTopLogoA.gif" alt=""></img>
-          </center>
-	</div>
-    <!-- Header Carousel -->
-    <div></div>
-
 <div class="container col-lg-12">    
 	<div ng-controller="CarouselCtrl" ng-init="findCarousel()">
-      <div style="height: 505px">
+      <div style="height: 615px">
         <carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
           <slide ng-repeat="slide in slides track by slide.id" index="slide.id">
             <div><img ng-src="{{slide.image}}" style="margin:auto;"></div>
@@ -27,11 +18,7 @@
 
         <!-- Marketing Icons Section -->
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    Welcome to Sustainable Cambodia
-                </h1>
-            </div>
+            
             <div class="col-md-12 center-block">
                   <a class="btn btn-lg btn-success btn-block" href="/children"> Sponsor a Child</a>
             </div>

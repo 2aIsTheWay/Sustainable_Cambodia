@@ -18,7 +18,16 @@ angular.module('core').controller('DashboardChildrenCtrl', ['$scope', 'Children'
     });
   };
 
-
+  $scope.gridOptions = {
+    enableSorting: true,
+    columnDefs: [
+      { name:'firstName', field: 'first-name' },
+      { name:'1stFriend', field: 'friends[0]' },
+      { name:'city', field: 'address.city' },
+      { name:'getZip', field: 'getZip()', enableCellEdit:false }
+    ],
+    data : $scope.children
+  };
 
 }]);
 // Don't forget the closing square bracket on the line above to close the dependency injection.
