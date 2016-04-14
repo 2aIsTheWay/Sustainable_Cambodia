@@ -2,21 +2,43 @@
   font-family: 'Franklin Gothic Book';
   font-style:  normal;
   font-weight: 400;
-  src: url(FRABK.woff) format('woff');
+  src: url(FRABK.woff?#iefix) format('woff');
 }
 
 @font-face {
   font-family: 'Myriad Pro';
   font-style:  normal;
   font-weight: 400;
-  src: url(MYRIADPROREGULAR.woff) format('woff');
+  src: url(MYRIADPROREGULAR.woff?#iefix) format('woff');
 }
 
 h1, h2, h3, h4, h5, h6, li {
     font-family: 'Franklin Gothic Book';
 }
+
+h1 {
+  color: #388635;
+}
+
+h2 {
+  color: #38aaa7;
+}
+
+h3 {
+  color: #bac115;
+}
+
 p, div {
     font-family: 'Myriad Pro';
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #38aaa7;
+    margin: 1em 0;
+    padding: 0; 
 }
 
 body {
@@ -26,10 +48,18 @@ body {
 
 .btn {
   border-radius: 0;
-  border-color: #388635;
 }
 .btn-success {
   background: #388635;
+}
+
+.btn-primary {
+  background: #125c64;
+  border-color: #125c64;
+}
+
+.btn-default {
+  border-color: #388635;
 }
 
 .content {
@@ -89,10 +119,11 @@ a:hover .header-profile-image {
 }
 
 .navbar .navbar-nav > li > a {
-  padding: 70px 25px 20px 25px;
+  padding: 70px 15px 20px 15px;
   color: #000000; /*Change active text color here*/
 }
 
 .navbar .navbar-inner {
     height: 100px;  
 }
+
