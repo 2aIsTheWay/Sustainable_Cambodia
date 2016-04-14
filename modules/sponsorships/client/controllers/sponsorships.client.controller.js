@@ -104,12 +104,20 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       $scope.sponsorship.beginDate = beginDate;
       //TODO:Before I post I need to get the chilrdenID somehow.
 
+      $scope.sponsorship.childFirstName = $scope.children.firstName;//$stateParams.childrenFirstName;
+      //console.log($scope.sponsorship.childFirstName);
+      $scope.sponsorship.childLastName = $scope.children.lastName;
+      //console.log($scope.sponsorship.childLastName);
+      $scope.sponsorship.userEmail = Authentication.user.username;
+      //console.log($scope.sponsorship.userEmail);
+
+
       //post to the sponsorship API
       console.log('I do go here!');
       $scope.sponsorshipType = {
         sponsorshipType:$scope.sponsorshipTemp.sponsorshipType
-      }; 
-      Children.updateFunding($stateParams.childrenId,$scope.sponsorshipType)
+      };
+      Children.updateFunding($stateParams.childrenId,$scope.sponsorshipType)//there is an error here idk what it is
         .then(function(response) {
           $http.post('/api/'+id+'/sponsor/sponsorships', $scope.sponsorship)
                   .then(function(response) {

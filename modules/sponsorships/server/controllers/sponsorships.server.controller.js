@@ -15,6 +15,7 @@ exports.create = function (req, res) {
   //create a new sponsorships
   var sponsorship = new Sponsorships(req.body);
 
+  console.log(sponsorship);
   sponsorship.save(function(err) {
     if (err) {
       console.log(err);
