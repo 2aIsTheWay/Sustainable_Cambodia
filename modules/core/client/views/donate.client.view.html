@@ -1,7 +1,3 @@
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript" 
-        src="bower_components/angular-payments/lib/angular-payments.js">
-</script>
 <section>
 
     <!-- Page Content -->
@@ -10,7 +6,7 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Donate</h1>
+                <h1 class="page-header">DONATE</h1>
                 <ol class="breadcrumb">
                     <li><a ui-sref="home">Home</a>
                     </li>
@@ -19,12 +15,6 @@
             </div>
         </div>
         <!-- /.row -->
-        <form stripe-form="stripeCallback">
-        <input ng-model="number" placeholder="Card Number" />
-        <input ng-model="expiry" placeholder="Expiration" />
-        <input ng-model="cvc" placeholder="CVC" />
-        <button type="submit">Submit</button>
-        </form>
         <!-- Donate blurb -->
 
         <div class="row">
@@ -76,11 +66,11 @@
 
             <div class="col-sm-4" ng-controller="DonateController">
                 <h3>Payment Information</h3>
-                <hr></hr>
+                <hr>
                 <h4>Select a Payment Type</h4>
-                <button class="btn" ng-click="collapsedCC = false; collapsedPP = true; collapsedCheck = true">Credit Card</button>
-                <button class="btn" ng-click="collapsedPP = false; collapsedCC = true; collapsedCheck = true">PayPal</button>
-                <button class="btn" ng-click="collapsedCheck = false; collapsedCC = true; collapsedPP = true">Check</button>
+                <button class="btn btn-default" ng-click="collapsedCC = false; collapsedPP = true; collapsedCheck = true">Credit Card</button>
+                <button class="btn btn-default" ng-click="collapsedPP = false; collapsedCC = true; collapsedCheck = true">PayPal</button>
+                <button class="btn btn-default" ng-click="collapsedCheck = false; collapsedCC = true; collapsedPP = true">Check</button>
                 <div collapse="collapsedCC">
                     <label for="country">Name as it appears on the card</label>
                     <input type="text" class="form-control" id="country">
