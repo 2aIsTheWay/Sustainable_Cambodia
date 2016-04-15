@@ -13,38 +13,11 @@ acl = new acl(new acl.memoryBackend());
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
-    roles: ['superadmin'],
+    roles: ['admin','superadmin'],
     allows: [{
-      resources: '/api/sponsorships/ui-grid',
+      resources: '/donations/ui-grid',
       permissions: 'get'
-    }, {
-      resources: '/api/sponsorships',
-      permissions: '*'
-    }, {
-      resources: '/api/sponsorships/:sponsorshipId',
-      permissions: '*'
-    }, {
-      resources: '/api/:userId/sponsor/sponsorships',
-      permissions: '*'
-    }, {
-      resources: '/api/sponsorships/active',
-      permissions: '*'
     }]
-  }, {
-    roles: ['sponsor'],
-    allows: [{
-      resources: '/api/sponsorships',
-      permissions: ''
-    }, {
-      resources: '/api/sponsorships/:sponsorshipId',
-      permissions: ''
-    }, {
-      resources: '/api/:userId/sponsor/sponsorships',
-      permissions: 'get'
-    }, {
-      resources: '/api/sponsorships/active',
-      permissions: ''
-    } ]
   }]);
 };
 

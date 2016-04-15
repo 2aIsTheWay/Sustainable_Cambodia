@@ -4,6 +4,8 @@ var sponsorshipPolicy = require('../policies/sponsorships.server.policy'),
   sponsorship = require('../controllers/sponsorships.server.controller');
 
 module.exports = function(app) {
+  app.route('/api/sponsorships/ui-grid').all(sponsorshipPolicy.isAllowed)
+    .get(sponsorship.gridList);
   app.route('/api/sponsorships').all(sponsorshipPolicy.isAllowed)
     .get(sponsorship.list)
     .post(sponsorship.create);

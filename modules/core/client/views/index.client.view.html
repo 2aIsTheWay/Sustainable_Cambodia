@@ -1,9 +1,7 @@
 <section>
-    <!-- Header Carousel -->
-    <div></div>
 <div class="container col-lg-12">    
-	<div ng-controller="CarouselCtrl">
-      <div style="height: 505px">
+	<div ng-controller="CarouselCtrl" ng-init="findCarousel()">
+      <div style="height: 615px">
         <carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
           <slide ng-repeat="slide in slides track by slide.id" index="slide.id">
             <div><img ng-src="{{slide.image}}" style="margin:auto;"></div>

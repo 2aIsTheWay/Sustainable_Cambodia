@@ -15,6 +15,7 @@ exports.create = function (req, res) {
   //create a new sponsorships
   var sponsorship = new Sponsorships(req.body);
 
+  console.log(sponsorship);
   sponsorship.save(function(err) {
     if (err) {
       console.log(err);
@@ -112,5 +113,15 @@ exports.sponsorshipUserID = function (req, res, next, id) {
     }
     req.user_id = user._id;//Problem here?
     next();
+  });
+};
+
+exports.gridList = function (req, res) {
+  Sponsorships.find().exec(function(err, Sponsorships) {
+    if (err) {
+      return res.status(400).send(err);
+    } else {
+      res.json(Sponsorships);
+    }
   });
 };

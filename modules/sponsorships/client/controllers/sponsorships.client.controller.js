@@ -62,10 +62,6 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       var childId;
       Sponsorship.getByUserId(id).then(function(response) {
         $scope.childFind(response.data);
-        console.log(response.data);
-        //$scope.filteredOut = response.data;
-        //console.log(response.data[1]);
-        //childId = response.data.child_id;//this doesnt work?  Whats that for
 
       }, function(error) {
 
@@ -80,36 +76,27 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
         return false;
       }
       var beginDate = new Date();
-      //var childId = $stateParams.childrenId;//This is undefined but why?
-      //var childFirstName = $stateParams.childrenFirstName;
-      //var childLastName = $stateParams.childrenLastName;
+
 
       var id = Authentication.user._id;
-      var sponsorshipLength = $scope.sponsorshipTemp.sponsorshipType;
 
-      if(sponsorshipLength === 'full'){
-        $scope.sponsorship.endDate = new Date(beginDate.getFullYear() + 1, beginDate.getMonth(),beginDate.getDay());
-      }else if(sponsorshipLength === 'half'){
-        var halfYear = 366/2;//Assuming leap year?  Benefit of the doubt
-        //Adding 6 months is not neccesarily accurate by the date as half a year
-        $scope.sponsorship.endDate = new Date(beginDate.getFullYear(), beginDate.getMonth(),beginDate.getDay() +halfYear);
-        //Although half sponsorship is +6 months MEAN stack as of April 2016 has an offset of 3 days
-      }
-      else{
-        console.log('something happened?');
-        return false;
-      }
       $scope.sponsorship.user_id = id;//sets the id of sponsorship to that
       $scope.sponsorship.child_id = $stateParams.childrenId;
       $scope.sponsorship.beginDate = beginDate;
-      //TODO:Before I post I need to get the chilrdenID somehow.
+
+
+      $scope.sponsorship.childFirstName = $scope.children.firstName;//$stateParams.childrenFirstName;
+
+      $scope.sponsorship.childLastName = $scope.children.lastName;
+
+      $scope.sponsorship.userEmail = Authentication.user.username;
+
+      $scope.sponsorship.endDate = new Date(beginDate.getFullYear()+1,beginDate.getMonth(), beginDate.getDay());
 
       //post to the sponsorship API
       console.log('I do go here!');
-      $scope.sponsorshipType = {
-        sponsorshipType:$scope.sponsorshipTemp.sponsorshipType
-      }; 
-      Children.updateFunding($stateParams.childrenId,$scope.sponsorshipType)
+
+      Children.updateFunding($stateParams.childrenId,$scope.sponsorshipType)//there is an error here idk what it is
         .then(function(response) {
           $http.post('/api/'+id+'/sponsor/sponsorships', $scope.sponsorship)
                   .then(function(response) {

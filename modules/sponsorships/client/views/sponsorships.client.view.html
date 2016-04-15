@@ -19,7 +19,11 @@
                           <h2>
                           {{userSponsorships.firstName}}
                           {{userSponsorships.lastName}}
+
                         </h2>
+
+
+
                         <img ng-src="modules/children/client/img/uploads/{{userSponsorships.primaryPhoto}}"></img>
                         <!--Place Image Here! -->
                             <h3>Start Date: {{userSponsorships.beginDate | date:MM/dd/YYYY}}<br>
@@ -30,6 +34,12 @@
                     </div>
                  </div>
             </div>
+            <!--<div data-ng-repeat="sponsorship in sponsorship">
+              {{sponsorship.childFirstName}}
+              {{sponsorship.childLastName}}
+              {{sponsorship.userEmail}}
+
+            </div>-->
         </div>
         <!-- /.row -->
         <!-- Content Row -->
