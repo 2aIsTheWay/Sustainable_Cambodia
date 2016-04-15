@@ -2,5 +2,6 @@
 
 //angular.module('core', ['ngAnimate', 'ui.bootstrap']);
 angular.module('app', ['ui.bootstrap'])
-.controller('CollapseController', function($scope){
+.controller('DateController', function($scope){
+  $scope.date = new Date();
 });

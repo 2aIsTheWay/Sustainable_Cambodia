@@ -1,6 +1,120 @@
+/*font styling*/
+@font-face {
+  font-family: 'Franklin Gothic Book';
+  font-style:  normal;
+  font-weight: 400;
+  src: url(FRABK.woff?#iefix) format('woff');
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  font-style:  normal;
+  font-weight: 400;
+  src: url(MYRIADPROREGULAR.woff?#iefix) format('woff');
+}
+
+h1, h2, h3, h4, h5, h6, li {
+    font-family: 'Franklin Gothic Book';
+}
+
+h1 {
+  color: #388635;
+}
+
+h2 {
+  color: #38aaa7;
+}
+
+h3 {
+  color: #bac115;
+}
+
+p, div {
+    font-family: 'Myriad Pro';
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #38aaa7;
+    margin: 1em 0;
+    padding: 0; 
+}
+
+/*To accomodate for the header space*/
+body {
+    background-color: #FFFFFF;
+    margin-top: 120px;
+}
+
+
+/*Documentation for button style*/
+.btn {
+  border-radius: 0;
+}
+.btn-success {
+  background: #388635;
+}
+
+.btn-primary {
+  background: #125c64;
+  border-color: #125c64;
+}
+
+.btn-default {
+  border-color: #388635;
+}
+
+/*???*/
 .content {
   margin-top: 50px;
 }
+
+/*Documentation for a green div*/
+.green-block {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: #388635;
+  text-align:center;
+}
+
+.green-block > h1{
+  color: #ffffff;
+}
+
+.green-block > p{
+  color: #ffffff;
+}
+
+.placeholder-block-1 {
+  height: 429px;
+  background-image: url('placeholderimage1.png');
+}
+
+/*Documentation for a navbar style*/
+.navbar {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
+  color: #38aaa7;  /*Sets the text hover color on navbar*/
+}
+
+.navbar .navbar-brand > h1 > h2 > h3 > h4 > h5 >li > a {
+  color: #000000; /*Change active text color here*/
+}
+
+.navbar .navbar-nav > li > a {
+  padding: 70px 15px 20px 15px;
+  color: #000000; /*Change active text color here*/
+}
+
+.navbar .navbar-inner {
+    height: 100px;  
+}
+
 .undecorated-link:hover {
   text-decoration: none;
 }
@@ -34,4 +148,9 @@ a:hover .header-profile-image {
 }
 .has-error .help-inline.error-text {
   display: inline;
+}
+
+.dropdown-menu table {
+  height: 300px;
+  width: 350px;
 }
