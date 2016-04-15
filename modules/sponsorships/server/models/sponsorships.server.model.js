@@ -15,6 +15,7 @@ var SponsorshipsSchema = new Schema({
   beginDate:  Date,
   endDate:    Date,
   paymentType:  Number,
+  sponsorshipType: String,
   userEmail:  String,
   childFirstName: String,
   childLastName: String,

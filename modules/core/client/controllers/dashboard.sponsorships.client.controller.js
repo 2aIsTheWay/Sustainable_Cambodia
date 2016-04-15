@@ -38,6 +38,7 @@ angular.module('core').controller('DashboardSponsorshipsCtrl', ['$scope', 'Spons
         selectOptions: [ { value: 'true', label: 'true' }, { value: 'false', label: 'false' } ] 
       } },
       { displayName:'Payment Type', field: 'paymentType' },
+      { displayName:'Sponsorship Type', field: 'sponsorshipType' },
     ],
     enableGridMenu: true,
     enableSelectAll: true,

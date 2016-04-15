@@ -93,6 +93,9 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
 
       $scope.sponsorship.endDate = new Date(beginDate.getFullYear()+1,beginDate.getMonth(), beginDate.getDay());
 
+      $scope.sponsorshipType = {
+        sponsorshipType: $scope.sponsorship.sponsorshipType
+      };
       //post to the sponsorship API
       console.log('I do go here!');
 
