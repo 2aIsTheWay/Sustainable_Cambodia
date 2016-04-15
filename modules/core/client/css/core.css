@@ -106,13 +106,23 @@ body {
   color: #000000; /*Change active text color here*/
 }
 
-.navbar .navbar-nav > li > a {
-  padding: 70px 15px 20px 15px;
-  color: #000000; /*Change active text color here*/
+.navbar .navbar-nav > li > a{
+  padding-top: 70px;
+  color: #000000;
 }
 
 .navbar .navbar-inner {
     height: 100px;  
+}
+
+.loginSys {
+  padding-top: 67px;
+  padding-right: 10px;
+}
+
+.loginSys > a{
+  font-family: 'Franklin Gothic Book';
+  color: #000000;
 }
 
 .undecorated-link:hover {

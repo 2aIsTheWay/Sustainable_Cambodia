@@ -72,8 +72,8 @@
                 <button class="btn btn-default" ng-click="collapsedPP = false; collapsedCC = true; collapsedCheck = true">PayPal</button>
                 <button class="btn btn-default" ng-click="collapsedCheck = false; collapsedCC = true; collapsedPP = true">Check</button>
                 <div collapse="collapsedCC">
-                    <label for="country">Name as it appears on the card</label>
-                    <input type="text" class="form-control" id="country">
+                    <label for="name">Name as it appears on the card</label>
+                    <input type="text" class="form-control" id="name">
                     <div class="row">
                         <div class="col-xs-8">
                             <label for="ccardNum">Card Number</label>
@@ -104,16 +104,16 @@
                 <h3>Billing Information</h3>
                 <hr></hr>
                     <label for="country">Country</label>
-                    <input type="text" class="form-control" id="country">
+                    <input type="text" class="form-control" id="country" ng-model="country">
                     <label for="addr1">Address</label>
-                    <input type="text" class="form-control" id="addr1">
-                    <input type="text" class="form-control" id="addr2">
+                    <input type="text" class="form-control" id="addr1" ng-model="addr1">
+                    <input type="text" class="form-control" id="addr2" ng-model="addr2">
                     <label for="city">City</label>
-                    <input type="text" class="form-control" id="city">
+                    <input type="text" class="form-control" id="city" ng-model="city">
                     <label for="state">State/Province</label>
-                    <input type="text" class="form-control" id="state">
+                    <input type="text" class="form-control" id="state" ng-model="state">
                     <label for="zip">Zip/Postal Code</label>
-                    <input type="text" class="form-control" id="zip">
+                    <input type="text" class="form-control" id="zip" ng-model="zip">
                 <div class="col-xs-12" style="height:10px;"></div>
                 <button type="button" class="btn btn-success btn-lg btn-block">Verify!</button>
             </div>
