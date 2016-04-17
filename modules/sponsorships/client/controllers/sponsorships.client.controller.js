@@ -91,7 +91,7 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
 
       $scope.sponsorship.userEmail = Authentication.user.username;
 
-      $scope.sponsorship.endDate = new Date(beginDate.getFullYear()+1,beginDate.getMonth(), beginDate.getDay());
+      $scope.sponsorship.endDate = new Date(beginDate.getFullYear()+1,beginDate.getMonth(), beginDate.getDate());
 
       $scope.sponsorshipType = {
         sponsorshipType: $scope.sponsorship.sponsorshipType
