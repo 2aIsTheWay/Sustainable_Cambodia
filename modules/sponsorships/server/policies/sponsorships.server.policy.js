@@ -31,7 +31,7 @@ exports.invokeRolesPolicies = function () {
       permissions: '*'
     }]
   }, {
-    roles: ['sponsor'],
+    roles: ['user'],
     allows: [{
       resources: '/api/sponsorships',
       permissions: ''
@@ -40,7 +40,7 @@ exports.invokeRolesPolicies = function () {
       permissions: ''
     }, {
       resources: '/api/:userId/sponsor/sponsorships',
-      permissions: 'get'
+      permissions: '*'
     }, {
       resources: '/api/sponsorships/active',
       permissions: ''

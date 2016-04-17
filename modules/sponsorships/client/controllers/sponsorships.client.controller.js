@@ -15,14 +15,7 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
     };
 
     $scope.find = function() {
-      Sponsorship.getAll().then(function(response) {
-        $scope.sponsorship = response.data;
-        console.log(response.data);
-        $scope.findbyUserId();
-      }, function(error) {
-
-        $scope.error = 'Unable to retrieve sponsorships\n' + error;
-      });
+      $scope.findbyUserId();
     };
 
     $scope.childFind = function(sponsorships) {
@@ -31,8 +24,6 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       while(i<sponsorships.length){
         var filteredOutSponsorship = sponsorships[i];
         var id = sponsorships[i].child_id;
-        console.log(filteredOutSponsorship.child_id);
-        //console.log('ID ISSSSSSSS'+sponsorships[i]);
         $scope.getChild(id,filteredOutSponsorship);
         i++;
       }
@@ -46,11 +37,7 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
         filteredOutSponsorship.lastName = child.lastName;
         filteredOutSponsorship.childId = id;
         filteredOutSponsorship.primaryPhoto = child.primaryPhoto;
-        //append stuff if needed to add on to the sponsorship object to get stuff back
         $scope.filteredOutSponsorships.push(filteredOutSponsorship);
-        console.log('I hope this works '+filteredOutSponsorship._id);
-        //console.log('THIS IS '+ filteredOutSponsorship);
-        //console.log(response.data);
       }, function(error) {
         $scope.error = 'Unable to retrieve sponsorships\n' + error;
       });
@@ -59,12 +46,9 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
 
     $scope.findbyUserId = function() {
       var id = Authentication.user._id;//Authentication object gets the user stuff
-      var childId;
       Sponsorship.getByUserId(id).then(function(response) {
         $scope.childFind(response.data);
-
       }, function(error) {
-
         $scope.error = 'Unable to retrieve sponsorships\n' + error;
       });
     };

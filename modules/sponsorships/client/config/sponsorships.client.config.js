@@ -8,7 +8,7 @@ angular.module('sponsorships').run(['Menus',
       title: 'Sponsorships',
       state: 'sponsorship',//changing this mess with display
       type: 'dropdown',
-      roles: ['*']
+      roles: ['user']
     });
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'sponsorship', {

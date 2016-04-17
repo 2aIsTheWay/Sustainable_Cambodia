@@ -3,32 +3,22 @@
     <div class="container">
       <section>
         <h1>Your Sponsorships</h1>
-
       </section>
         <div class="row">
             <div data-ng-repeat="userSponsorships in filteredOutSponsorships">
-
-
-
-                <!--{{userSponsorships.user_id}}-->
-
                 <div class="col-md-4 text-center">
                     <div class="thumbnail">
                       <a ui-sref="children.view({ childrenId:userSponsorships.childId})">
                         <div class="caption">
-                          <h2>
+                        <h2>
                           {{userSponsorships.firstName}}
                           {{userSponsorships.lastName}}
-
                         </h2>
-
-
-
                         <img ng-src="modules/children/client/img/uploads/{{userSponsorships.primaryPhoto | split:',':0 }}" style="height:200px"></img>
-                        <!--Place Image Here! -->
                             <h3>Start Date: {{userSponsorships.beginDate | date:MM/dd/YYYY}}<br>
                                 End Date: {{userSponsorships.endDate | date:MM/dd/YYYY}}
                              </h3>
+			     <h2>Sponsorship Type: {{userSponsorships.sponsorshipType}}</h2>
                        </div>
                      </a>
                     </div>
