@@ -12,7 +12,7 @@
 
                 <!--{{userSponsorships.user_id}}-->
 
-                <div class="col-md-4 col-lg-4 text-center">
+                <div class="col-md-4 text-center">
                     <div class="thumbnail">
                       <a ui-sref="children.view({ childrenId:userSponsorships.childId})">
                         <div class="caption">
@@ -24,7 +24,7 @@
 
 
 
-                        <img ng-src="modules/children/client/img/uploads/{{userSponsorships.primaryPhoto | split:',':0 }}"></img>
+                        <img ng-src="modules/children/client/img/uploads/{{userSponsorships.primaryPhoto | split:',':0 }}" style="height:200px"></img>
                         <!--Place Image Here! -->
                             <h3>Start Date: {{userSponsorships.beginDate | date:MM/dd/YYYY}}<br>
                                 End Date: {{userSponsorships.endDate | date:MM/dd/YYYY}}
