@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
   path = require('path'),
   multer = require('multer'),
   config = require(path.resolve('./config/config')),
+  fs = require('fs'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
@@ -152,7 +153,6 @@ exports.listEligible = function (req, res) {
 exports.changePrimaryPhoto = function (req, res) {
   var child = req.child;
   var message = null;
-  config.uploads.profileUpload.dest = 'modules/children/client/img/uploads/';
   var upload = multer(config.uploads.primaryUpload).single('newPrimaryPicture');
   var profileUploadFileFilter = require(path.resolve('./config/lib/multer')).profileUploadFileFilter;
 
@@ -192,8 +192,26 @@ exports.removeAdditionalPhoto = function (req, res) {
   var message = null;
   var index = req.body.photoindex;
   var image = req.body.photoimage;
+  var imagePath = config.uploads.primaryUpload.dest+image;
   if (child) {
     child.additionalPhotos.splice(index, 1);
+    if(image){
+      fs.stat(imagePath, function (err, stats) {
+        if (err) {
+          return console.error('Cannot find file so no deletion');
+        }
+        else {
+          fs.unlink(imagePath,function(err){
+            if(err) {
+              return console.log('Attempted to delete nonexistant file');
+            }
+            else {
+              console.log('file deleted successfully');
+            }
+          }); 
+        } 
+      });
+    }
     child.save(function (saveError) {
       if (saveError) {
         return res.status(400).send({
