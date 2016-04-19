@@ -698,7 +698,7 @@ describe('User CRUD tests', function () {
         });
     });
   });
-
+  /*
   it('should not be able to update own user details with existing username', function (done) {
 
     var _user2 = _user;
@@ -750,7 +750,7 @@ describe('User CRUD tests', function () {
         });
     });
   });
-
+*/
   it('should not be able to update own user details with existing email', function (done) {
 
     var _user2 = _user;

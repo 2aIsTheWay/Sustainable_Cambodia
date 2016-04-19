@@ -19,7 +19,7 @@ describe('Users E2E Tests:', function () {
 
   var signout = function () {
     // Make sure user is signed out first
-    browser.get('http://localhost:3001/authentication/signout');
+    browser.get('http://localhost:3001/api/auth/signout');
     // Delete all cookies
     browser.driver.manage().deleteAllCookies();
   };
@@ -32,7 +32,7 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys(user1.email);
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Password
       element(by.model('credentials.password')).sendKeys(user1.password);
       // Click Submit button
@@ -48,7 +48,7 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys(user1.email);
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Password
       element(by.model('credentials.password')).sendKeys(user1.password);
       // Click Submit button
@@ -64,7 +64,7 @@ describe('Users E2E Tests:', function () {
       // Enter Last Name
       element(by.model('credentials.lastName')).sendKeys(user1.lastName);
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Password
       element(by.model('credentials.password')).sendKeys(user1.password);
       // Click Submit button
@@ -82,7 +82,7 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys('123');
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Password
       element(by.model('credentials.password')).sendKeys(user1.password);
       // Click Submit button
@@ -104,29 +104,13 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys('123@123@123');
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Password
       element(by.model('credentials.password')).sendKeys(user1.password);
       // Click Submit button
       element(by.css('button[type=submit]')).click();
       // Email address error
       expect(element.all(by.css('.error-text')).get(0).getText()).toBe('Email address is invalid.');
-    });
-
-    it('Should report missing username', function () {
-      browser.get('http://localhost:3001/authentication/signup');
-      // Enter First Name
-      element(by.model('credentials.firstName')).sendKeys(user1.firstName);
-      // Enter Last Name
-      element(by.model('credentials.lastName')).sendKeys(user1.lastName);
-      // Enter Email
-      element(by.model('credentials.email')).sendKeys(user1.email);
-      // Enter Password
-      element(by.model('credentials.password')).sendKeys(user1.password);
-      // Click Submit button
-      element(by.css('button[type=submit]')).click();
-      // Username Error
-      expect(element.all(by.css('.error-text')).get(0).getText()).toBe('Username is required.');
     });
 
     it('Should report a password with less than 10 characters long - "P@$$w0rd!"', function () {
@@ -138,7 +122,7 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys(user1.email);
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Invalid Password
       element(by.model('credentials.password')).sendKeys('P@$$w0rd!');
       // Click Submit button
@@ -156,7 +140,7 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys(user1.email);
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Invalid Password
       element(by.model('credentials.password')).sendKeys(')!/uLT="lh&:`6X!]|15o!$!TJf,.13l?vG].-j],lFPe/QhwN#{Z<[*1nX@n1^?WW-%_.*D)m$toB+N7z}kcN#B_d(f41h%w@0F!]igtSQ1gl~6sEV&r~}~1ub>If1c+');
       // Click Submit button
@@ -174,7 +158,7 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys(user1.email);
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Invalid Password
       element(by.model('credentials.password')).sendKeys('P@$$w0rd!!!');
       // Click Submit button
@@ -192,7 +176,7 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys(user1.email);
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Invalid Password
       element(by.model('credentials.password')).sendKeys('p@$$w0rd!!');
       // Click Submit button
@@ -210,7 +194,7 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys(user1.email);
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Invalid Password
       element(by.model('credentials.password')).sendKeys('P@$$word!!');
       // Click Submit button
@@ -228,7 +212,7 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys(user1.email);
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Invalid Password
       element(by.model('credentials.password')).sendKeys('Passw0rdss');
       // Click Submit button
@@ -246,7 +230,7 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys(user1.email);
       // Enter UserName
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Password
       element(by.model('credentials.password')).sendKeys(user1.password);
       // Click Submit button
@@ -266,7 +250,7 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys(user1.email);
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user2.username);
+      //element(by.model('credentials.username')).sendKeys(user2.username);
       // Enter Invalid Password
       element(by.model('credentials.password')).sendKeys(user2.password);
       // Click Submit button
@@ -274,7 +258,7 @@ describe('Users E2E Tests:', function () {
       // Password Error
       expect(element.all(by.css('strong')).get(0).getText()).toBe('Email already exists');
     });
-
+/*
     it('Should report Username already exists', function () {
       // Signup
       browser.get('http://localhost:3001/authentication/signup');
@@ -285,15 +269,15 @@ describe('Users E2E Tests:', function () {
       // Enter Email
       element(by.model('credentials.email')).sendKeys(user2.email);
       // Enter Username
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      //element(by.model('credentials.username')).sendKeys(user1.username);
       // Enter Invalid Password
       element(by.model('credentials.password')).sendKeys(user2.password);
       // Click Submit button
       element(by.css('button[type=submit]')).click();
       // Password Error
-      expect(element.all(by.css('strong')).get(0).getText()).toBe('Username already exists');
+      expect(element.all(by.css('strong')).get(0).getText()).toBe('Email already exists');
     });
-
+*/
   });
 
   describe('Signin Validation', function () {
@@ -317,7 +301,7 @@ describe('Users E2E Tests:', function () {
       //Sign in
       browser.get('http://localhost:3001/authentication/signin');
       // Enter UserName
-      element(by.model('credentials.username')).sendKeys(user1.username);
+      element(by.model('credentials.username')).sendKeys(user1.email);
       // Enter Password
       element(by.model('credentials.password')).sendKeys(user1.password);
       // Click Submit button
