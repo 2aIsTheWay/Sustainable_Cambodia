@@ -18,35 +18,6 @@ angular.module('core').controller('DonateController', ['$scope', '$http', '$stat
     //   }
     // };
 
-    $scope.createChild = function(isValid) {
-      console.log($scope.children);
-      $scope.childtocreate = {
-        donationAmount:                 $scope.donation,
-        dayDonated:                     current,
-        donationType:                   $scope.,
-        country:                        $scope.,
-        address1:                       $scope.
-        address2:                       $scope.
-        city:                           $scope.
-        state:                          $scope.
-        postal:                         $scope.
-
-      };
-      $scope.error = null;
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'childrenForm');
-        return false;
-      }
-      $http.post('/api/children', $scope.childtocreate)
-              .then(function(response) {
-                //if the object is successfully saved redirect back to the list page
-                $state.go('children.list', { successMessage: 'Child succesfully created!' });
-              }, function(error) {
-                //otherwise display the error
-                $scope.error = 'Unable to save child!\n' + error;
-              });
-    };
-
     $scope.createdonation = function(isValid) {
       $scope.error = null;
       if(!isValid){
@@ -59,7 +30,7 @@ angular.module('core').controller('DonateController', ['$scope', '$http', '$stat
       $scope.donation.user_id = id;
       $scope.donation.dateDonated = dateDonated;
 
-      $scope.donation.donationAmount = $scope.donation
+      $scope.donation.amount = $scope.donation
 
       $scope.donation.country = $scope.country;
       $scope.donation.address1 = $scope.addr1;
@@ -72,7 +43,7 @@ angular.module('core').controller('DonateController', ['$scope', '$http', '$stat
 
       //post to the donation API
       console.log('working?');
-        $http.post('/api/'+id+'/donation', $scope.donation)
+        $http.post('/api/donation', $scope.donation)
                 .then(function(response) {
                   $state.go('home', { successMessage: 'Donation recieved! Thank you!' });
                 }, function(error) {
