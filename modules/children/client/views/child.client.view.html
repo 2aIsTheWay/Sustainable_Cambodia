@@ -17,7 +17,7 @@
         <div class="row">
                 <!-- Child Image -->
 		<div id="wrapper" style="width:100%; text-align:center">
-                <img ng-src="modules/children/client/img/uploads/{{primaryPhoto.image}}" alt="{{child.primaryPhoto}}" style = "height:200px"></img>
+                <img ng-src="http://www.warrenhbrown.com/SustainableCambodia/img/children/{{primaryPhoto.image}}" alt="{{child.primaryPhoto}}" style = "height:200px"></img>
 		</div>
     <div id="wrapper" style="width:100%; text-align:center" ng-hide="uploader.queue.length">
       {{primaryPhoto.date | date:MM/dd/YYYY}}
@@ -51,7 +51,7 @@
   <div ng-repeat="photo in additionalPhotos" >
     <div class="col-md-4 text-center">
       <div id="wrapper" style="width:100%; text-align:center">
-                  <img ng-src="modules/children/client/img/uploads/{{photo.image}}" alt="{{photo}}" style = "height:200px"></img>
+                  <img ng-src="http://www.warrenhbrown.com/SustainableCambodia/img/children/{{photo.image}}" alt="{{photo}}" style = "height:200px"></img>
       </div>
       <div id="wrapper" style="width:100%; text-align:center">
         {{photo.date | date:MM/dd/YYYY}}
