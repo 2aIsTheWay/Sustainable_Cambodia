@@ -1,6 +1,7 @@
 'use strict';
 
 // Setting up route
+//These are all the routes for sponsorship module
 angular.module('sponsorships').config(['$stateProvider',
   function ($stateProvider) {
     // Sponsorhips state routing

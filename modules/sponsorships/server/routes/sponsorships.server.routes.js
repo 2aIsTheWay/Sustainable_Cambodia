@@ -2,7 +2,8 @@
 
 var sponsorshipPolicy = require('../policies/sponsorships.server.policy'),
   sponsorship = require('../controllers/sponsorships.server.controller');
-
+//If a certain url is called it will execute the following function.  .get(Function Name) can be
+//found in sponsorships.server.controller.js
 module.exports = function(app) {
   app.route('/api/sponsorships/ui-grid').all(sponsorshipPolicy.isAllowed)
     .get(sponsorship.gridList);

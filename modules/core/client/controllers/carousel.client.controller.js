@@ -2,10 +2,10 @@
 
 // The line below is where the injection happens to access Children. Note how the controller now has square brackets that open here and close at the end.
 // This means we are registering dependencies for the controller. Dragon warnings: $scope need to come first. Always. Also, the first time you see the word
-// Children it is a dependency injection and requires single quotes. It appears the second time as parameter being passed into he anonymous function and 
+// Children it is a dependency injection and requires single quotes. It appears the second time as parameter being passed into he anonymous function and
 // does not require single quotes.
 angular.module('core').controller('CarouselCtrl', ['$scope', 'Children', function ($scope,Children) {
-  $scope.myInterval = 5000;
+  $scope.myInterval = 5000;//Carousel will switch pictures every 5000 millseconds or 5 seconds
   $scope.noWrapSlides = false;
   $scope.active = 0;
   var slides = $scope.slides = [];
@@ -25,7 +25,7 @@ angular.module('core').controller('CarouselCtrl', ['$scope', 'Children', functio
   };
 
 
-  
+
   // This section is not relative to example of accessing child data. It created the static example slides and will be completely rewritten once
   // Richard decides on slide content and format.
   $scope.addSlide = function(slideImageName) {

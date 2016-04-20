@@ -14,7 +14,7 @@ angular.module('users').controller('ChangePasswordController', ['$scope', '$http
 
         return false;
       }
-
+      //the post actually changes the passwords.  NOTE:the passwords are hash when the reach the api thus unreadable
       $http.post('/api/users/password', $scope.passwordDetails).success(function (response) {
         // If successful show success message and clear form
         $scope.$broadcast('show-errors-reset', 'passwordForm');

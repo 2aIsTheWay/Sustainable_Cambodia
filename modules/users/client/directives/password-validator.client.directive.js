@@ -1,5 +1,5 @@
 'use strict';
-
+//NOTE:This came with the mean stack
 angular.module('users')
   .directive('passwordValidator', ['PasswordValidator', function(PasswordValidator) {
     return {
