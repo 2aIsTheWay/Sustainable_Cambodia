@@ -1,5 +1,5 @@
 'use strict';
-
+//NOTE:These are methods used to do HTTP requests
 angular.module('sponsorships').factory('Sponsorship', ['$http',
   function($http) {
     var methods = {

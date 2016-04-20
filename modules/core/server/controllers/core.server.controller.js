@@ -6,6 +6,8 @@ var mongoose = require('mongoose'),
 /**
  * Render the main application page
  */
+
+ //This is realated the clean instance of the mean stack
 exports.renderIndex = function (req, res) {
   res.render('modules/core/server/views/index', {
     user: req.user || null
@@ -36,6 +38,7 @@ exports.renderDashboard = function (req, res) {
   });
 };
 
+//Used for testing and debugging purposes
 exports.renderSCtest = function (req, res) {
   res.render('modules/core/server/views/sctemplate', {
     user: req.user || null
@@ -44,6 +47,7 @@ exports.renderSCtest = function (req, res) {
 /**
  * Render the server error page
  */
+ //Came with the mean stack
 exports.renderServerError = function (req, res) {
   res.status(500).render('modules/core/server/views/500', {
     error: 'Oops! Something went wrong...'
@@ -54,6 +58,7 @@ exports.renderServerError = function (req, res) {
  * Render the server not found responses
  * Performs content-negotiation on the Accept HTTP header
  */
+ //Came with the mean stack
 exports.renderNotFound = function (req, res) {
 
   res.status(404).format({

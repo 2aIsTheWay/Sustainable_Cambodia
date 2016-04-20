@@ -13,7 +13,7 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
 
         return false;
       }
-
+      //creates a new instance of User class called user
       var user = new Users($scope.user);
 
       user.$update(function (response) {

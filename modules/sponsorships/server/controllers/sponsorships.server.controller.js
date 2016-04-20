@@ -36,12 +36,13 @@ exports.read = function (req, res) {
 
 
 
-
+//NOTE:Thsi is not used at all
+//Richard said that they naturally do not delete a child but rather make the sponsorship inelligible
 exports.delete = function (req, res) {
   //not sure if this one is needed.
 };
 
-
+//Gets a list of all sponsorhips
 exports.list = function (req, res) {
   Sponsorships.find().exec(function(err, Sponsorships) {
     if (err) {
@@ -52,7 +53,7 @@ exports.list = function (req, res) {
   });
 };
 
-
+//lists active sponsorships
 exports.listActive = function (req, res) {
   //will list all active sponsorships
   // NOTE: this has not been tested, not sure if it works.

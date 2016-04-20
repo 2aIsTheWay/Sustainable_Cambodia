@@ -6,7 +6,7 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
     $scope.user = userResolve;
 
     $scope.remove = function (user) {
-      if (confirm('Are you sure you want to delete this user?')) {
+      if (confirm('Are you sure you want to delete this user?')) {//displays a pop up about deleting a user
         if (user) {
           user.$remove();
 
@@ -19,6 +19,7 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
       }
     };
 
+    //updates the user
     $scope.update = function (isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'userForm');

@@ -1,6 +1,7 @@
 'use strict';
 
 // Configuring the Sponsorships module
+//This is part of the nav bar.  It contains options a sponsor or admin has.
 angular.module('sponsorships').run(['Menus',
   function (Menus) {
     // Add the sponsorship dropdown item

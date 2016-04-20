@@ -6,7 +6,8 @@ angular.module('users.admin').controller('UserListController', ['$scope', '$filt
       $scope.users = data;
       $scope.buildPager();
     });
-
+//The next three functions are used to display a 15 objects at one time
+//To see more you change the page.
     $scope.buildPager = function () {
       $scope.pagedItems = [];
       $scope.itemsPerPage = 15;

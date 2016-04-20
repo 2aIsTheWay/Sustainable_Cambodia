@@ -12,7 +12,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
     if ($scope.authentication.user) {
       $location.path('/');
     }
-
+    //this function is called when a user wants to sign up for an account.
     $scope.signup = function (isValid) {
       $scope.error = null;
 

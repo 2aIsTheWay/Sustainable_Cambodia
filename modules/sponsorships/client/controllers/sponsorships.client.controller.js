@@ -29,7 +29,10 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       }
 
     };
-
+    //Used to get childrens first name and last name to display.  This was when
+    //The sponsorship schema did not have child first name and last name
+    //If you want to add anything from the children schema here follow the
+    //steps metaphorically
     $scope.getChild = function(id,filteredOutSponsorship){
       Sponsorship.getByChildId(id).then(function(response) {
         var child = response.data;
@@ -52,7 +55,7 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
         $scope.error = 'Unable to retrieve sponsorships\n' + error;
       });
     };
-
+    //used to create a sponsorship called from the createsponsorship.client.view.html
     $scope.createsponsorship = function(isValid) {
       $scope.error = null;
       if(!isValid){
@@ -74,14 +77,15 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       $scope.sponsorship.childLastName = $scope.children.lastName;
 
       $scope.sponsorship.userEmail = Authentication.user.username;
-
+      //Makes the end date a full year ahead of begin date
+      //by default all sponsorships last one whole year
       $scope.sponsorship.endDate = new Date(beginDate.getFullYear()+1,beginDate.getMonth(), beginDate.getDate());
 
       $scope.sponsorshipType = {
         sponsorshipType: $scope.sponsorship.sponsorshipType
       };
       //post to the sponsorship API
-      console.log('I do go here!');
+
 
       Children.updateFunding($stateParams.childrenId,$scope.sponsorshipType)//there is an error here idk what it is
         .then(function(response) {
