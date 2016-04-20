@@ -1,7 +1,7 @@
 'use strict';
 var childrenPolicy = require('../policies/children.server.policy'),
   children = require('../controllers/children.server.controller');
-
+//NOTE: These are the functions triggered when reaching a certain url as well as the HTTP allowed requests
 module.exports = function(app) {
 
 

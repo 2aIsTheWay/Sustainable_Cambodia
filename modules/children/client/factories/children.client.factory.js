@@ -1,5 +1,5 @@
 'use strict';
-
+//NOTE:Methods used to do HTTP requests.  To use an HTTP request listed here just call the method
 angular.module('children').factory('Children', ['$http',
   function($http) {
     var methods = {

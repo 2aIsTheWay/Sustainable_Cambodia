@@ -9,7 +9,7 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Articles Permissions
+ * Invoke Articles Permissions.  Allows only certain types of users to do certain HTTP requests
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{

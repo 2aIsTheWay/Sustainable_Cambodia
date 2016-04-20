@@ -1,8 +1,11 @@
 'use strict';
 
+//NOTE:This is used for all the display manipulation
+
 angular.module('children').controller('ChildrenController', ['$scope', '$http', '$stateParams', '$state', '$filter', 'Children', 'Authentication',
   function($scope, $http, $stateParams, $state, $filter, Children, Authentication){
 
+    //NOTE: Used to display children
     $scope.chooseDisplay = function () {
       if ($scope.isAdmin()){
         $scope.findAll();
@@ -12,6 +15,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       }
     };
 
+    //NOTE: Used to find all children
     $scope.findAll = function() {
       Children.getAll().then(function(response) {
         $scope.children = response.data;
@@ -21,6 +25,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       });
     };
 
+    //NOTE: Used to find children that are considered sponsorship eligible
     $scope.findEligible = function() {
       Children.getAllEligible().then(function(response) {
         $scope.children = response.data;
@@ -30,6 +35,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       });
     };
 
+    //NOTE: Used to display 15 children per page
     $scope.buildPager = function () {
       $scope.pagedItems = [];
       $scope.itemsPerPage = 15;
@@ -37,6 +43,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       $scope.figureOutItemsToDisplay();
     };
 
+    //NOTE: This function handles the logic of which items will be displayed
     $scope.figureOutItemsToDisplay = function () {
       $scope.filteredItems = $filter('filter')($scope.children, {
         firstName: $scope.search,
@@ -48,10 +55,12 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       $scope.pagedItems = $scope.filteredItems.slice(begin, end);
     };
 
+    //NOTE: The function is notified when the page changes and finds out which children to display
     $scope.pageChanged = function () {
       $scope.figureOutItemsToDisplay();
     };
 
+    //NOTE: Gets a specfic child based on passing in the childID
     $scope.findOne = function() {
       var id = $stateParams.childrenId;
       Children.read(id)
@@ -70,6 +79,8 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       };
     };
 
+    //NOTE:This function changes a child's attribute to be not available for sponsorships
+    //NOTE:In the past Sustatinable Cambodia has been known to
     $scope.deleteChild = function() {
       $scope.error = null;
       Children.deleteChild($stateParams.childId).then(function(response) {
@@ -79,6 +90,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       });
     };
 
+    //NOTE:This function updates a child called from the child update view
     $scope.updateChild = function(isValid) {
       $scope.error=null;
       if (!isValid) {
@@ -93,6 +105,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
         });
     };
 
+    //NOTE: This function creates a child based on attributes passed on by the create child view page
     $scope.createChild = function(isValid) {
       console.log($scope.children);
       $scope.childtocreate = {
@@ -103,13 +116,14 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
         eligibleForSponsorship:         $scope.children.eligibleForSponsorship,
         sponsorshipType:                '0',
         fundingLevel:                   '0',
-        dob:                            $scope.children.dob  
+        dob:                            $scope.children.dob
       };
       $scope.error = null;
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'childrenForm');
         return false;
       }
+      //NOTE:http.post posts the data that is in $scope.childtocreate
       $http.post('/api/children', $scope.childtocreate)
               .then(function(response) {
                 //if the object is successfully saved redirect back to the list page
@@ -119,7 +133,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
                 $scope.error = 'Unable to save child!\n' + error;
               });
     };
-
+    //NOTE:This function changes a childs eligibility for sponsorship
     $scope.changeEligibility = function(eligibility) {
       $scope.children.eligibleForSponsorship=eligibility;
       Children.updateChild($stateParams.childrenId, $scope.children)
@@ -164,6 +178,7 @@ angular.module('children').controller('ChildrenController', ['$scope', '$http', 
       });
     };
 
+    //NOTE:Checks if a user is an Admin
     $scope.isAdmin = function() {
       $scope.roles=Authentication.user.roles;
       if(Authentication.user) {

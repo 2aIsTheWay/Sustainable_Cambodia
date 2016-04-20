@@ -1,6 +1,7 @@
 'use strict';
 
 // Setting up route
+//if you are an admin it sends you to the admin state or the landing page of admin site
 angular.module('core.admin.routes').config(['$stateProvider',
   function ($stateProvider) {
     $stateProvider
@@ -14,7 +15,7 @@ angular.module('core.admin.routes').config(['$stateProvider',
       });
   }
 ]);
-
+//if you are a sponsor it sends you to the sponsor state or the landing page of the sponsor site
 angular.module('core.sponsor.routes').config(['$stateProvider',
   function ($stateProvider) {
     $stateProvider
