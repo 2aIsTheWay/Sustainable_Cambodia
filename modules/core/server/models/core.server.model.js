@@ -15,7 +15,7 @@ var DonationSchema = new Schema({
   donationType: { type: String, required: true },
   amount:       { type: Number, required: true },
   userEmail:    { type: String, required: true },
-  dateDonated:  { type: Date, required: true},
+  dateDonated:  { type: Date, required: true },
   country:      { type: String },
   address1:     { type: String },
   address2:     { type: String },

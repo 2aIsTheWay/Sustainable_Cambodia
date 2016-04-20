@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('DonateController', ['$scope', '$http', '$stateParams', 'Authentication',
-  function($scope, $http, $stateParams, Authentication){
+angular.module('core').controller('DonateController', ['$scope', '$http', '$stateParams', '$state', 'Authentication',
+  function($scope, $http, $stateParams, $state, Authentication){
     $scope.collapsedCC = true;
     $scope.collapsedPP = true;
     $scope.collapsedCheck = true;
@@ -30,7 +30,7 @@ angular.module('core').controller('DonateController', ['$scope', '$http', '$stat
       $scope.donation.user_id = id;
       $scope.donation.dateDonated = dateDonated;
 
-      $scope.donation.amount = $scope.donation
+      $scope.donation.amount = $scope.donation;
 
       $scope.donation.country = $scope.country;
       $scope.donation.address1 = $scope.addr1;
@@ -43,7 +43,7 @@ angular.module('core').controller('DonateController', ['$scope', '$http', '$stat
 
       //post to the donation API
       console.log('working?');
-        $http.post('/api/donation', $scope.donation)
+      $http.post('/api/donation', $scope.donation)
                 .then(function(response) {
                   $state.go('home', { successMessage: 'Donation recieved! Thank you!' });
                 }, function(error) {
