@@ -1,6 +1,8 @@
 'use strict';
 
 // Configuring the Children module
+
+//NOTE:Used for organization in terms of placing different module states on the nav bar
 angular.module('children').run(['Menus',
   function (Menus) {
     // Add the children dropdown item

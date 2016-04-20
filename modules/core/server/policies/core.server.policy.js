@@ -9,7 +9,7 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Articles Permissions
+ * Invoke Articles Permissions:this allows only admin and superadmin to access the ui-grid
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{

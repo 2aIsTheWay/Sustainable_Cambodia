@@ -16,6 +16,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     .state('home', {
       url: '/',
       templateUrl: 'modules/core/client/views/index.client.view.html'
+      //NOTE:This is the landing page when the URL localhost:3000 is typed
       //templateUrl: 'modules/core/client/views/home.client.view.html'
     })
     .state('about', {

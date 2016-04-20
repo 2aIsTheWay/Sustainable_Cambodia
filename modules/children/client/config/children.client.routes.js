@@ -1,6 +1,11 @@
 'use strict';
 
 // Setting up route
+
+//NOTE: State is the name used to reference a certain webpage
+//NOTE: abstract means that all states that fall under this module will start with the url '/children'
+//NOTE: templateUrl is the file heirarchy in respect to a web developer
+//NOTE: url is the website heirarchy in respect to a user
 angular.module('children').config(['$stateProvider',
   function ($stateProvider) {
     // Children state routing
