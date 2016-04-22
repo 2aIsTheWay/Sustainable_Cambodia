@@ -37,7 +37,8 @@
 
 ### List of All Incomplete Features:
 * All incomplete features and bugs are located on the github in the issues section of the repository
-* Instructions for how to run the project locally:
+
+###Instructions for how to run the project locally:
 * Install git for the ability to use git commands in the terminal
 * Install node.js and node pack manager (npm)
 * using the following link - Download & Install Node.js
@@ -45,15 +46,13 @@
 * using the following link -Download & Install Ruby
 * Run a terminal that supports git functionality
 * Download bower through the terminal by running ```npm install -g bower```
-
-
-Clone the repository into a file of your choosing
-Navigate to the local repository
-Run an ```npm install``` in the shell to install all dependencies
-Navigate to ```./config/env``` and find the file titled local example
-Insert your MongoLab uri into the local example file and rename it local.js (Use URI with a username and password in it)
-Once done, type ```grunt``` in terminal and then, once it is done loading and running, navigate to ```localhost:3000``` in your browser.
-The site should navigate to the homepage and look like this
+* Clone the repository into a file of your choosing
+* Navigate to the local repository
+* Run an ```npm install``` in the shell to install all dependencies
+* Navigate to ```./config/env``` and find the file titled local.example
+* Insert your MongoLab uri into the local example file and rename it local (Use URI with a username and password in it)
+* Once done, type ```grunt``` in terminal and then, once it is done loading and running, navigate to ```localhost:3000``` in your browser.
+* The site should navigate to the homepage and look like this
 
 ![Screenshot](homepage.png "Screenshot of what the homepage should look like")
 
