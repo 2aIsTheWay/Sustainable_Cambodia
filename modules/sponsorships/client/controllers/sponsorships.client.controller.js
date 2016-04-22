@@ -1,9 +1,10 @@
 'use strict';
 
+//NOTE: Uses the Sponsorship and Children factories to make the $http requests to the RESTful API endpoints for some functions
 angular.module('sponsorships').controller('SponsorshipController', ['$scope','$http','$stateParams','$state','Authentication' ,'Sponsorship','Children',
   function($scope,$http, $stateParams,$state,Authentication ,Sponsorship, Children){
 
-     //used to find the child
+    //used to find the child with the given id
     $scope.loadChild = function() {
       var id = $stateParams.childrenId;
       Children.read(id)
@@ -14,10 +15,13 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
               });
     };
 
+    //runs to start off the process of getting the sponsorships of the specific user
     $scope.find = function() {
       $scope.findbyUserId();
     };
 
+    //Passes in the sponsorships to join on the child
+    //Passes the child id in the sponorship to the get child function to actually find the child
     $scope.childFind = function(sponsorships) {
       var i = 0;
       $scope.filteredOutSponsorships = [];
@@ -29,10 +33,12 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       }
 
     };
+
     //Used to get childrens first name and last name to display.  This was when
-    //The sponsorship schema did not have child first name and last name
-    //If you want to add anything from the children schema here follow the
-    //steps metaphorically
+    //The sponsorship schema did not have child first name and last name at the time
+    //If you want to add anything from the children schema here follow the example
+    //of binding the child.(attribute) to the filterOutSponsorship object to have the childs attribute
+    //in the variable
     $scope.getChild = function(id,filteredOutSponsorship){
       Sponsorship.getByChildId(id).then(function(response) {
         var child = response.data;
@@ -46,7 +52,7 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       });
     };
 
-
+    //Gets all sponsorships with the user id of the person logged in
     $scope.findbyUserId = function() {
       var id = Authentication.user._id;//Authentication object gets the user stuff
       Sponsorship.getByUserId(id).then(function(response) {
@@ -55,6 +61,7 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
         $scope.error = 'Unable to retrieve sponsorships\n' + error;
       });
     };
+
     //used to create a sponsorship called from the createsponsorship.client.view.html
     $scope.createsponsorship = function(isValid) {
       $scope.error = null;
@@ -84,9 +91,8 @@ angular.module('sponsorships').controller('SponsorshipController', ['$scope','$h
       $scope.sponsorshipType = {
         sponsorshipType: $scope.sponsorship.sponsorshipType
       };
-      //post to the sponsorship API
-
-
+      
+      //Updates the child's sponsorships (to make sure the child can be sponsored and update the object) then creates the sponorship
       Children.updateFunding($stateParams.childrenId,$scope.sponsorshipType)//there is an error here idk what it is
         .then(function(response) {
           $http.post('/api/'+id+'/sponsor/sponsorships', $scope.sponsorship)

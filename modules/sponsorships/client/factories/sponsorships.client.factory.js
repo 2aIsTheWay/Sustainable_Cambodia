@@ -1,5 +1,5 @@
 'use strict';
-//NOTE:These are methods used to do HTTP requests
+//NOTE:These are methods used to do HTTP requests to RESTful API endpoints
 angular.module('sponsorships').factory('Sponsorship', ['$http',
   function($http) {
     var methods = {

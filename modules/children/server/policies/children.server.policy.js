@@ -9,7 +9,7 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Articles Permissions.  Allows only certain types of users to do certain HTTP requests
+ * Invoke Children Permissions.  Allows only certain types of users to do certain HTTP requests
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
@@ -62,7 +62,7 @@ exports.invokeRolesPolicies = function () {
 };
 
 /**
- * Check If Articles Policy Allows
+ * Check If Policy Allows
  */
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];

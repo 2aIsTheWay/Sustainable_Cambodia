@@ -10,3 +10,4 @@ angular.module('donations').factory('Donations', ['$http',
     return methods;
   }]);
 */
+//Do not use this file, donations module does not exists, only will work if donations module is added
