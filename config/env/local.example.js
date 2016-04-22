@@ -7,7 +7,7 @@
 
 module.exports = {
   db: {
-    uri: 'mongodb://admin:admin@ds047315.mongolab.com:47315/leon2aclass',
+    uri: '',
     options: {
       user: '',
       pass: ''
