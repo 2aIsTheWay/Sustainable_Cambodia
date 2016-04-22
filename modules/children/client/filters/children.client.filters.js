@@ -1,5 +1,6 @@
 'use strict';
 
+//Filter to split the primary and additonal photo variables
 angular.module('children')
   .filter('split', function() {
     return function(input, splitChar, splitIndex) {

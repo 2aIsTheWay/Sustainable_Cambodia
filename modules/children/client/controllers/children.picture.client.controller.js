@@ -80,6 +80,7 @@ angular.module('children').controller('ChildrenPictureController', ['$scope', '$
       $scope.imageURL = $scope.children.primaryPhoto;
     };
 
+    //Before you upload it pushes in the date selected
     $scope.uploader.onBeforeUploadItem = onBeforeUploadItem;
     function onBeforeUploadItem(item) {
       item.formData.push({ dateTaken: $scope.dateTaken });

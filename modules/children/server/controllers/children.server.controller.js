@@ -60,6 +60,11 @@ exports.update = function (req, res) {
   });
 };
 
+/**
+ * Update a child's sponsorship levels
+ * if he/she is fully sponsored 
+ * make him/her ineligbible
+ */
 exports.updateFunding = function (req, res) {
   var child = req.child;
   var sponsorshipType = req.body.sponsorshipType;
@@ -140,6 +145,7 @@ exports.carouselList = function (req, res) {
   });
 };
 
+//Only lists eligible children
 exports.listEligible = function (req, res) {
   Children.find({ eligibleForSponsorship: true }).exec(function(err, Children) {
     if(err) {
@@ -150,6 +156,7 @@ exports.listEligible = function (req, res) {
   });
 };
 
+//changes a child's primary photo to the one selected for upload
 exports.changePrimaryPhoto = function (req, res) {
   var child = req.child;
   var message = null;
@@ -187,6 +194,7 @@ exports.changePrimaryPhoto = function (req, res) {
   }
 };
 
+//Removes the selected addtional photo based on the array index and name
 exports.removeAdditionalPhoto = function (req, res) {
   var child = req.child;
   var message = null;
@@ -228,6 +236,7 @@ exports.removeAdditionalPhoto = function (req, res) {
   }
 };
 
+//If an id is passed in the api endpoint, automatically makes a req.child object from the id
 exports.childrenByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {

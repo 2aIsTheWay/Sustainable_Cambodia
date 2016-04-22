@@ -9,7 +9,7 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Articles Permissions
+ * Invoke Sponorships Permissions
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
@@ -49,7 +49,7 @@ exports.invokeRolesPolicies = function () {
 };
 
 /**
- * Check If Articles Policy Allows
+ * Check If Policy Allows
  */
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];

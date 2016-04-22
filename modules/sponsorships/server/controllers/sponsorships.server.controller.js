@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
   _ = require('lodash');
 
 /**
- * Create a
+ * Create a sponsorship
  */
 exports.create = function (req, res) {
   //create a new sponsorships
@@ -25,9 +25,9 @@ exports.create = function (req, res) {
     }
   });
 };
-/**
 
- * Show the current
+/**
+ * Show the sponsorship selected
  */
 exports.read = function (req, res) {
   //read an individual sponsorship
@@ -36,8 +36,7 @@ exports.read = function (req, res) {
 
 
 
-//NOTE:Thsi is not used at all
-//Richard said that they naturally do not delete a child but rather make the sponsorship inelligible
+//NOTE:This is not used at all nor is it actually created
 exports.delete = function (req, res) {
   //not sure if this one is needed.
 };
@@ -56,7 +55,7 @@ exports.list = function (req, res) {
 //lists active sponsorships
 exports.listActive = function (req, res) {
   //will list all active sponsorships
-  // NOTE: this has not been tested, not sure if it works.
+  //Is NOT currently being used anywhere 
   var currentDate = new Date();
   Sponsorships.find().$where(this.beginDate <= currentDate && this.endDate >= currentDate).exec(function(err, Sponsorships) {
     if (err) {
@@ -67,6 +66,7 @@ exports.listActive = function (req, res) {
   });
 };
 
+//Lists sponsorships of the user logged in
 exports.listSponsored = function (req, res) {
   //will list sponsorships that an individual sponsor has sponsored (has to be a better way to say that)
   Sponsorships.find({ user_id: req.user_id }, function (err, sponsorships) {
@@ -78,6 +78,7 @@ exports.listSponsored = function (req, res) {
   });
 };
 
+//When an id is passed down, it will automatically create a req.sponorship from that id
 exports.sponsorshipsByID = function (req, res, next, id) {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
@@ -98,6 +99,8 @@ exports.sponsorshipsByID = function (req, res, next, id) {
   });
 };
 
+//When an id is passed down, it will automatically create a req.user from that id
+//NOTE: Conflicts with sponsorshipsByID need to rename id
 exports.sponsorshipUserID = function (req, res, next, id) {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
@@ -117,6 +120,7 @@ exports.sponsorshipUserID = function (req, res, next, id) {
   });
 };
 
+//Lists all the sponsorships in the database for the dashboard
 exports.gridList = function (req, res) {
   Sponsorships.find().exec(function(err, Sponsorships) {
     if (err) {
